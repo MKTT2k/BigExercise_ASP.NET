@@ -17,7 +17,7 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index",controller="TinTucVaoBep", id = UrlParameter.Optional }
             );
         }
     }
