@@ -1,25 +1,28 @@
-﻿@{
+﻿@using BTL_ASP_HieuHaiSan.DAO;
+@{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
+
+    SanPhamDAO sanPhamDAO = new SanPhamDAO();
 }
 
 
 <div class="conten">
     <script>
-            $(document).ready(function() {
-                var styles = {
-                    display: "block"
-                };
-                $('.nav-main').css(styles);
-                $('.cate-title').addClass('active_home');
-            });
+        $(document).ready(function () {
+            var styles = {
+                display: "block"
+            };
+            $('.nav-main').css(styles);
+            $('.cate-title').addClass('active_home');
+        });
     </script>
     <div class="pagewrap">
         <div id="id_top_home">
             <div id="banner_top">
                 <div id="bannerMain">
                     <div id="banner">
-                        <li style='background-image: url(~/Assets/Client/datafiles/banners/16357459169704_coverfacebook.png);'>
+                        <li style="background-image: url(~/Assets/Client/datafiles/banners/16357459169704_coverfacebook.png);">
                             <a href=""></a>
                         </li>
                         <li style='background-image: url(~/Assets/Client/datafiles/banners/16315083449812_banner-ship-hieuhaisan.jpg);'>
@@ -35,68 +38,12 @@
                     <ul class="pagiBanner">
                     </ul>
                     <script type="text/javascript">
-                            $(document).ready(function() {
-                                $("#banner").carouFredSel({
-                                    circular: true,
-                                    infinite: true,
-                                    responsive: true,
-                                    pagination: '.pagiBanner',
-                                    auto: {
-                                        pauseDuration: 3000,
-                                        pauseOnHover: true,
-                                        duration: 1200,
-                                        fx: "crossfade",
-                                    },
-                                    scroll: {
-                                        fx: "slide",
-                                        items: 1,
-                                        onBefore: function(data) {
-                                            $('#banner li').not(data.items.visible[0]).find('.caption').animate({
-                                                opacity: 0,
-                                                visibility: 'hidden',
-                                                bottom: -50
-                                            });
-                                            $(data.items.visible[0]).find('.caption').animate({
-                                                opacity: 1,
-                                                visibility: 'visible',
-                                                bottom: 0
-                                            }, {
-                                                queue: false,
-                                                duration: 1000
-                                            });
-                                        },
-                                    },
-                                    prev: false,
-                                    next: false,
-                                    swipe: {
-                                        onMouse: true,
-                                        onTouch: true
-                                    },
-                                    items: {
-                                        height: "variable",
-                                        visible: {
-                                            min: 1,
-                                            max: 1
-                                        }
-                                    }
-                                });
-                            });
-                    </script>
-                    <div class="clr"></div>
-                </div>
-            </div>
-            <div class="banner_right_id">
-                <ul id="banner2">
-                    <li>
-                        <a href="https://hieuhaisan.com/ca-hoi-phi-le.html"><img src="~/Assets/Client/datafiles/banners/15956658068708_banner-hai-san-04.jpg" width="260" height="360" /></a>
-                    </li>
-                </ul>
-                <script type="text/javascript">
-                        jQuery(document).ready(function() {
-                            $("#banner2").carouFredSel({
+                        $(document).ready(function () {
+                            $("#banner").carouFredSel({
                                 circular: true,
                                 infinite: true,
                                 responsive: true,
+                                pagination: '.pagiBanner',
                                 auto: {
                                     pauseDuration: 3000,
                                     pauseOnHover: true,
@@ -106,7 +53,7 @@
                                 scroll: {
                                     fx: "slide",
                                     items: 1,
-                                    onBefore: function(data) {
+                                    onBefore: function (data) {
                                         $('#banner li').not(data.items.visible[0]).find('.caption').animate({
                                             opacity: 0,
                                             visibility: 'hidden',
@@ -137,6 +84,62 @@
                                 }
                             });
                         });
+                    </script>
+                    <div class="clr"></div>
+                </div>
+            </div>
+            <div class="banner_right_id">
+                <ul id="banner2">
+                    <li>
+                        <a href="https://hieuhaisan.com/ca-hoi-phi-le.html"><img src="~/Assets/Client/datafiles/banners/15956658068708_banner-hai-san-04.jpg" width="260" height="360" /></a>
+                    </li>
+                </ul>
+                <script type="text/javascript">
+                    jQuery(document).ready(function () {
+                        $("#banner2").carouFredSel({
+                            circular: true,
+                            infinite: true,
+                            responsive: true,
+                            auto: {
+                                pauseDuration: 3000,
+                                pauseOnHover: true,
+                                duration: 1200,
+                                fx: "crossfade",
+                            },
+                            scroll: {
+                                fx: "slide",
+                                items: 1,
+                                onBefore: function (data) {
+                                    $('#banner li').not(data.items.visible[0]).find('.caption').animate({
+                                        opacity: 0,
+                                        visibility: 'hidden',
+                                        bottom: -50
+                                    });
+                                    $(data.items.visible[0]).find('.caption').animate({
+                                        opacity: 1,
+                                        visibility: 'visible',
+                                        bottom: 0
+                                    }, {
+                                        queue: false,
+                                        duration: 1000
+                                    });
+                                },
+                            },
+                            prev: false,
+                            next: false,
+                            swipe: {
+                                onMouse: true,
+                                onTouch: true
+                            },
+                            items: {
+                                height: "variable",
+                                visible: {
+                                    min: 1,
+                                    max: 1
+                                }
+                            }
+                        });
+                    });
                 </script>
             </div>
             <div class="clr"></div>
@@ -194,10 +197,10 @@
             <div class="placeSlide_main">
                 <div class="placeSlide_2">
                     <div class="product_list">
-                        @foreach (var sp in ViewBag.productTop4)
+                        @foreach (var sp in ViewBag.getall)
                         {
                             <ul>
-                                <a href="#">
+                                <a href="@Url.Action("Details", "Home", new {id = sp.ID_SanPham})">
                                 <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh" width="250" height="250" /></li>
                                 <h2>@sp.TenSanPham</h2>
                                 <h3>Giá: @sp.GiaBan đ </h3>
@@ -209,356 +212,61 @@
                 </div>
                 <a href="#" class="placeNav_2 prev">&lsaquo;</a><a href="#" class="placeNav_2 next">&rsaquo;</a>
                 <script type="text/javascript">
-                        jQuery(document).ready(function() {
-                            var $placeSlide = $('.placeSlide_2 .product_list');
-                            $(".placeSlide_2 .product_list").carouFredSel({
-                                circular: false,
-                                infinite: true,
-                                auto: {
-                                    pauseDuration: 5000,
-                                },
-                                scroll: {
-                                    items: 1,
-                                    fx: 'linear'
-                                },
-                                prev: ".placeNav_2.prev",
-                                next: ".placeNav_2.next",
-                                swipe: {
-                                    onMouse: true,
-                                    onTouch: true
-                                },
+                    jQuery(document).ready(function () {
+                        var $placeSlide = $('.placeSlide_2 .product_list');
+                        $(".placeSlide_2 .product_list").carouFredSel({
+                            circular: false,
+                            infinite: true,
+                            auto: {
+                                pauseDuration: 5000,
+                            },
+                            scroll: {
+                                items: 1,
+                                fx: 'linear'
+                            },
+                            prev: ".placeNav_2.prev",
+                            next: ".placeNav_2.next",
+                            swipe: {
+                                onMouse: true,
+                                onTouch: true
+                            },
 
-                                items: {
-                                    height: "variable"
-                                }
-                            });
+                            items: {
+                                height: "variable"
+                            }
                         });
+                    });
                 </script>
             </div>
         </div>
         <div class="left_conten">
-            <div class="box_id">
-                <div class="title_page_home">
-                    <h2>Tôm </h2>
-                    <div class="clr"></div>
-                </div>
-                <div class="placeSlide_main">
-                    <div class="placeSlide_page">
-                        <div class="product_list">
-                            @foreach (var sp in ViewBag.proTom)
-                            {
-                                <ul>
-                                    <a href="https://hieuhaisan.com/tom-cang-xanh.html">
-                                    <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh" class="lazy" /></li>
-                                    <h2>@sp.TenSanPham</h2>
-                                    <h3>Giá: @sp.GiaBan đ </h3>
-                                    </a>
-                                </ul>
-                            }
-                            <div class="clr"></div>
-                        </div>
+            @foreach (var item in ViewBag.listDm)
+            {
+                <div class="box_id">
+                    <div class="title_page_home">
+                        <h2>@item.TenDanhMuc</h2>
                         <div class="clr"></div>
                     </div>
-                </div>
-            </div>
-            <div class="box_id">
-                <div class="title_page_home">
-                    <h2>Cá tươi sống</h2>
-                    <div class="clr"></div>
-                </div>
-                <div class="placeSlide_main">
-                    <div class="placeSlide_page">
-                        <div class="product_list">
-                            @foreach (var sp in ViewBag.proCa)
-                            {
-                                <ul>
-                                    <a href="https://hieuhaisan.com/tom-cang-xanh.html">
-                                    <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh" class="lazy" /></li>
-                                    <h2>@sp.TenSanPham</h2>
-                                    <h3>Giá: @sp.GiaBan đ </h3>
-                                    </a>
-                                </ul>
-                            }
+                    <div class="placeSlide_main">
+                        <div class="placeSlide_page">
+                            <div class="product_list">
+                                @foreach(var sp in sanPhamDAO.get8ByCateId(@item.ID_DanhMuc))
+                                {
+                                    <ul>
+                                        <a href="@Url.Action("Details", "Home", new {id = sp.ID_SanPham})">
+                                        <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh" class="lazy" /></li>
+                                        <h2>@sp.TenSanPham</h2>
+                                        <h3>Giá: @sp.GiaBan đ </h3>
+                                        </a>
+                                    </ul>
+                                }
+                                <div class="clr"></div>
+                            </div>
                             <div class="clr"></div>
                         </div>
-                        <div class="clr"></div>
                     </div>
                 </div>
-            </div>
-            <div class="box_id">
-                <div class="title_page_home">
-                    <h2>Cua - Ghẹ</h2>
-                    <div class="clr"></div>
-                </div>
-                <div class="placeSlide_main">
-                    <div class="placeSlide_page">
-                        <div class="product_list">
-                            @foreach (var sp in ViewBag.proCG)
-                            {
-                                <ul>
-                                    <a href="https://hieuhaisan.com/tom-cang-xanh.html">
-                                    <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh" class="lazy" /></li>
-                                    <h2>@sp.TenSanPham</h2>
-                                    <h3>Giá: @sp.GiaBan đ </h3>
-                                    </a>
-                                </ul>
-                            }
-                            <div class="clr"></div>
-                        </div>
-                        <div class="clr"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="box_id">
-                <div class="title_page_home">
-                    <h2>Ngao - Sò - Ốc</h2>
-                    <div class="clr"></div>
-                </div>
-                <div class="placeSlide_main">
-                    <div class="placeSlide_page">
-                        <div class="product_list">
-                            @foreach (var sp in ViewBag.proNSO)
-                            {
-                                <ul>
-                                    <a href="https://hieuhaisan.com/tom-cang-xanh.html">
-                                    <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh" class="lazy" /></li>
-                                    <h2>@sp.TenSanPham</h2>
-                                    <h3>Giá: @sp.GiaBan đ </h3>
-                                    </a>
-                                </ul>
-                            }
-                            <div class="clr"></div>
-                        </div>
-                        <div class="clr"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="box_id">
-                <div class="title_page_home">
-                    <h2>Mực</h2>
-                    <div class="clr"></div>
-                </div>
-                <div class="placeSlide_main">
-                    <div class="placeSlide_page">
-                        <div class="product_list">
-                            <ul>
-                                <a href="https://hieuhaisan.com/muc-la.html">
-                                <li><img alt="Mực lá tươi" data-src="datafiles/setone/14647123378882_muc-la-tuoi-hieu-hai-san.jpg" class="lazy" /></li>
-                                <h2>Mực lá tươi</h2>
-                                <h3>Giá: 380,000 đ </h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <a href="https://hieuhaisan.com/muc-ong.html">
-                                <li><img alt="Mực ống" data-src="datafiles/setone/14647125279247_muc-ong-hieu-hai-san.jpg" class="lazy" /></li>
-                                <h2>Mực ống</h2>
-                                <h3>Giá: 450,000 đ </h3>
-                                </a>
-                            </ul>
-                            <div class="clr"></div>
-                        </div>
-                        <div class="clr"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="box_id">
-                <div class="title_page_home">
-                    <h2>Hải Sản Nhập Khẩu</h2>
-                    <div class="clr"></div>
-                </div>
-                <div class="placeSlide_main">
-                    <div class="placeSlide_page">
-                        <div class="product_list">
-                            <ul>
-                                <a href="https://hieuhaisan.com/so-diep-nhat-song.html">
-                                <li><img alt="Sò điệp Nhật" data-src="datafiles/setone/15317204631411_so-diep-nhat-song-01.jpg" class="lazy" /></li>
-                                <h2>Sò điệp Nhật</h2>
-                                <h3>Giá: 240,000 đ </h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <a href="https://hieuhaisan.com/bach-tuoc-nhat.html">
-                                <li><img alt="Bạch tuộc Nhật" data-src="datafiles/setone/15307581814109_bach-tuoc-nhat.png" class="lazy" /></li>
-                                <h2>Bạch tuộc Nhật</h2>
-                                <h3>Giá: 750,000 đ </h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <a href="https://hieuhaisan.com/oc-bulot-phap-nhap-khau.html">
-                                <li><img alt="Ốc Bulot Pháp" data-src="datafiles/setone/15296317527407_oc-bulot-phap-nhap-khau.jpg" class="lazy" /></li>
-                                <h2>Ốc Bulot Pháp</h2>
-                                <h3>Giá: 430,000 đ </h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <a href="https://hieuhaisan.com/so-do-canada.html">
-                                <li><img alt="Sò đỏ" data-src="datafiles/setone/14951133954177_so-do-nhap-khau.jpg" class="lazy" /></li>
-                                <h2>Sò đỏ</h2>
-                                <h3>Giá: 1,000,000 đ </h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <div class="discount-tag">-19%</div>
-                                <a href="https://hieuhaisan.com/tom-hum-canada-hap-chin.html">
-                                <li><img alt="Tôm hùm Canada hấp chín" data-src="datafiles/setone/14826816477129_tom-hum-canada-hap-chin.jpg" class="lazy" /></li>
-                                <h2>Tôm hùm Canada hấp chín</h2>
-                                <h3>Giá: 260,000 đ <span>320,000 đ</span></h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <a href="https://hieuhaisan.com/vem-xanh-new-zealand.html">
-                                <li><img alt="Vẹm xanh New Zealand" data-src="datafiles/setone/14912987888598_vem-xanh-new-zealand.jpg" class="lazy" /></li>
-                                <h2>Vẹm xanh New Zealand</h2>
-                                <h3>Giá: 290,000 đ </h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <div class="discount-tag">-10%</div>
-                                <a href="https://hieuhaisan.com/ca-bon-song.html">
-                                <li><img alt="Cá Thờn Bơn sống" data-src="datafiles/setone/15040074786586_ca-bon-ca-thon-bon-song-han-quoc-05.jpg" class="lazy" /></li>
-                                <h2>Cá Thờn Bơn sống</h2>
-                                <h3>Giá: 990,000 đ <span>1,100,000 đ</span></h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <a href="https://hieuhaisan.com/trung-ca-tam.html">
-                                <li><img alt="Trứng cá tầm CAVIAR" data-src="datafiles/setone/14781789999662_trung-ca-tam-caviar.jpg" class="lazy" /></li>
-                                <h2>Trứng cá tầm CAVIAR</h2>
-                                <h3>Giá: 270,000 đ </h3>
-                                </a>
-                            </ul>
-                            <div class="clr"></div>
-                        </div>
-                        <div class="clr"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="box_id">
-                <div class="title_page_home">
-                    <h2>Hải Sản Tiện Lợi</h2>
-                    <div class="clr"></div>
-                </div>
-                <div class="placeSlide_main">
-                    <div class="placeSlide_page">
-                        <div class="product_list">
-                            <ul>
-                                <a href="https://hieuhaisan.com/cha-muc-ha-long.html">
-                                <li><img alt="Chả mực Hạ Long" data-src="datafiles/setone/14925771958677_cha-muc-ha-long-01.jpg" class="lazy" /></li>
-                                <h2>Chả mực Hạ Long</h2>
-                                <h3>Giá: 490,000 đ </h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <a href="https://hieuhaisan.com/thit-ghe-500g.html">
-                                <li><img alt="Thịt ghẹ (500g)" data-src="datafiles/setone/14902382872731_thit-ghe-01.jpg" class="lazy" /></li>
-                                <h2>Thịt ghẹ (500g)</h2>
-                                <h3>Giá: 180,000 đ </h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <a href="https://hieuhaisan.com/ca-trich.html">
-                                <li><img alt="Cá Trích phi lê (Khay 500g)" data-src="datafiles/setone/15747585682864_ca-trich-phi-le-02.jpg" class="lazy" /></li>
-                                <h2>Cá Trích phi lê (Khay 500g)</h2>
-                                <h3>Giá: 110,000 đ </h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <a href="https://hieuhaisan.com/thit-tom-tich.html">
-                                <li><img alt="Thịt tôm tích (500g)" data-src="datafiles/setone/14732654824440_thit-tom-tich-hap-chin.jpg" class="lazy" /></li>
-                                <h2>Thịt tôm tích (500g)</h2>
-                                <h3>Giá: 180,000 đ </h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <a href="https://hieuhaisan.com/trung-ca-ngu.html">
-                                <li><img alt="Trứng cá ngừ (500g)" data-src="datafiles/setone/14902384791341_trung-ca-ngu-01.jpg" class="lazy" /></li>
-                                <h2>Trứng cá ngừ (500g)</h2>
-                                <h3>Giá: 60,000 đ </h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <a href="https://hieuhaisan.com/ca-co-kiem-sashimi.html">
-                                <li><img alt="Cá cờ kiếm Sashimi (300g)" data-src="datafiles/setone/14730075118728_ca-co-kiem-sashimi.jpg" class="lazy" /></li>
-                                <h2>Cá cờ kiếm Sashimi (300g)</h2>
-                                <h3>Giá: 160,000 đ </h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <a href="https://hieuhaisan.com/ca-co-kiem-cat-lat.html">
-                                <li><img alt="Cá cờ kiếm cắt lát (500g)" data-src="datafiles/setone/14730066145558_ca-co-kiem-cat-lat.jpg" class="lazy" /></li>
-                                <h2>Cá cờ kiếm cắt lát (500g)</h2>
-                                <h3>Giá: 145,000 đ </h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <a href="https://hieuhaisan.com/mat-ca-ngu-dai-duong.html">
-                                <li><img alt="Mắt cá ngừ đại dương" data-src="datafiles/setone/14730014458016_mat-ca-ngu-dai-duong-01.jpg" class="lazy" /></li>
-                                <h2>Mắt cá ngừ đại dương</h2>
-                                <h3>Giá: 120,000 đ </h3>
-                                </a>
-                            </ul>
-                            <div class="clr"></div>
-                        </div>
-                        <div class="clr"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="box_id">
-                <div class="title_page_home">
-                    <h2>Hải Sản Khô Một Nắng</h2>
-                    <div class="clr"></div>
-                </div>
-                <div class="placeSlide_main">
-                    <div class="placeSlide_page">
-                        <div class="product_list">
-                            <ul>
-                                <a href="https://hieuhaisan.com/muc-kho-tam-gia-vi.html">
-                                <li><img alt="Mực khô tẩm gia vị" data-src="datafiles/setone/15781961265488_muc-tam-gia-vi-hieu-hai-san.jpg" class="lazy" /></li>
-                                <h2>Mực khô tẩm gia vị</h2>
-                                <h3>Giá: 840,000 đ </h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <a href="https://hieuhaisan.com/ca-du-mot-nang-nguyen-con.html">
-                                <li><img alt="Cá đù một nắng nguyên con" data-src="datafiles/setone/14916329676013_ca-du-mot-nang-nguyen-con.jpg" class="lazy" /></li>
-                                <h2>Cá đù một nắng nguyên con</h2>
-                                <h3>Giá: 225,000 đ </h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <a href="https://hieuhaisan.com/tom-kho-ca-mau-cao-cap.html">
-                                <li><img alt="Tôm khô đất Cà Mau" data-src="datafiles/setone/14809035948613_tom-kho-ca-mau.jpg" class="lazy" /></li>
-                                <h2>Tôm khô đất Cà Mau</h2>
-                                <h3>Giá: 1,400,000 đ </h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <a href="https://hieuhaisan.com/ca-thu-mot-nang.html">
-                                <li><img alt="Cá thu một nắng" data-src="datafiles/setone/14907690289795_20170306_175359.jpg" class="lazy" /></li>
-                                <h2>Cá thu một nắng</h2>
-                                <h3>Giá: 290,000 đ </h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <a href="https://hieuhaisan.com/kho-ca-chi-vang.html">
-                                <li><img alt="Khô cá chỉ vàng" data-src="datafiles/setone/14763287238101_kho-ca-chi-vang-1.jpg" class="lazy" /></li>
-                                <h2>Khô cá chỉ vàng</h2>
-                                <h3>Giá: 290,000 đ </h3>
-                                </a>
-                            </ul>
-                            <ul>
-                                <a href="https://hieuhaisan.com/muc-kho-cau.html">
-                                <li><img alt="Mực khô câu" data-src="datafiles/setone/14761629326975_muc-kho-cau.jpg" class="lazy" /></li>
-                                <h2>Mực khô câu</h2>
-                                <h3>Giá: 1,450,000 đ </h3>
-                                </a>
-                            </ul>
-                            <div class="clr"></div>
-                        </div>
-                        <div class="clr"></div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
         <div class="right_conten">
             <div class="menu_left desktop">
@@ -576,176 +284,59 @@
             </div>
             <div class="box_right_conten desktop">
                 <h2>Sản phẩm bán chạy</h2>
-                <ul>
-                    <a href="https://hieuhaisan.com/hau-sua-nhat-kobe.html">
-                    <li><img alt="Hàu sữa nhật (Sashimi)" data-src="datafiles/setone/16271218906444_1-web-hau-sua-nhat.jpg" class="lazy" width="250" height="250" /></li>
-                    <h3>Hàu sữa nhật (Sashimi)</h3>
-                    <h4>Giá: 285,000 đ </h4>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="https://hieuhaisan.com/bach-tuoc-baby.html">
-                    <li><img alt="Bạch Tuộc Xếp Hoa" data-src="datafiles/setone/16260781061611_thumb-web-bach-tuoc-baby.jpg" class="lazy" width="250" height="250" /></li>
-                    <h3>Bạch Tuộc Xếp Hoa</h3>
-                    <h4>Giá: 145,000 đ </h4>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="https://hieuhaisan.com/cua-nau-song-nauy.html">
-                    <li><img alt="Cua Nâu Nauy" data-src="datafiles/setone/16259090566117_3-thumb-cua-nau.jpg" class="lazy" width="250" height="250" /></li>
-                    <h3>Cua Nâu Nauy</h3>
-                    <h4>Giá: 690,000 đ </h4>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="https://hieuhaisan.com/ca-tuyet-phi-le.html">
-                    <li><img alt="Cá Tuyết phi lê" data-src="datafiles/setone/14996764675416_ca-tuyet-nauy-phile.jpg" class="lazy" width="250" height="250" /></li>
-                    <h3>Cá Tuyết phi lê</h3>
-                    <h4>Giá: 620,000 đ </h4>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="https://hieuhaisan.com/bao-ngu-han-quoc-song.html">
-                    <li><img alt="Bào ngư Hàn Quốc" data-src="datafiles/setone/14912965824762_bao-ngu-han-quoc-song.jpg" class="lazy" width="250" height="250" /></li>
-                    <h3>Bào ngư Hàn Quốc</h3>
-                    <h4>Giá: 1,350,000 đ </h4>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="https://hieuhaisan.com/bao-ngu-dong-hop-uc.html">
-                    <li><img alt="Bào ngư đóng hộp Úc (425g)" data-src="datafiles/setone/16276965932622_bao-ngu-uc-lon.jpg" class="lazy" width="250" height="250" /></li>
-                    <h3>Bào ngư đóng hộp Úc (425g)</h3>
-                    <h4>Giá: 1,500,000 đ <span>1,700,000 đ</span></h4>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="https://hieuhaisan.com/cua-tuyet.html">
-                    <li><img alt="Cua Tuyết" data-src="datafiles/setone/16230435521211_hai-san-chan-cua-tuyet.jpg" class="lazy" width="250" height="250" /></li>
-                    <h3>Cua Tuyết</h3>
-                    <h4>Giá: 550,000 đ <span>620,000 đ</span></h4>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="https://hieuhaisan.com/vi-ca-map.html">
-                    <li><img alt="Vi cá mập (100g)" data-src="datafiles/setone/14794426418209_vi-ca-map-nguyen-vay-01.jpg" class="lazy" width="250" height="250" /></li>
-                    <h3>Vi cá mập (100g)</h3>
-                    <h4>Giá: 1,500,000 đ </h4>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="https://hieuhaisan.com/kho-ca-lu-du-1-nang.html">
-                    <li><img alt="Khô cá lù đù 1 nắng" data-src="datafiles/setone/14895469456576_kho-ca-lu-du-mot-nang-1.jpg" class="lazy" width="250" height="250" /></li>
-                    <h3>Khô cá lù đù 1 nắng</h3>
-                    <h4>Giá: 245,000 đ </h4>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="https://hieuhaisan.com/muc-mot-nang.html">
-                    <li><img alt="Mực một nắng" data-src="datafiles/setone/14761644675855_muc-mot-nang.jpg" class="lazy" width="250" height="250" /></li>
-                    <h3>Mực một nắng</h3>
-                    <h4>Giá: 440,000 đ </h4>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="https://hieuhaisan.com/kho-ca-dua-can-gio-1-nang.html">
-                    <li><img alt="Khô cá Dứa Cần Giờ 1 nắng" data-src="datafiles/setone/14761591966351_kho-ca-dua-can-gio-mot-nang-02.jpg" class="lazy" width="250" height="250" /></li>
-                    <h3>Khô cá Dứa Cần Giờ 1 nắng</h3>
-                    <h4>Giá: 480,000 đ </h4>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="https://hieuhaisan.com/ca-chim-bien.html">
-                    <li><img alt="Cá chim biển" data-src="datafiles/setone/14756279031779_ca-chim.jpg" class="lazy" width="250" height="250" /></li>
-                    <h3>Cá chim biển</h3>
-                    <h4>Giá: 190,000 đ </h4>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="https://hieuhaisan.com/ca-hoi-phi-le.html">
-                    <li><img alt="Cá hồi phi lê" data-src="datafiles/setone/16230451704659_ca-hoi-nauy.jpg" class="lazy" width="250" height="250" /></li>
-                    <h3>Cá hồi phi lê</h3>
-                    <h4>Giá: 650,000 đ </h4>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="https://hieuhaisan.com/ca-ngu-dai-duong-cat-lat.html">
-                    <li><img alt="Cá ngừ cắt lát (500g)" data-src="datafiles/setone/14902386889031_ca-ngu-cat-lat-1.jpg" class="lazy" width="250" height="250" /></li>
-                    <h3>Cá ngừ cắt lát (500g)</h3>
-                    <h4>Giá: 115,000 đ </h4>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="https://hieuhaisan.com/ca-trich-ep-trung.html">
-                    <li><img alt="Cá trích ép trứng (500g)" data-src="datafiles/setone/14826828719277_ca-trich-ep-trung.jpg" class="lazy" width="250" height="250" /></li>
-                    <h3>Cá trích ép trứng (500g)</h3>
-                    <h4>Giá: 475,000 đ </h4>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="https://hieuhaisan.com/ghe-song.html">
-                    <li><img alt="Ghẹ sống ngon" data-src="datafiles/setone/14678210792531_ghe-song-01.jpg" class="lazy" width="250" height="250" /></li>
-                    <h3>Ghẹ sống ngon</h3>
-                    <h4>Giá: 650,000 đ <span>730,000 đ</span></h4>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="https://hieuhaisan.com/coi-so-diep-nhat.html">
-                    <li><img alt="Cồi sò điệp Nhật" data-src="datafiles/setone/16261765217630_55481526_368873433704982_6683431586064498688_n.jpg" class="lazy" width="250" height="250" /></li>
-                    <h3>Cồi sò điệp Nhật</h3>
-                    <h4>Giá: 1,100,000 đ </h4>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="https://hieuhaisan.com/bao-ngu-uc.html">
-                    <li><img alt="Bào ngư Úc" data-src="datafiles/setone/14646653075809_bao-ngu-uc-hieu-hai-san.jpg" class="lazy" width="250" height="250" /></li>
-                    <h3>Bào ngư Úc</h3>
-                    <h4>Giá: 6,600,000 đ </h4>
-                    </a>
-                </ul>
-            </div>
+                @foreach (var item in sanPhamDAO.getTop8())
+                {
+                    <ul>
+                        <a href="@Url.Action("Details", "Home", new {id = item.ID_SanPham})">
+                        <li><img alt="@item.TenSanPham" src="~/Assets/Client/datafiles/setone/@item.HinhAnh" class="lazy" width="250" height="250" /></li>
+                        <h3>@item.TenSanPham</h3>
+                        <h4>Giá: @item.GiaBan đ </h4>
+                        </a>
+                    </ul>
+                }
             <div class="box_right_conten">
                 <h2>TIN NÓNG</h2>
                 <div class="marquee">
                     <ul>
                         <a href="https://hieuhaisan.com/hieu-hai-san-dong-hanh-cung-ban.html">
-                        <li><img alt="Giãn cách không xa cách - Hiếu đồng hành cùng bạn" data-src="datafiles/setone/16298689672662_thumb-thongcao.jpg" class="lazy" width="400" height="250" /></li>
+                        <li><img alt="Giãn cách không xa cách - Hiếu đồng hành cùng bạn" src="~/Assets/Client/datafiles/setone/16298689672662_thumb-thongcao.jpg" class="lazy" width="400" height="250" /></li>
                         <h3>Giãn cách không xa cách - Hiếu đồng hành cùng bạn</h3>
                         </a>
                     </ul>
                     <ul>
                         <a href="https://hieuhaisan.com/binh-on-gia-hai-san-2021.html">
-                        <li><img alt="Bình ổn giá mùa giãn cách tại Hiếu Hải Sản" data-src="datafiles/setone/16261781069589_banner-binh-on-giapng.jpg" class="lazy" width="400" height="250" /></li>
+                        <li><img alt="Bình ổn giá mùa giãn cách tại Hiếu Hải Sản" src="~/Assets/Client/datafiles/setone/16261781069589_banner-binh-on-giapng.jpg" class="lazy" width="400" height="250" /></li>
                         <h3>Bình ổn giá mùa giãn cách tại Hiếu Hải Sản</h3>
                         </a>
                     </ul>
                     <ul>
                         <a href="https://hieuhaisan.com/tom-hum-hap-ruou-vang.html">
-                        <li><img alt="Tôm hùm hấp rượu vang" data-src="datafiles/setone/14656368918363_tom-hum-hap-ruou-vang-hhs-2.jpg" class="lazy" width="400" height="250" /></li>
+                        <li><img alt="Tôm hùm hấp rượu vang" src="~/Assets/Client/datafiles/setone/14656368918363_tom-hum-hap-ruou-vang-hhs-2.jpg" class="lazy" width="400" height="250" /></li>
                         <h3>Tôm hùm hấp rượu vang</h3>
                         </a>
                     </ul>
                     <ul>
                         <a href="https://hieuhaisan.com/tom-hum-rang-me.html">
-                        <li><img alt="Tôm hùm rang me" data-src="datafiles/setone/14656376158133_tom-hum-rang-me-hhs-1.jpg" class="lazy" width="400" height="250" /></li>
+                        <li><img alt="Tôm hùm rang me" src="~/Assets/Client/datafiles/setone/14656376158133_tom-hum-rang-me-hhs-1.jpg" class="lazy" width="400" height="250" /></li>
                         <h3>Tôm hùm rang me</h3>
                         </a>
                     </ul>
                     <ul>
                         <a href="https://hieuhaisan.com/tom-hum-sashimi.html">
-                        <li><img alt="Tôm hùm sashimi" data-src="datafiles/setone/14656326441203_tom-hum-sashimi-an-song-hhs.jpg" class="lazy" width="400" height="250" /></li>
+                        <li><img alt="Tôm hùm sashimi" src="~/Assets/Client/datafiles/setone/14656326441203_tom-hum-sashimi-an-song-hhs.jpg" class="lazy" width="400" height="250" /></li>
                         <h3>Tôm hùm sashimi</h3>
                         </a>
                     </ul>
                 </div>
                 <script>
-                        $('.marquee').marquee({
-                            duration: 19000,
-                            gap: 0,
-                            delayBeforeStart: 0,
-                            direction: 'up',
-                            duplicated: true,
-                            startVisible: true
-                        });
+                    $('.marquee').marquee({
+                        duration: 19000,
+                        gap: 0,
+                        delayBeforeStart: 0,
+                        direction: 'up',
+                        duplicated: true,
+                        startVisible: true
+                    });
                 </script>
             </div>
             <div class="hotrokhachhang_right">
@@ -759,12 +350,13 @@
             <div class="banner_right desktop">
                 <ul>
                     <li>
-                        <a href="https://hieuhaisan.com/tom-hum-canada-song.html"><img data-src="datafiles/banners/14736666535386_300-300-tom-hum-canada-2.png" class="lazy" width="180" height="316" /></a>
+                        <a href="https://hieuhaisan.com/tom-hum-canada-song.html"><img src="~/Assets/Client/datafiles/banners/14736666535386_300-300-tom-hum-canada-2.png" class="lazy" width="180" height="316" /></a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="clr"></div>
     </div>
+
     <div class="clr"></div>
 </div>

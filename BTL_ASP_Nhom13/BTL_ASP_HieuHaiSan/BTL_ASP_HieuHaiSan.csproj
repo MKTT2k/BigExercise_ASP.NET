@@ -139,6 +139,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAO\DanhMucDAO.cs" />
     <Compile Include="DAO\SanPhamDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -177,14 +178,6 @@
     <Content Include="Assets\Client\datafiles\banners\16049779327740_banner.jpg" />
     <Content Include="Assets\Client\datafiles\banners\16315083449812_banner-ship-hieuhaisan.jpg" />
     <Content Include="Assets\Client\datafiles\banners\16357459169704_coverfacebook.png" />
-    <Content Include="Assets\Client\datafiles\setone\15290512031320_icon-ca.png" />
-    <Content Include="Assets\Client\datafiles\setone\15290517618557_icon-tom.png" />
-    <Content Include="Assets\Client\datafiles\setone\15290518308480_icon-cua.png" />
-    <Content Include="Assets\Client\datafiles\setone\15290519627311_icon-so-oc.png" />
-    <Content Include="Assets\Client\datafiles\setone\15290521298704_icon-hsnk.png" />
-    <Content Include="Assets\Client\datafiles\setone\15290522472029_icon-hai-san-kho.png" />
-    <Content Include="Assets\Client\datafiles\setone\15290526744412_icon-hai-san-tien-loi.png" />
-    <Content Include="Assets\Client\datafiles\setone\15290536322065_icon-muc-hhs.png" />
     <Content Include="Assets\Client\datafiles\setone\15531368409004_dac-san-nha-trang-6.jpg" />
     <Content Include="Assets\Client\datafiles\setone\16170002294812_banner-vi-ca.png" />
     <Content Include="Assets\Client\datafiles\setone\16190863938348_banner-bao-ngu-lon.jpg" />
@@ -194,6 +187,14 @@
     <Content Include="Assets\Client\datafiles\setone\16261781069589_banner-binh-on-giapng.jpg" />
     <Content Include="Assets\Client\datafiles\setone\16281599787307_loi-ich-an-bach-tuoc-baby.png" />
     <Content Include="Assets\Client\datafiles\setone\16298689672662_thumb-thongcao.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\2.png" />
+    <Content Include="Assets\Client\datafiles\setone\3.png" />
+    <Content Include="Assets\Client\datafiles\setone\4.png" />
+    <Content Include="Assets\Client\datafiles\setone\5.png" />
+    <Content Include="Assets\Client\datafiles\setone\6.png" />
+    <Content Include="Assets\Client\datafiles\setone\7.png" />
+    <Content Include="Assets\Client\datafiles\setone\8.png" />
+    <Content Include="Assets\Client\datafiles\setone\9.png" />
     <Content Include="Assets\Client\datafiles\setone\bach-tuoc-baby.jpg" />
     <Content Include="Assets\Client\datafiles\setone\bach-tuoc-nhat.png" />
     <Content Include="Assets\Client\datafiles\setone\bao-ngu-han-quoc-song.jpg" />
@@ -310,6 +311,7 @@
     <Content Include="Assets\Client\images\website\logo.png" />
     <Content Include="Assets\Client\images\website\phone.png" />
     <Content Include="Assets\Client\images\website\vi.gif" />
+    <Content Include="Assets\Client\js2\cloud-zoom.1.0.2.min.js" />
     <Content Include="Assets\Client\js2\global.js" />
     <Content Include="Assets\Client\js2\jquery-1.7.2.min.js" />
     <Content Include="Assets\Client\js2\jquery.carouFredSel.js" />
@@ -360,10 +362,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutClient.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
