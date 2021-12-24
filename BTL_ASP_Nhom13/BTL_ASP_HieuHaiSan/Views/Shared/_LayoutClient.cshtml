@@ -457,7 +457,7 @@
         <div class="pagewrap">
             <div class="nav-main-box" id="nav-main-home">
                 <div class="cate-title" title="Danh mục sản phẩm">DANH MỤC SẢN PHẨM <span>&nbsp;</span></div>
-                <ul class="nav-main ">
+                <ul class="nav-main" style="display:none">
                     @foreach (var item in danhMucDAO.getAllTake(8))
                     {
                         var img = @item.ID_DanhMuc + ".png";
@@ -510,11 +510,13 @@
                 <div class="conten">
                     <script>
                         $(document).ready(function () {
-                            var styles = {
-                                display: "block"
-                            };
-                            $('.nav-main').css(styles);
                             $('.cate-title').addClass('active_home');
+
+                            $('.cate-title').click(function () {
+                                if ($('.nav-main').attr('style') == 'display:none') {
+                                    $('.nav-main').attr('style', 'display:block');
+                                } else $('.nav-main').attr('style', 'display:none');
+                            })
                         });
                     </script>
                     <div class="pagewrap">

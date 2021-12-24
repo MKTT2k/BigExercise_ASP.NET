@@ -17,6 +17,7 @@
         }
 
         [Key]
+        [Required(ErrorMessage = "Mã danh mục không được để trống!")]
         [DisplayName("ID danh mục")]
         public int ID_DanhMuc { get; set; }
 

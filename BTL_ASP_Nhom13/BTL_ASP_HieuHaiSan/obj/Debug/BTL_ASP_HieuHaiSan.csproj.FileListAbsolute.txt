@@ -171,4 +171,3 @@ D:\Documents\Semester-7\Web-based_database_application_programming\Exercises\Big
 D:\Documents\Semester-7\Web-based_database_application_programming\Exercises\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\obj\Debug\BTL_ASP_HieuHaiSan.csproj.CopyComplete
 D:\Documents\Semester-7\Web-based_database_application_programming\Exercises\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\obj\Debug\BTL_ASP_HieuHaiSan.dll
 D:\Documents\Semester-7\Web-based_database_application_programming\Exercises\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\obj\Debug\BTL_ASP_HieuHaiSan.pdb
-D:\Documents\Semester-7\Web-based_database_application_programming\Exercises\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\obj\Debug\BTL_ASP_HieuHaiSan.csproj.AssemblyReference.cache

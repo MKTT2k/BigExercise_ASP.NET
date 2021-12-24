@@ -138,6 +138,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DanhMucsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SanPhamsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAO\DanhMucDAO.cs" />
     <Compile Include="DAO\SanPhamDAO.cs" />
@@ -371,9 +372,13 @@
     <Content Include="Assets\Admin\CssFont\webfonts\fa-solid-900.woff2" />
     <Content Include="Areas\Admin\Views\DanhMucs\Create.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucs\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMucs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

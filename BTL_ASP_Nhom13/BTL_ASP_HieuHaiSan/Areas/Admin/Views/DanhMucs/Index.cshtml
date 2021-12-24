@@ -5,10 +5,12 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Danh mục các sản phẩm</h2>
+<h2>Danh mục sản phẩm</h2>
 <br />
-@Html.ActionLink("Thêm sản phẩm", "TaoMoi", null, new { @class = "btn btn-success" })
-<br />
+
+<p>
+    @Html.ActionLink("Thêm danh mục mới", "Create", null, new { @class = "btn btn-success" })
+</p>
 <table class="table">
     <tr>
         <th>
@@ -20,21 +22,19 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID_DanhMuc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenDanhMuc)
-            </td>
-            <td>
-                @Html.ActionLink("Sửa", "Edit", new { id = item.ID_DanhMuc }) |
-                @Html.ActionLink("Chi tiết", "Details", new { id = item.ID_DanhMuc }) |
-                @Html.ActionLink("Xóa", "Delete", new { id = item.ID_DanhMuc })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_DanhMuc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenDanhMuc)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.ID_DanhMuc }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.ID_DanhMuc })
+        </td>
+    </tr>
+}
 
 </table>
