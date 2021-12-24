@@ -61,7 +61,7 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
             {
                 db.TinTuc_VaoBep.Add(tinTuc_VaoBep);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Display");
             }
 
             return View(tinTuc_VaoBep);
@@ -106,7 +106,7 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
                     db.SaveChanges();
                     
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("Display");
             }
             catch (Exception)
             {
@@ -141,7 +141,7 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
             TinTuc_VaoBep tinTuc_VaoBep = db.TinTuc_VaoBep.Find(id);
             db.TinTuc_VaoBep.Remove(tinTuc_VaoBep);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Display");
         }
 
         protected override void Dispose(bool disposing)
