@@ -6,6 +6,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web.Mvc;
 
     [Table("SanPham")]
     public partial class SanPham
@@ -17,6 +18,7 @@
         }
 
         [Key]
+        [DisplayName("Mã sản phẩm")]
         public int ID_SanPham { get; set; }
 
         [Required(ErrorMessage = "Tên sản phẩm không được để trống!")]
@@ -27,6 +29,7 @@
         [Required]
         [StringLength(100)]
         [Column(TypeName = "text")]
+        [DisplayName("Hình ảnh")]
         public string HinhAnh { get; set; }
 
         [Required(ErrorMessage = "Giá gốc không được để trống!")]
@@ -48,8 +51,10 @@
         [DisplayName("Số lượng")]
         public int SoLuong { get; set; }
 
+        [DisplayName("Danh mục")]
         [Required(ErrorMessage = "Danh mục không được để trống!")]
         public int ID_DanhMuc { get; set; }
+        public IEnumerable<SelectListItem> CategoryList { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietGioHang> ChiTietGioHangs { get; set; }
