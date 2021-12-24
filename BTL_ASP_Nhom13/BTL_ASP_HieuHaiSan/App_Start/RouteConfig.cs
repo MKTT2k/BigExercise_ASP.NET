@@ -19,6 +19,12 @@ namespace BTL_ASP_HieuHaiSan
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }, 
                 namespaces: new [] {"BTL_ASP_HieuHaiSan.Controllers"}
             );
+            routes.MapRoute(
+                name: "Dangky",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Taikhoans", action = "Dangky", id = UrlParameter.Optional },
+                namespaces: new[] { "BTL_ASP_HieuHaiSan.Controllers" }
+            );
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿@using BTL_ASP_HieuHaiSan.DAO;
+@using BTL_ASP_HieuHaiSan.Models;
 @{
     Layout = null;
     SanPhamDAO sanPhamDAO = new SanPhamDAO();
@@ -404,8 +405,19 @@
     <div class="header_id_top">
         <div class="pagewrap">
             <ul>
+                @{
+                    TaiKhoan tk = (TaiKhoan)Session["USER_SESSION"];
+                }
                 <h2>Hotline: <span>091.5555.437 -&nbsp;091.3555.437</span></h2>
-                <li><a href="https://hieuhaisan.com/dang-ky">Đăng ký</a> | <a href="https://hieuhaisan.com/dang-nhap">Đăng nhập</a></li>
+                @if ((TaiKhoan)Session["USER_SESSION"] != null)
+                {
+                    <li><a>@tk.HoTen</a>|<a href="~/Taikhoans/Dangxuat">Đăng xuất</a></li>
+                }
+                else
+                {
+                    <li><a href="@Url.Action("Dangky","Taikhoans")">Đăng ký</a> | <a href="@Url.Action("Dangnhap","Taikhoans")">Đăng nhập</a></li>
+                }
+
                 <div class="clr"></div>
             </ul>
         </div>

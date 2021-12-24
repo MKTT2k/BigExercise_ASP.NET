@@ -1,4 +1,4 @@
-namespace BTL_ASP_HieuHaiSan.Models
+﻿namespace BTL_ASP_HieuHaiSan.Models
 {
     using System;
     using System.Collections.Generic;
