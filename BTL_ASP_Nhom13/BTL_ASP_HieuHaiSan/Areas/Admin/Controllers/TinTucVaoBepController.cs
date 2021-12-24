@@ -110,8 +110,6 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
             }
             catch (Exception)
             {
-
-                
                 return View(tinTuc_VaoBep);
             }
            
