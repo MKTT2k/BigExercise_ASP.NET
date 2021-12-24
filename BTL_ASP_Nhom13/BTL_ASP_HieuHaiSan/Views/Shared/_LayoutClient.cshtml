@@ -1,4 +1,5 @@
 ﻿@using BTL_ASP_HieuHaiSan.DAO;
+@using BTL_ASP_HieuHaiSan.Common;
 @{
     Layout = null;
     SanPhamDAO sanPhamDAO = new SanPhamDAO();
@@ -405,8 +406,19 @@
         <div class="pagewrap">
             <ul>
                 <h2>Hotline: <span>091.5555.437 -&nbsp;091.3555.437</span></h2>
-                <li><a href="https://hieuhaisan.com/dang-ky">Đăng ký</a> | <a href="https://hieuhaisan.com/dang-nhap">Đăng nhập</a></li>
-                <div class="clr"></div>
+                @{
+                    var session = (TaiKhoanDangNhap)Session[BTL_ASP_HieuHaiSan.Common.CommonConstants.USER_SESSION];
+                }
+                @if (session != null)
+                {
+                    <li>Xin chào: @session.HoTen</li>
+
+                }
+                else
+                {
+                    <li><a href="/Taikhoans/Dangky">Đăng ký</a> | <a href="/Taikhoans/Dangnhap">Đăng nhập</a></li>
+                    <div class="clr"></div>
+                }
             </ul>
         </div>
     </div>
@@ -520,7 +532,7 @@
                         });
                     </script>
                     <div class="pagewrap">
-                        
+
                         @RenderBody()
 
                         <div class="right_conten">

@@ -70,5 +70,9 @@ namespace BTL_ASP_HieuHaiSan.Models
                 .WithRequired(e => e.TaiKhoan)
                 .WillCascadeOnDelete(false);
         }
+
+        public System.Data.Entity.DbSet<BTL_ASP_HieuHaiSan.Models.DangkyModel> DangkyModels { get; set; }
+
+        public System.Data.Entity.DbSet<BTL_ASP_HieuHaiSan.Models.DangnhapModel> DangnhapModels { get; set; }
     }
 }
