@@ -10,112 +10,107 @@ using BTL_ASP_HieuHaiSan.Models;
 
 namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
 {
-    public class SanPhamsController : Controller
+    public class DanhMucsController : Controller
     {
         private HaiSanDB db = new HaiSanDB();
 
-        // GET: Admin/SanPhams
+        // GET: Admin/DanhMucs
         public ActionResult Index()
         {
-            var sanPhams = db.SanPhams.Where(s => s.HinhAnh == "a");
-            return View(sanPhams.ToList());
+            return View(db.DanhMucs.ToList());
         }
 
-        // GET: Admin/SanPhams/Details/5
+        // GET: Admin/DanhMucs/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sanPham = db.SanPhams.Find(id);
-            if (sanPham == null)
+            DanhMuc danhMuc = db.DanhMucs.Find(id);
+            if (danhMuc == null)
             {
                 return HttpNotFound();
             }
-            return View(sanPham);
+            return View(danhMuc);
         }
 
-        // GET: Admin/SanPhams/Create
+        // GET: Admin/DanhMucs/Create
         public ActionResult Create()
         {
-            ViewBag.ID_DanhMuc = new SelectList(db.DanhMucs, "ID_DanhMuc", "TenDanhMuc");
             return View();
         }
 
-        // POST: Admin/SanPhams/Create
+        // POST: Admin/DanhMucs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_SanPham,TenSanPham,HinhAnh,GiaGoc,GiaBan,MoTa,SoLuong,ID_DanhMuc")] SanPham sanPham)
+        public ActionResult Create([Bind(Include = "ID_DanhMuc,TenDanhMuc")] DanhMuc danhMuc)
         {
             if (ModelState.IsValid)
             {
-                db.SanPhams.Add(sanPham);
+                db.DanhMucs.Add(danhMuc);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ID_DanhMuc = new SelectList(db.DanhMucs, "ID_DanhMuc", "TenDanhMuc", sanPham.ID_DanhMuc);
-            return View(sanPham);
+            return View(danhMuc);
         }
 
-        // GET: Admin/SanPhams/Edit/5
+        // GET: Admin/DanhMucs/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sanPham = db.SanPhams.Find(id);
-            if (sanPham == null)
+            DanhMuc danhMuc = db.DanhMucs.Find(id);
+            if (danhMuc == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ID_DanhMuc = new SelectList(db.DanhMucs, "ID_DanhMuc", "TenDanhMuc", sanPham.ID_DanhMuc);
-            return View(sanPham);
+            return View(danhMuc);
         }
 
-        // POST: Admin/SanPhams/Edit/5
+        // POST: Admin/DanhMucs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_SanPham,TenSanPham,HinhAnh,GiaGoc,GiaBan,MoTa,SoLuong,ID_DanhMuc")] SanPham sanPham)
+        public ActionResult Edit([Bind(Include = "ID_DanhMuc,TenDanhMuc")] DanhMuc danhMuc)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sanPham).State = EntityState.Modified;
+                db.Entry(danhMuc).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ID_DanhMuc = new SelectList(db.DanhMucs, "ID_DanhMuc", "TenDanhMuc", sanPham.ID_DanhMuc);
-            return View(sanPham);
+            return View(danhMuc);
         }
 
-        // GET: Admin/SanPhams/Delete/5
+        // GET: Admin/DanhMucs/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sanPham = db.SanPhams.Find(id);
-            if (sanPham == null)
+            DanhMuc danhMuc = db.DanhMucs.Find(id);
+            if (danhMuc == null)
             {
                 return HttpNotFound();
             }
-            return View(sanPham);
+            return View(danhMuc);
         }
 
-        // POST: Admin/SanPhams/Delete/5
+        // POST: Admin/DanhMucs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            SanPham sanPham = db.SanPhams.Find(id);
-            db.SanPhams.Remove(sanPham);
+            DanhMuc danhMuc = db.DanhMucs.Find(id);
+            db.DanhMucs.Remove(danhMuc);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
