@@ -14,7 +14,7 @@ namespace BTL_ASP_HieuHaiSan.Models
         public decimal DonGia { get; set; }
         public decimal ThanhTien { get; set; }
         public int SoLuong { get; set; }
-        public decimal GiaGoc { get; set;  }
+        public decimal GiaGoc { get; set; }
 
         public ItemGioHang(int iID_SanPham)
         {

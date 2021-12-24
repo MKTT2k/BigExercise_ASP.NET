@@ -1,6 +1,4 @@
 ﻿@using BTL_ASP_HieuHaiSan.Models;
-
-@model List<ItemGioHang>
 @{
     ViewBag.Title = "XemGioHang";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
@@ -31,7 +29,7 @@ else
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td><img src="../datafiles/setone/thumb_16064685597832_tom-cang-xanh-hcm.jpg" width="220" height="210" /></td>
+                            <td><img src="~/Assets/Client/datafiles/setone/@item.HinhAnh" width="220" height="210" /></td>
                             <td style="text-align:left"><a href="@Url.Action("Details", "Home", new { id = item.ID_SanPham })" )>Tôm Càng Xanh</a></td>
                             <td class="quantity2">
                                 <input name="quantity2[]" onchange="update_cart()" class="qty" value="1" type="text" />
@@ -64,3 +62,4 @@ else
         <div class="clr"></div>
     </div>
 }
+

@@ -65,7 +65,7 @@ namespace BTL_ASP_HieuHaiSan.Controllers
         private int TongSoLoaiSP()
         {
             List<ItemGioHang> lstGioHang = Session["GioHang"] as List<ItemGioHang>;
-            if(lstGioHang == null)
+            if (lstGioHang == null)
             {
                 return 0;
             }

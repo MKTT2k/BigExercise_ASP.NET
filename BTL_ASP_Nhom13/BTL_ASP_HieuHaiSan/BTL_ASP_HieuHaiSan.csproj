@@ -137,14 +137,21 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DanhMucsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SanPhamsController.cs" />
+    <Compile Include="Common\CommonConstants.cs" />
+    <Compile Include="Common\TaiKhoanDangNhap.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TaikhoansController.cs" />
     <Compile Include="DAO\DanhMucDAO.cs" />
     <Compile Include="DAO\SanPhamDAO.cs" />
+    <Compile Include="DAO\TaiKhoanDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietGioHang.cs" />
+    <Compile Include="Models\DangKyModel.cs" />
+    <Compile Include="Models\DangNhapModel.cs" />
     <Compile Include="Models\DanhMuc.cs" />
     <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\HaiSanDB.cs" />
@@ -372,9 +379,13 @@
     <Content Include="Assets\Admin\CssFont\webfonts\fa-solid-900.woff2" />
     <Content Include="Areas\Admin\Views\DanhMucs\Create.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucs\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMucs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -400,6 +411,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutClient.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Taikhoans\Dangky.cshtml" />
+    <Content Include="Views\Taikhoans\Dangnhap.cshtml" />
     <Content Include="Views\GioHang\XemGioHang.cshtml" />
     <Content Include="Views\GioHang\GioHangPartial.cshtml" />
   </ItemGroup>
