@@ -2,17 +2,17 @@
 
 @{
     ViewBag.Title = "Details";
-    
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+
 }
 
-<h2>Details</h2>
+<h3>Chi tiết Tin tức - Vào Bếp</h3>
 
 <div>
-    <h4>TinTuc_VaoBep</h4>
-    <hr />
+    
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TieuDe)
+            Tiêu đề:
         </dt>
 
         <dd>
@@ -20,23 +20,29 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh)
+            Hình ảnh:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.HinhAnh)
+            @{
+                string img = "~/Assets/Client/datafiles/tintuc/" + Model.HinhAnh;
+            }
+            <img src="@Url.Content(img)" width="170" class="img-rounded" />
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NgayTao)
+            Ngày tạo:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NgayTao)
+            @{
+                string s = Model.NgayTao.ToString("dd/MM/yyyy");
+            }
+            @s
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NoiDung)
+            Nội dung:
         </dt>
 
         <dd>
@@ -44,16 +50,25 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Status)
+            Trạng thái:
         </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
+        @if (Model.Status)
+        {
+            <dd>
+                Tin tức
+            </dd>
+        }
+        else
+        {
+            <dd>
+                Vào bếp
+            </dd>
+        }
+        
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_TinTuc }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.ID_TinTuc }) |
+    @Html.ActionLink("Quay lại", "Display")
 </p>

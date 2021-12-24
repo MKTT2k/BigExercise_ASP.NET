@@ -5,7 +5,7 @@
     TinTucDAO tinTucDAO = new TinTucDAO();
     SanPhamDAO sanPhamDAO = new SanPhamDAO();
 }
-}
+
 
 <div class="conten">
     <div class="link_title">
@@ -21,7 +21,8 @@
         <div class="left_conten">
             <div class="showText">
                 <h2>@Model.TieuDe</h2>
-                <p style="text-align: center;">@Model.NoiDung</p>
+                <h3><img alt="" height="563" src="~/Assets/Client/datafiles/tintuc/@Model.HinhAnh" width="1001"></h3>
+                @Model.NoiDung
                 <p style="text-align: center;">@Model.NgayTao</p>
             </div>
             

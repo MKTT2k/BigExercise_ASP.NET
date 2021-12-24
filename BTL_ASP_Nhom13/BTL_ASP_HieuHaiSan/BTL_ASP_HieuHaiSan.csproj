@@ -157,6 +157,26 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Admin\CssFont\css\all.css" />
+    <Content Include="Assets\Admin\CssFont\css\all.min.css" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-brands-400.svg" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-regular-400.svg" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-solid-900.svg" />
+    <Content Include="Assets\Admin\css\bootstrap.css" />
+    <Content Include="Assets\Admin\css\clndr.css" />
+    <Content Include="Assets\Admin\css\jqvmap.css" />
+    <Content Include="Assets\Admin\css\nav.css" />
+    <Content Include="Assets\Admin\css\style.css" />
+    <Content Include="Assets\Admin\js\clndr.js" />
+    <Content Include="Assets\Admin\js\easyResponsiveTabs.js" />
+    <Content Include="Assets\Admin\js\jquery.min.js" />
+    <Content Include="Assets\Admin\js\jquery.vmap.js" />
+    <Content Include="Assets\Admin\js\jquery.vmap.sampledata.js" />
+    <Content Include="Assets\Admin\js\jquery.vmap.world.js" />
+    <Content Include="Assets\Admin\js\main.js" />
+    <Content Include="Assets\Admin\js\moment-2.2.1.js" />
+    <Content Include="Assets\Admin\js\site.js" />
+    <Content Include="Assets\Admin\js\underscore-min.js" />
     <Content Include="Assets\Client\contents_hieuhaisan\uploads\images\ca-bop-cat-khoanh-hai-san.jpg" />
     <Content Include="Assets\Client\contents_hieuhaisan\uploads\images\ca-bop-kho-to-01-hai-san.jpg" />
     <Content Include="Assets\Client\contents_hieuhaisan\uploads\images\ca-bop-nuong-muoi-ot-hai-san.jpg" />
@@ -370,6 +390,21 @@
     <Content Include="Areas\Admin\Views\TinTucVaoBep\Details.cshtml" />
     <Content Include="Areas\Admin\Views\TinTucVaoBep\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\TinTucVaoBep\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-brands-400.eot" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-brands-400.ttf" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-brands-400.woff" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-brands-400.woff2" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-regular-400.eot" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-regular-400.ttf" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-regular-400.woff" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-regular-400.woff2" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-solid-900.eot" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-solid-900.ttf" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-solid-900.woff" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-solid-900.woff2" />
+    <Content Include="Areas\Admin\Views\TinTucVaoBep\Display.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -403,8 +438,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\Home\" />
-    <Folder Include="Assets\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

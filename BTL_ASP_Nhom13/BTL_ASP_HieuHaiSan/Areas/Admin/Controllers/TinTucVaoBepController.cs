@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BTL_ASP_HieuHaiSan.Models;
-
+using PagedList;
 namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
 {
     public class TinTucVaoBepController : Controller
@@ -17,9 +17,18 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
         // GET: Admin/TinTucVaoBep
         public ActionResult Index()
         {
+
             return View(db.TinTuc_VaoBep.ToList());
         }
-
+        public ActionResult Display(int ?page)
+        {
+            var tintuc = db.TinTuc_VaoBep.Select(s => s);
+            tintuc = tintuc.OrderBy(s => s.ID_TinTuc);
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            return View(tintuc.ToPagedList(pageNumber, pageSize));
+           
+        }
         // GET: Admin/TinTucVaoBep/Details/5
         public ActionResult Details(int? id)
         {

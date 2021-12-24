@@ -457,7 +457,7 @@
         <div class="pagewrap">
             <div class="nav-main-box" id="nav-main-home">
                 <div class="cate-title" title="Danh mục sản phẩm">DANH MỤC SẢN PHẨM <span>&nbsp;</span></div>
-                <ul class="nav-main ">
+                <ul class="nav-main" style="display:none">
                     @foreach (var item in danhMucDAO.getAllTake(8))
                     {
                         var img = @item.ID_DanhMuc + ".png";
@@ -470,111 +470,211 @@
                                         <ul>
                                             <div id="product_id_menu">
                                                 <a href="@Url.Action("Details", "Home", new {id = sp.ID_SanPham})">
-                                            <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh" /></li>
-                                            <h2>@sp.TenSanPham</h2>
-                                            <h3>Giá: @sp.GiaBan đ </h3>
-                                            </a>
-                                    </div>
-                        </ul>
-                    }
+                                                    <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh" /></li>
+                                                    <h2>@sp.TenSanPham</h2>
+                                                    <h3>Giá: @sp.GiaBan đ </h3>
+                                                </a>
+                                            </div>
+                                        </ul>
+                                    }
                                 </div>
                             </div>
-                            </li>
-                        }
+                        </li>
+                    }
 
 
-                    </ul>
-                </div>
-                <div class="menu_id_right">
+                </ul>
+            </div>
+            <div class="menu_id_right">
+                <ul>
+                    <li class="show">
+                        <a href="https://hieuhaisan.com/hai-san-trong-ngay.html">Hải sản trong ngày</a>
+                    </li>
+                    <li class="show">
+                        <a href="https://hieuhaisan.com/san-pham-cao-cap.html">Sản Phẩm Cao Cấp</a>
+                    </li>
+                    <li class="show">
+                        <a href="https://hieuhaisan.com/thong-tin-chinh-sach.html">Chính sách mua hàng</a>
+                    </li>
+                    <li class="show">
+                        @Html.ActionLink("Vào bếp","Vaobep","TinTuc")
+                    </li>
+                    <li class="show">
+                        @Html.ActionLink("Tin tức", "Tintuc", "TinTuc")
+                    </li>
+                </ul>
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+    <div class="conten">
+        <script>
+          
+            $(document).ready(function () {                $('.cate-title').addClass('active_home');                $('.cate-title').click(function () {                    if ($('.nav-main').attr('style') == 'display:none') {                        $('.nav-main').attr('style', 'display:block');                    } else $('.nav-main').attr('style', 'display:none');                })            });
+
+        </script>
+        <div class="pagewrap">
+
+            @RenderBody()
+
+            <div class="right_conten">
+                <div class="menu_left desktop">
                     <ul>
-                        <li class="show">
-                            <a href="https://hieuhaisan.com/hai-san-trong-ngay.html">Hải sản trong ngày</a>
-                        </li>
-                        <li class="show">
-                            <a href="https://hieuhaisan.com/san-pham-cao-cap.html">Sản Phẩm Cao Cấp</a>
-                        </li>
-                        <li class="show">
-                            <a href="https://hieuhaisan.com/thong-tin-chinh-sach.html">Chính sách mua hàng</a>
-                        </li>
-                        <li class="show">
-                            @Html.ActionLink("Vào bếp","Vaobep","TinTuc")
-                        </li>
-                        <li class="show">
-                            @Html.ActionLink("Tin tức", "Tintuc", "TinTuc")
-                        </li>
+                        <h2>Sản phẩm</h2>
+                        <li><a href="https://hieuhaisan.com/tom.html">» Tôm </a></li>
+                        <li><a href="https://hieuhaisan.com/ca.html">» Cá tươi sống</a></li>
+                        <li><a href="https://hieuhaisan.com/cua-ghe.html">» Cua - Ghẹ</a></li>
+                        <li><a href="https://hieuhaisan.com/so-oc.html">» Ngao - Sò - Ốc</a></li>
+                        <li><a href="https://hieuhaisan.com/muc.html">» Mực</a></li>
+                        <li><a href="https://hieuhaisan.com/hai-san-nhap-khau.html">» Hải Sản Nhập Khẩu</a></li>
+                        <li><a href="https://hieuhaisan.com/hai-san-tien-loi.html">» Hải Sản Tiện Lợi</a></li>
+                        <li><a href="https://hieuhaisan.com/hai-san-kho-mot-nang.html">» Hải Sản Khô Một Nắng</a></li>
                     </ul>
                 </div>
-                <div class="clr"></div>
-                </div>
-                </div>
-
-                @RenderBody()
-
-                <div class="copyright_bottom">
-                    <div class="pagewrap">
-                        <div class="left_footer_id">
-                            <p><span style="font-size:small"><strong>Mã số thuế</strong>:&nbsp;123546789</span></p>
-                            <p>
-                                <span style="font-size:small"><span style="color:#ff0000"><strong>Cửa hàng TPHCM</strong>:</span> 62D/27 Nguyên Hồng, Phường 11, Quận Bình Thạnh</span>
-                            </p>
-                            <p>
-                                <span style="font-size:small"><span style="color:#0000ff; font-size:small"><strong>Điện thoại</strong>:</span> 0915 555 437 - 0913 555 437</span>
-                            </p>
-                            <p>
-                                <span style="font-size:small"><span style="color:#ff0000; font-size:small"><strong>Chi nhánh Hà Nội:</strong></span> 15 Tương Mai, Quận Hoàng Mai</span>
-                            </p>
-                            <p>
-                                <span style="font-size:small"><span style="color:#0000ff; font-size:small"><strong>Điện thoại</strong>:</span>&nbsp;0915 616 437 -&nbsp;0919 830 437</span>
-                            </p>
-                            <p style="text-align:center">
-                                <a target="_blank" href="https://goo.gl/2Z4sCE"><img title="đăng ký bộ công thương" alt="đăng ký bộ công thương" src="~/Assets/Client/contents_hieuhaisan/uploads/images/logo_tb_bct.png" style="float:left; height:120px; width:300px" /></a>
-                            </p>
-                        </div>
-                        <div class="dangkynhantin_footer">
-                            <h3>Sản Phẩm Cao Cấp</h3>
+                <div class="box_right_conten desktop">
+                    <h2>Sản phẩm bán chạy</h2>
+                    @foreach (var item in sanPhamDAO.getTop8())
+                    {
+                        <ul>
+                            <a href="@Url.Action("Details", "Home", new {id = item.ID_SanPham})">
+                                <li><img alt="@item.TenSanPham" src="~/Assets/Client/datafiles/setone/@item.HinhAnh" class="lazy" width="250" height="250" /></li>
+                                <h3>@item.TenSanPham</h3>
+                                <h4>Giá: @item.GiaBan đ </h4>
+                            </a>
+                        </ul>
+                    }
+                    <div class="box_right_conten">
+                        <h2>TIN NÓNG</h2>
+                        <div class="marquee">
                             <ul>
+                                <a href="https://hieuhaisan.com/hieu-hai-san-dong-hanh-cung-ban.html">
+                                    <li><img alt="Giãn cách không xa cách - Hiếu đồng hành cùng bạn" src="~/Assets/Client/datafiles/setone/16298689672662_thumb-thongcao.jpg" class="lazy" width="400" height="250" /></li>
+                                    <h3>Giãn cách không xa cách - Hiếu đồng hành cùng bạn</h3>
+                                </a>
                             </ul>
-                            <h3>Chính sách mua hàng</h3>
                             <ul>
-                                <li>
-                                    <a href="https://hieuhaisan.com/chinh-sach-chung.html" title="Chính sách chung">
-                                        Chính sách chung
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://hieuhaisan.com/chinh-sach-bao-mat.html" title="Chính sách bảo mật">
-                                        Chính sách bảo mật
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://hieuhaisan.com/hinh-thuc-thanh-toan.html" title="Hình Thức Thanh Toán">
-                                        Hình Thức Thanh Toán
-                                    </a>
-                                </li>
+                                <a href="https://hieuhaisan.com/binh-on-gia-hai-san-2021.html">
+                                    <li><img alt="Bình ổn giá mùa giãn cách tại Hiếu Hải Sản" src="~/Assets/Client/datafiles/setone/16261781069589_banner-binh-on-giapng.jpg" class="lazy" width="400" height="250" /></li>
+                                    <h3>Bình ổn giá mùa giãn cách tại Hiếu Hải Sản</h3>
+                                </a>
                             </ul>
-                            <div class="clr"></div>
+                            <ul>
+                                <a href="https://hieuhaisan.com/tom-hum-hap-ruou-vang.html">
+                                    <li><img alt="Tôm hùm hấp rượu vang" src="~/Assets/Client/datafiles/setone/14656368918363_tom-hum-hap-ruou-vang-hhs-2.jpg" class="lazy" width="400" height="250" /></li>
+                                    <h3>Tôm hùm hấp rượu vang</h3>
+                                </a>
+                            </ul>
+                            <ul>
+                                <a href="https://hieuhaisan.com/tom-hum-rang-me.html">
+                                    <li><img alt="Tôm hùm rang me" src="~/Assets/Client/datafiles/setone/14656376158133_tom-hum-rang-me-hhs-1.jpg" class="lazy" width="400" height="250" /></li>
+                                    <h3>Tôm hùm rang me</h3>
+                                </a>
+                            </ul>
+                            <ul>
+                                <a href="https://hieuhaisan.com/tom-hum-sashimi.html">
+                                    <li><img alt="Tôm hùm sashimi" src="~/Assets/Client/datafiles/setone/14656326441203_tom-hum-sashimi-an-song-hhs.jpg" class="lazy" width="400" height="250" /></li>
+                                    <h3>Tôm hùm sashimi</h3>
+                                </a>
+                            </ul>
                         </div>
-                        <div class="face_bottom">
-                            <div class="fb-page" data-href="https://www.facebook.com/hoa.lavan.90" data-tabs="timeline" data-width="325" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                                <blockquote cite="https://www.facebook.com/hoa.lavan.90" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/hoa.lavan.90">Hiếu Hải Sản</a></blockquote>
-                            </div>
+                        <script>
+                            $('.marquee').marquee({
+                                duration: 19000,
+                                gap: 0,
+                                delayBeforeStart: 0,
+                                direction: 'up',
+                                duplicated: true,
+                                startVisible: true
+                            });
+                        </script>
+                    </div>
+                    <div class="hotrokhachhang_right">
+                        <h2>HỖ TRỢ KHÁCH HÀNG</h2>
+                        <div class="list-yahoo">
+                            <ul>
+                                Hotline:: 091 5555 437
+                            </ul>
                         </div>
-                        <div class="clr"></div>
-                        <div class="sanphamtieubieu_bottom">
-                            <h2>DÒNG SẢN PHẨM TIÊU BIỂU</h2>
-                            <div class="clr"></div>
-                            <a href="https://hieuhaisan.com/tags/hai-san-tuoi-song">hai san tuoi song</a> | <a href="https://hieuhaisan.com/tags/ngao-so-oc">ngao so oc</a> | <a href="https://hieuhaisan.com/tags/cua-ghe">cua ghe</a> | <a href="https://hieuhaisan.com/tags/tom-bien">tom bien</a>                | <a href="https://hieuhaisan.com/tags/tom-cua-muc">tom cua muc</a> | <a href="https://hieuhaisan.com/tags/ca-mao-ech">ca mao ech</a> | <a href="https://hieuhaisan.com/tags/ca-mat-quy">ca mat quy</a> | <a href="https://hieuhaisan.com/tags/ca-bop">ca bop</a>                | <a href="https://hieuhaisan.com/tags/ca-chim">ca chim</a> | <a href="https://hieuhaisan.com/tags/ca-lang">ca lang</a> | <a href="https://hieuhaisan.com/tags/ca-mu">ca mu</a> | <a href="https://hieuhaisan.com/tags/ca-bien-tuoi">ca bien tuoi</a>                | <a href="https://hieuhaisan.com/tags/hai-san-nhap-khau">hai san nhap khau</a> | <a href="https://hieuhaisan.com/tags/ca-hoi-nauy">ca hoi nauy</a> | <a href="https://hieuhaisan.com/tags/ca-tuyet">ca tuyet</a> | <a href="https://hieuhaisan.com/tags/bao-ngu-uc">bao ngu uc</a>                | <a href="https://hieuhaisan.com/tags/oc-bulot">oc bulot</a> | <a href="https://hieuhaisan.com/tags/cua-hoang-de">cua hoang de</a> | <a href="https://hieuhaisan.com/tags/alaska">alaska</a> | <a href="https://hieuhaisan.com/tags/king-crab">king crab</a>                | <a href="https://hieuhaisan.com/tags/tom-hum-canada">tom hum canada</a> | <a href="https://hieuhaisan.com/tags/lobster">lobster</a> | <a href="https://hieuhaisan.com/tags/hai-san">hai san</a> | <a href="https://hieuhaisan.com/tags/sa-sung">sa sung</a>                | <a href="https://hieuhaisan.com/tags/so-diep-tuoi">so diep tuoi</a> | <a href="https://hieuhaisan.com/tags/trung-ca">trung ca</a> | <a href="https://hieuhaisan.com/tags/cha-muc">cha muc</a> | <a href="https://hieuhaisan.com/tags/kho-muc">kho muc</a>                | <a href="https://hieuhaisan.com/tags/tom-kho">tom kho</a> | <a href="https://hieuhaisan.com/tags/ca-kho">ca kho</a> | <a href="https://hieuhaisan.com/tags/ca-trich">ca trich</a> | <a href="https://hieuhaisan.com/tags/ca-dua-can-gio">ca dua can gio</a>                | <a href="https://hieuhaisan.com/tags/ca-muc">ca muc</a>
-                        </div>
-                        <script src="https://uhchat.net/code.php?f=2e7beb"></script>
-                        <div class="bottom_id_copyright">Copyright © 2022 Bản quyền thuộc về <strong>Nhóm 13 - CNTT2 - K13</strong></div>
+                    </div>
+                    <div class="banner_right desktop">
+                        <ul>
+                            <li>
+                                <a href="https://hieuhaisan.com/tom-hum-canada-song.html"><img src="~/Assets/Client/datafiles/banners/14736666535386_300-300-tom-hum-canada-2.png" class="lazy" width="180" height="316" /></a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div id="back-top"><a href="#top">TOP</a></div>
-                <a href="tel:123456789" class="popup dmd-phone dmd-green dmd-show mobile" title="Hotline">
-                    <div class="dmd-ph-circle"></div>
-                    <div class="dmd-ph-circle-fill"></div>
-                    <div class="dmd-ph-img-circle"></div>
-                </a>
+                <div class="clr"></div>
+            </div>
 
-            </body>
-        </html>
+            <div class="clr"></div>
+        </div>
+
+        <div class="copyright_bottom">
+            <div class="pagewrap">
+                <div class="left_footer_id">
+                    <p><span style="font-size:small"><strong>Mã số thuế</strong>:&nbsp;123546789</span></p>
+                    <p>
+                        <span style="font-size:small"><span style="color:#ff0000"><strong>Cửa hàng TPHCM</strong>:</span> 62D/27 Nguyên Hồng, Phường 11, Quận Bình Thạnh</span>
+                    </p>
+                    <p>
+                        <span style="font-size:small"><span style="color:#0000ff; font-size:small"><strong>Điện thoại</strong>:</span> 0915 555 437 - 0913 555 437</span>
+                    </p>
+                    <p>
+                        <span style="font-size:small"><span style="color:#ff0000; font-size:small"><strong>Chi nhánh Hà Nội:</strong></span> 15 Tương Mai, Quận Hoàng Mai</span>
+                    </p>
+                    <p>
+                        <span style="font-size:small"><span style="color:#0000ff; font-size:small"><strong>Điện thoại</strong>:</span>&nbsp;0915 616 437 -&nbsp;0919 830 437</span>
+                    </p>
+                    <p style="text-align:center">
+                        <a target="_blank" href="https://goo.gl/2Z4sCE"><img title="đăng ký bộ công thương" alt="đăng ký bộ công thương" src="~/Assets/Client/contents_hieuhaisan/uploads/images/logo_tb_bct.png" style="float:left; height:120px; width:300px" /></a>
+                    </p>
+                </div>
+                <div class="dangkynhantin_footer">
+                    <h3>Sản Phẩm Cao Cấp</h3>
+                    <ul>
+                    </ul>
+                    <h3>Chính sách mua hàng</h3>
+                    <ul>
+                        <li>
+                            <a href="https://hieuhaisan.com/chinh-sach-chung.html" title="Chính sách chung">
+                                Chính sách chung
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://hieuhaisan.com/chinh-sach-bao-mat.html" title="Chính sách bảo mật">
+                                Chính sách bảo mật
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://hieuhaisan.com/hinh-thuc-thanh-toan.html" title="Hình Thức Thanh Toán">
+                                Hình Thức Thanh Toán
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="clr"></div>
+                </div>
+                <div class="face_bottom">
+                    <div class="fb-page" data-href="https://www.facebook.com/hoa.lavan.90" data-tabs="timeline" data-width="325" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                        <blockquote cite="https://www.facebook.com/hoa.lavan.90" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/hoa.lavan.90">Hiếu Hải Sản</a></blockquote>
+                    </div>
+                </div>
+                <div class="clr"></div>
+                <div class="sanphamtieubieu_bottom">
+                    <h2>DÒNG SẢN PHẨM TIÊU BIỂU</h2>
+                    <div class="clr"></div>
+                    <a href="https://hieuhaisan.com/tags/hai-san-tuoi-song">hai san tuoi song</a> | <a href="https://hieuhaisan.com/tags/ngao-so-oc">ngao so oc</a> | <a href="https://hieuhaisan.com/tags/cua-ghe">cua ghe</a> | <a href="https://hieuhaisan.com/tags/tom-bien">tom bien</a>                | <a href="https://hieuhaisan.com/tags/tom-cua-muc">tom cua muc</a> | <a href="https://hieuhaisan.com/tags/ca-mao-ech">ca mao ech</a> | <a href="https://hieuhaisan.com/tags/ca-mat-quy">ca mat quy</a> | <a href="https://hieuhaisan.com/tags/ca-bop">ca bop</a>                | <a href="https://hieuhaisan.com/tags/ca-chim">ca chim</a> | <a href="https://hieuhaisan.com/tags/ca-lang">ca lang</a> | <a href="https://hieuhaisan.com/tags/ca-mu">ca mu</a> | <a href="https://hieuhaisan.com/tags/ca-bien-tuoi">ca bien tuoi</a>                | <a href="https://hieuhaisan.com/tags/hai-san-nhap-khau">hai san nhap khau</a> | <a href="https://hieuhaisan.com/tags/ca-hoi-nauy">ca hoi nauy</a> | <a href="https://hieuhaisan.com/tags/ca-tuyet">ca tuyet</a> | <a href="https://hieuhaisan.com/tags/bao-ngu-uc">bao ngu uc</a>                | <a href="https://hieuhaisan.com/tags/oc-bulot">oc bulot</a> | <a href="https://hieuhaisan.com/tags/cua-hoang-de">cua hoang de</a> | <a href="https://hieuhaisan.com/tags/alaska">alaska</a> | <a href="https://hieuhaisan.com/tags/king-crab">king crab</a>                | <a href="https://hieuhaisan.com/tags/tom-hum-canada">tom hum canada</a> | <a href="https://hieuhaisan.com/tags/lobster">lobster</a> | <a href="https://hieuhaisan.com/tags/hai-san">hai san</a> | <a href="https://hieuhaisan.com/tags/sa-sung">sa sung</a>                | <a href="https://hieuhaisan.com/tags/so-diep-tuoi">so diep tuoi</a> | <a href="https://hieuhaisan.com/tags/trung-ca">trung ca</a> | <a href="https://hieuhaisan.com/tags/cha-muc">cha muc</a> | <a href="https://hieuhaisan.com/tags/kho-muc">kho muc</a>                | <a href="https://hieuhaisan.com/tags/tom-kho">tom kho</a> | <a href="https://hieuhaisan.com/tags/ca-kho">ca kho</a> | <a href="https://hieuhaisan.com/tags/ca-trich">ca trich</a> | <a href="https://hieuhaisan.com/tags/ca-dua-can-gio">ca dua can gio</a>                | <a href="https://hieuhaisan.com/tags/ca-muc">ca muc</a>
+                </div>
+                <script src="https://uhchat.net/code.php?f=2e7beb"></script>
+                <div class="bottom_id_copyright">Copyright © 2022 Bản quyền thuộc về <strong>Nhóm 13 - CNTT2 - K13</strong></div>
+            </div>
+        </div>
+        <div id="back-top"><a href="#top">TOP</a></div>
+        <a href="tel:123456789" class="popup dmd-phone dmd-green dmd-show mobile" title="Hotline">
+            <div class="dmd-ph-circle"></div>
+            <div class="dmd-ph-circle-fill"></div>
+            <div class="dmd-ph-img-circle"></div>
+        </a>
+
+</body>
+</html>
