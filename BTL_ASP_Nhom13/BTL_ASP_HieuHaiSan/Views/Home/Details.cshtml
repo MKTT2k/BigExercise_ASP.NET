@@ -100,12 +100,12 @@
                         <input type="button" class="minus" value="-">
                         <input class="input-text qty text" title="Qty" size="4" value="1" name="quantity" id="quantity" class="qty" max="50" min="1" step="1">
                         <input type="button" class="plus" value="+">
-                        <a href="javascript:" onclick="add_to_cart(169)" style="cursor:pointer">Mua hàng</a>
+                        <a href="@Url.Action("ThemGioHang", "GioHang", new { @MaSP = Model.ID_SanPham, @strURL = Request.Url.ToString()})" style="cursor:pointer">Mua hàng</a>
                         <div class="clr"></div>
                     </div>
                 </form>
                 <div class="clr"></div>
-            </div>
+            </div>+
             <div class="gianhanggoiy_id desktop">
                 <h1>Sản phẩm gợi ý</h1>
                 <div class="product_list">
