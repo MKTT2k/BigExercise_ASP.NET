@@ -93,20 +93,20 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    tinTuc_VaoBep.HinhAnh = "";
-                    var f = Request.Files["ImageFile"];
-                    if(f!=null && f.ContentLength > 0)
-                    {
-                        string FileName = System.IO.Path.GetFileName(f.FileName);
-                        string UpLoadPath = Server.MapPath("~/Assets/Client/datafiles/tintuc/" + FileName);
-                        f.SaveAs(UpLoadPath);
-                        tinTuc_VaoBep.HinhAnh = FileName;
-                    }
+                    //tinTuc_VaoBep.HinhAnh = "";
+                    //var f = Request.Files["ImageFile"];
+                    //if(f!=null && f.ContentLength > 0)
+                    //{
+                    //    string FileName = System.IO.Path.GetFileName(f.FileName);
+                    //    string UpLoadPath = Server.MapPath("~/Assets/Client/datafiles/tintuc/" + FileName);
+                        //f.SaveAs(UpLoadPath);
+                        //tinTuc_VaoBep.HinhAnh = FileName;
+                    //}
                     db.Entry(tinTuc_VaoBep).State = EntityState.Modified;
                     db.SaveChanges();
-                    
+                    return RedirectToAction("Display");
                 }
-                return RedirectToAction("Display");
+                return View(tinTuc_VaoBep);
             }
             catch (Exception)
             {

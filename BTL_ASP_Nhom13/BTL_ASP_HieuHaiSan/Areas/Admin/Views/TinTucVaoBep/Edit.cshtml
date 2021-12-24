@@ -17,7 +17,7 @@
         @Html.HiddenFor(model => model.ID_TinTuc)
 
         <div class="form-group">
-            Tiêu đề:            
+            @Html.LabelFor(model => model.TieuDe, "Tiêu đề", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TieuDe, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" })
@@ -25,26 +25,29 @@
         </div>
 
         <div class="form-group">
-            Hình ảnh:
+            @Html.LabelFor(model => model.HinhAnh, "Hình ảnh", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <img id="output" class="img-rounded" alt="Ảnh" width="180" height="200" src="@Url.Content(ImagePath)" />
-                <p><label for="ufile" style="cursor:pointer;">Chọn file ảnh</label></p>
-                <input name="ImageFile" type="file" id="ufile" style="display:none;" onchange="loadFile(event)" />
+                @*<img id='output' class="img-rounded" alt="Ảnh" width="180" height="200" src="@Url.Content(ImagePath)" />
+        <p><label for="ufile" style="cursor:pointer;">Chọn file ảnh</label></p>
+        <input name="ImageFile" type="file" id="ufile" style="display:none;" onchange="loadFile(event)" />*@
+                @Html.EditorFor(model => model.HinhAnh, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            Ngày tạo
+            @Html.LabelFor(model => model.NgayTao, "Ngày tạo", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @{
-                    string s = Model.NgayTao.ToString("dd/MM/yyyy");
-                }
-                @s
+                     string s = Model.NgayTao.ToString("dd/MM/yyyy");
+                 }
+                <input type="datetime" name="Ngaytao" value="@s" />
+               
             </div>
         </div>
 
         <div class="form-group">
-            Nội dung
+            @Html.LabelFor(model => model.NoiDung, "Nội dung", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NoiDung, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
@@ -52,7 +55,7 @@
         </div>
 
         <div class="form-group">
-            Tin tức
+            @Html.LabelFor(model => model.Status, "Tin tức", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox" style="left:10023px">
                     @Html.EditorFor(model => model.Status)
