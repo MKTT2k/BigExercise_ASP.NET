@@ -1,0 +1,194 @@
+﻿@using BTL_ASP_HieuHaiSan.DAO; 
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+    DanhMucDAO danhMucDAO = new DanhMucDAO();
+    SanPhamDAO sanPhamDAO = new SanPhamDAO();
+    var quantity = Request["quantity"];
+}
+
+<div class="conten">
+    <div class="link_title">
+        <div class="pagewrap">
+            <h2>@Model.TenSanPham</h2>
+            <ul>
+                <li>
+                    <a href="https://hieuhaisan.com">Trang chủ</a>
+                    <a style='text-decoration: none;' href='../index.html'></a> | <a style='text-decoration: none;' href='https://hieuhaisan.com/ca.html'>@danhMucDAO.findByIdObject(Model.ID_DanhMuc).TenDanhMuc</a>
+                </li>
+            </ul>
+            <div class="clr"></div>
+        </div>
+    </div>
+    <div class="pagewrap">
+        <div class="leftBox" id="proView">
+            <div class="viewLeft">
+                <div id="pro_img_main">
+                    <div id="bridal_images">
+                        <a href='~/Assets/Client/datafiles/setone/@Model.HinhAnh' class='cloud-zoom' id='zoom1' rel="position: 'inside' , showTitle: false, adjustX:0, adjustY:0"><img alt="@Model.TenSanPham" src="~/Assets/Client/datafiles/setone/@Model.HinhAnh" /></a>
+                    </div>
+                    <div id="bridal_images_list">
+                        <ul id="pro_img_slide">
+                            <li>
+                                <a href='~/Assets/Client/datafiles/setone/@Model.HinhAnh' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '~/Asset/Client/datafiles/setone/@Model.HinhAnh'"><img alt="@Model.TenSanPham" src="~/Assets/Client/datafiles/setone/@Model.HinhAnh" /></a>
+                            </li>
+                        </ul>
+                        <a class="pro_slide_prev" id="pro_slide_prev" href="#"><span> < </span></a> <a class="pro_slide_next" id="pro_slide_next" href="#"><span> > </span></a>
+                    </div>
+                    <script type="text/javascript" src="~/Assets/Client/js2/cloud-zoom.1.0.2.min.js"></script>
+                    <script type="text/javascript">
+                            jQuery(document).ready(function() {
+
+                                $("#pro_img_slide").carouFredSel({
+
+                                    circular: false,
+
+                                    infinite: false,
+
+                                    auto: false,
+
+                                    scroll: {
+
+                                        items: "page",
+
+                                    },
+
+                                    prev: {
+
+                                        button: "#pro_slide_prev",
+
+                                        key: "left"
+
+                                    },
+
+                                    next: {
+
+                                        button: "#pro_slide_next",
+
+                                        key: "right"
+
+                                    }
+
+                                });
+
+                            });
+                    </script>
+                </div>
+            </div>
+
+            <div class="viewRight">
+                <div class="titleView">@Model.TenSanPham</div>
+                <h1>Giá bán: @Model.GiaBan đ <del style="color:black">@Model.GiaGoc đ</del></h1>
+                <ul class="desc">
+                    @Model.MoTa
+                </ul>
+                <div class="clr"></div>
+                <div id="sharelink">
+
+                    <div class="addthis_toolbox addthis_default_style ">
+                        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                        <a class="addthis_button_tweet"></a>
+                        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                        <a class="addthis_counter addthis_pill_style"></a>
+                    </div>
+                    <script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-502225fb496239a5"></script>
+
+                </div>
+                <form action="#" method="post" name="orderform" id="orderform">
+                    <div class="quantity">
+                        <p>Chọn mua</p>
+                        <label>Số lượng:</label>
+                        <input type="button" class="minus" value="-">
+                        <input class="input-text qty text" title="Qty" size="4" value="1" name="quantity" id="quantity" class="qty" max="50" min="1" step="1">
+                        <input type="button" class="plus" value="+">
+                        <a href="@Url.Action("ThemGioHang", "GioHang", new { @MaSP = Model.ID_SanPham, @strURL = Request.Url.ToString()})" style="cursor:pointer">Mua hàng</a>
+                        <div class="clr"></div>
+                    </div>
+                </form>
+                <div class="clr"></div>
+            </div>
+            <div class="gianhanggoiy_id desktop">
+                <h1>Sản phẩm gợi ý</h1>
+                <div class="product_list">
+                    @foreach (var sp in sanPhamDAO.getTop4(Model.ID_DanhMuc))
+                    {
+                        <ul>
+                            <a href="#">
+                            <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh"></li>
+                            <h2>@sp.TenSanPham</h2>
+                            <h3>Giá: @sp.GiaBan đ </h3>
+                            </a>
+                        </ul>
+                    }
+                        <div class="clr"></div>
+                    </div>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="clr"></div>
+        <div class="box_id">
+            <div class="title_page_home">
+                <h2>Sản phẩm cùng loại</h2>
+                <div class="clr"></div>
+            </div>
+            <div class="placeSlide_main">
+                <div class="placeSlide_with">
+                    <div class="product_list">
+                        @foreach (var sp in sanPhamDAO.get8ByCateId(Model.ID_DanhMuc))
+                        {
+                            <ul>
+                                <a href="#">
+                                <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh"></li>
+                                <h2>@sp.TenSanPham</h2>
+                                <h3>Giá: @sp.GiaBan đ </h3>
+                                </a>
+                            </ul>
+                        }
+                        <div class="clr"></div>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clr"></div>
+</div>
+<div class="doitac_home desktop">
+    <div class="pagewrap">
+        <div class="placeSlide_main">
+            <div class="placeSlide">
+                <ul>
+                </ul>
+            </div>
+
+            <a href="#" class="placeNav prev">&lsaquo;</a><a href="#" class="placeNav next">&rsaquo;</a>
+            <script type="text/javascript">
+                    jQuery(document).ready(function() {
+                        var $placeSlide = $('.placeSlide ul');
+                        $(".placeSlide ul").carouFredSel({
+                            circular: false,
+                            infinite: true,
+                            auto: {
+                                pauseDuration: 5000,
+                            },
+                            scroll: {
+                                items: 1,
+                                fx: 'linear'
+                            },
+                            prev: ".placeNav.prev",
+                            next: ".placeNav.next",
+                            swipe: {
+                                onMouse: true,
+                                onTouch: true
+                            },
+
+                            items: {
+                                height: "variable"
+                            }
+                        });
+                    });
+            </script>
+        </div>
+    </div>
+</div>
+

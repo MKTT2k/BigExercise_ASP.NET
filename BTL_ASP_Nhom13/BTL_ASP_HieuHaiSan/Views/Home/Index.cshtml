@@ -1,0 +1,258 @@
+﻿@using BTL_ASP_HieuHaiSan.DAO;
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+
+    SanPhamDAO sanPhamDAO = new SanPhamDAO();
+}
+
+
+<div id="id_top_home">
+    <div id="banner_top">
+        <div id="bannerMain">
+            <div id="banner">
+                <li>
+                    <img src="~/Assets/Client/datafiles/banners/16357459169704_coverfacebook.png" alt="as" width="700px" />
+                </li>
+                <li>
+                    <img src="~/Assets/Client/datafiles/banners/16049779327740_banner.jpg" alt="as" width="700px" />
+                </li>
+                <li>
+                    <img src="~/Assets/Client/datafiles/banners/16315083449812_banner-ship-hieuhaisan.jpg" alt="as" width="700px" />
+                </li>
+                <li>
+                    <img src="~/Assets/Client/datafiles/banners/15079765026777_hieu-hai-san-02.jpg" alt="as" width="700px" />
+                </li>
+
+            </div>
+            <ul class="pagiBanner">
+            </ul>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#banner").carouFredSel({
+                        circular: true,
+                        infinite: true,
+                        responsive: true,
+                        pagination: '.pagiBanner',
+                        auto: {
+                            pauseDuration: 3000,
+                            pauseOnHover: true,
+                            duration: 1200,
+                            fx: "crossfade",
+                        },
+                        scroll: {
+                            fx: "slide",
+                            items: 1,
+                            onBefore: function (data) {
+                                $('#banner li').not(data.items.visible[0]).find('.caption').animate({
+                                    opacity: 0,
+                                    visibility: 'hidden',
+                                    bottom: -50
+                                });
+                                $(data.items.visible[0]).find('.caption').animate({
+                                    opacity: 1,
+                                    visibility: 'visible',
+                                    bottom: 0
+                                }, {
+                                    queue: false,
+                                    duration: 1000
+                                });
+                            },
+                        },
+                        prev: false,
+                        next: false,
+                        swipe: {
+                            onMouse: true,
+                            onTouch: true
+                        },
+                        items: {
+                            height: "variable",
+                            visible: {
+                                min: 1,
+                                max: 1
+                            }
+                        }
+                    });
+                });
+            </script>
+            <div class="clr"></div>
+        </div>
+    </div>
+    <div class="banner_right_id">
+        <ul id="banner2">
+            <li>
+                <a href="https://hieuhaisan.com/ca-hoi-phi-le.html"><img src="~/Assets/Client/datafiles/banners/15956658068708_banner-hai-san-04.jpg" width="260" height="360" /></a>
+            </li>
+        </ul>
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                $("#banner2").carouFredSel({
+                    circular: true,
+                    infinite: true,
+                    responsive: true,
+                    auto: {
+                        pauseDuration: 3000,
+                        pauseOnHover: true,
+                        duration: 1200,
+                        fx: "crossfade",
+                    },
+                    scroll: {
+                        fx: "slide",
+                        items: 1,
+                        onBefore: function (data) {
+                            $('#banner li').not(data.items.visible[0]).find('.caption').animate({
+                                opacity: 0,
+                                visibility: 'hidden',
+                                bottom: -50
+                            });
+                            $(data.items.visible[0]).find('.caption').animate({
+                                opacity: 1,
+                                visibility: 'visible',
+                                bottom: 0
+                            }, {
+                                queue: false,
+                                duration: 1000
+                            });
+                        },
+                    },
+                    prev: false,
+                    next: false,
+                    swipe: {
+                        onMouse: true,
+                        onTouch: true
+                    },
+                    items: {
+                        height: "variable",
+                        visible: {
+                            min: 1,
+                            max: 1
+                        }
+                    }
+                });
+            });
+        </script>
+    </div>
+    <div class="clr"></div>
+</div>
+<div class="placeSlide_main">
+    <div class="placeSlide_with">
+        <div class="camket_chatluong">
+            <li><img src="~/Assets/Client/images/website/1.png" width="128" height="128" /></li>
+            <ul>
+                <h2>AN TOÀN MUA HÀNG</h2>
+                <p>
+                    Cam Kết Chất Lượng
+                </p>
+            </ul>
+            <div class="clr"></div>
+        </div>
+        <div class="camket_chatluong">
+            <li><img src="~/Assets/Client/images/website/2.png" width="128" height="128" /></li>
+            <ul>
+                <h2>GIAO HẢI SẢN TẬN NƠI</h2>
+                <p>
+                    Đảm Bảo Quy Tắc 5K
+                </p>
+            </ul>
+            <div class="clr"></div>
+        </div>
+        <div class="camket_chatluong">
+            <li><img src="~/Assets/Client/images/website/3.png" width="128" height="128" /></li>
+            <ul>
+                <h2>QUY CÁCH GỌN GÀNG</h2>
+                <p>Sang Trọng v&agrave; Chuy&ecirc;n Nghiệp</p>
+            </ul>
+            <div class="clr"></div>
+        </div>
+        <div class="camket_chatluong">
+            <li><img src="~/Assets/Client/images/website/4.png" width="128" height="128" /></li>
+            <ul>
+                <h2>ƯU ĐÃI FREESHIP</h2>
+                <p>
+                    Cho Đơn H&agrave;ng Lần Thứ 2
+                </p>
+            </ul>
+            <div class="clr"></div>
+        </div>
+        <div class="clr"></div>
+    </div>
+</div>
+<div class="box_id desktop">
+    <div class="title_page_home">
+        <h2>Sản phẩm bán chạy</h2>
+        <div class="clr"></div>
+    </div>
+    <div class="placeSlide_main">
+        <div class="placeSlide_2">
+            <div class="product_list">
+                @foreach (var sp in ViewBag.getall)
+                {
+                    <ul>
+                        <a href="@Url.Action("Details", "Home", new {id = sp.ID_SanPham})">
+                        <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh" width="250" height="250" /></li>
+                        <h2>@sp.TenSanPham</h2>
+                        <h3>Giá: @sp.GiaBan đ </h3>
+                        </a>
+                    </ul>
+                }
+            </div>
+            <div class="clr"></div>
+        </div>
+        <a href="#" class="placeNav_2 prev">&lsaquo;</a><a href="#" class="placeNav_2 next">&rsaquo;</a>
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                var $placeSlide = $('.placeSlide_2 .product_list');
+                $(".placeSlide_2 .product_list").carouFredSel({
+                    circular: false,
+                    infinite: true,
+                    auto: {
+                        pauseDuration: 5000,
+                    },
+                    scroll: {
+                        items: 1,
+                        fx: 'linear'
+                    },
+                    prev: ".placeNav_2.prev",
+                    next: ".placeNav_2.next",
+                    swipe: {
+                        onMouse: true,
+                        onTouch: true
+                    },
+
+                    items: {
+                        height: "variable"
+                    }
+                });
+            });
+        </script>
+    </div>
+</div>
+<div class="left_conten">
+    @foreach (var item in ViewBag.listDm)
+    {
+        <div class="box_id">
+            <div class="title_page_home">
+                <h2>@item.TenDanhMuc</h2>
+                <div class="clr"></div>
+            </div>
+            <div class="placeSlide_main">
+                <div class="placeSlide_page">
+                    <div class="product_list">
+                        @foreach (var sp in sanPhamDAO.get8ByCateId(@item.ID_DanhMuc))
+                        {
+                            <ul>
+                                <a href="@Url.Action("Details", "Home", new {id = sp.ID_SanPham})">
+                                <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh" class="lazy" /></li>
+                                <h2>@sp.TenSanPham</h2>
+                                <h3>Giá: @sp.GiaBan đ </h3>
+                                </a>
+                            </ul>
+                        }
+                        <div class="clr"></div>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

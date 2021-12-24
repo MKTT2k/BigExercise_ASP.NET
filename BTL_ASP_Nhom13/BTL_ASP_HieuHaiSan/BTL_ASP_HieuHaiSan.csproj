@@ -1,0 +1,463 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E4E64F42-9685-4DBA-9C5E-7BF55581C00A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BTL_ASP_HieuHaiSan</RootNamespace>
+    <AssemblyName>BTL_ASP_HieuHaiSan</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44380</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DanhMucsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAO\DanhMucDAO.cs" />
+    <Compile Include="DAO\SanPhamDAO.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietGioHang.cs" />
+    <Compile Include="Models\DanhMuc.cs" />
+    <Compile Include="Models\GioHang.cs" />
+    <Compile Include="Models\HaiSanDB.cs" />
+    <Compile Include="Models\HoaDon.cs" />
+    <Compile Include="Models\ItemGioHang.cs" />
+    <Compile Include="Models\SanPham.cs" />
+    <Compile Include="Models\TaiKhoan.cs" />
+    <Compile Include="Models\TinTuc_VaoBep.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Admin\CssFont\css\all.css" />
+    <Content Include="Assets\Admin\CssFont\css\all.min.css" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-brands-400.svg" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-regular-400.svg" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-solid-900.svg" />
+    <Content Include="Assets\Admin\css\bootstrap.css" />
+    <Content Include="Assets\Admin\css\clndr.css" />
+    <Content Include="Assets\Admin\css\jqvmap.css" />
+    <Content Include="Assets\Admin\css\nav.css" />
+    <Content Include="Assets\Admin\css\style.css" />
+    <Content Include="Assets\Admin\js\clndr.js" />
+    <Content Include="Assets\Admin\js\easyResponsiveTabs.js" />
+    <Content Include="Assets\Admin\js\jquery.min.js" />
+    <Content Include="Assets\Admin\js\jquery.vmap.js" />
+    <Content Include="Assets\Admin\js\jquery.vmap.sampledata.js" />
+    <Content Include="Assets\Admin\js\jquery.vmap.world.js" />
+    <Content Include="Assets\Admin\js\main.js" />
+    <Content Include="Assets\Admin\js\moment-2.2.1.js" />
+    <Content Include="Assets\Admin\js\site.js" />
+    <Content Include="Assets\Admin\js\underscore-min.js" />
+    <Content Include="Assets\Client\contents_hieuhaisan\uploads\images\ca-bop-cat-khoanh-hai-san.jpg" />
+    <Content Include="Assets\Client\contents_hieuhaisan\uploads\images\ca-bop-kho-to-01-hai-san.jpg" />
+    <Content Include="Assets\Client\contents_hieuhaisan\uploads\images\ca-bop-nuong-muoi-ot-hai-san.jpg" />
+    <Content Include="Assets\Client\contents_hieuhaisan\uploads\images\ca-bop-song-hai-san.jpg" />
+    <Content Include="Assets\Client\contents_hieuhaisan\uploads\images\canh-chua-ca-bop-hai-san.jpg" />
+    <Content Include="Assets\Client\contents_hieuhaisan\uploads\images\lau-ca-bop-hai-san.jpg" />
+    <Content Include="Assets\Client\contents_hieuhaisan\uploads\images\logo_tb_bct.png" />
+    <Content Include="Assets\Client\css2\1024.css" />
+    <Content Include="Assets\Client\css2\480.css" />
+    <Content Include="Assets\Client\css2\780.css" />
+    <Content Include="Assets\Client\css2\980.css" />
+    <Content Include="Assets\Client\css2\font.css" />
+    <Content Include="Assets\Client\css2\item.global.css" />
+    <Content Include="Assets\Client\css2\style.css" />
+    <Content Include="Assets\Client\css2\style_responsive.css" />
+    <Content Include="Assets\Client\css2\widget.css" />
+    <Content Include="Assets\Client\datafiles\banners\14736666535386_300-300-tom-hum-canada-2.png" />
+    <Content Include="Assets\Client\datafiles\banners\15079765026777_hieu-hai-san-02.jpg" />
+    <Content Include="Assets\Client\datafiles\banners\15917715812613_untitled-1.jpg" />
+    <Content Include="Assets\Client\datafiles\banners\15956658068708_banner-hai-san-04.jpg" />
+    <Content Include="Assets\Client\datafiles\banners\16049779327740_banner.jpg" />
+    <Content Include="Assets\Client\datafiles\banners\16315083449812_banner-ship-hieuhaisan.jpg" />
+    <Content Include="Assets\Client\datafiles\banners\16357459169704_coverfacebook.png" />
+    <Content Include="Assets\Client\datafiles\setone\15531368409004_dac-san-nha-trang-6.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\16170002294812_banner-vi-ca.png" />
+    <Content Include="Assets\Client\datafiles\setone\16190863938348_banner-bao-ngu-lon.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\16215700752003_banner-cua-tuyet-gia-re.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\16227913874867_188423385_1660341450818325_6831883955530518399_n.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\16255662995199_banner-voucher.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\16261781069589_banner-binh-on-giapng.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\16281599787307_loi-ich-an-bach-tuoc-baby.png" />
+    <Content Include="Assets\Client\datafiles\setone\16298689672662_thumb-thongcao.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\2.png" />
+    <Content Include="Assets\Client\datafiles\setone\3.png" />
+    <Content Include="Assets\Client\datafiles\setone\4.png" />
+    <Content Include="Assets\Client\datafiles\setone\5.png" />
+    <Content Include="Assets\Client\datafiles\setone\6.png" />
+    <Content Include="Assets\Client\datafiles\setone\7.png" />
+    <Content Include="Assets\Client\datafiles\setone\8.png" />
+    <Content Include="Assets\Client\datafiles\setone\9.png" />
+    <Content Include="Assets\Client\datafiles\setone\bach-tuoc-baby.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\bach-tuoc-nhat.png" />
+    <Content Include="Assets\Client\datafiles\setone\bao-ngu-han-quoc-song.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\bao-ngu-uc-hieu-hai-san.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\bao-ngu-uc-lon.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\bao-ngu-uc-vien-xanh-to.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-bien-hang-ngay.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-bo-giap.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-bon-ca-thon-bon-song-han-quoc-05.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-bop-bien.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-bop-song-hhs.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-chem-song-01.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-chim-song.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-chim.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-chinh-bien-song-hieu-hai-san.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-co-kiem-cat-lat.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-co-kiem-sashimi.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-danh-ca-luoi-trau.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-du-mot-nang-nguyen-con.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-hoi-nauy.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-lang-song-tphcm.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-ma-phi-le-lam-sach.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-mao-ech-size-1kg.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-mat-quy-hieu-hai-san.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-mu-do-cau.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-mu-do-hai-san-tuoi-song.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-mu-nghe-hieu-hai-san.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-mu-sao-xanh.png" />
+    <Content Include="Assets\Client\datafiles\setone\ca-ngu-cat-lat-1.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-tam-song.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-trich-ep-trung.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-trich-phi-le-02.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ca-tuyet-nauy-phile.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\cha-muc-ha-long-01.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\cha-vien.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\chan-cua-alaska-kingcrab.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\cua-hoang-de-alaska.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\cua-huynh-de.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\cua-long-hong-kong-01.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\cua-nau.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\cua-pha-le-uc-song-nhap-khau.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ghe-song-01.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ghe-song-phan-thiet-4.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\hai-sam-trang-cao-cap-01.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\hai-san-chan-cua-tuyet.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\hai-san-tom-mu-ni-trang.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\hau-sua-nhat.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\kho-ca-chi-vang-1.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\kho-ca-dua-can-gio-mot-nang-02.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\kho-ca-lu-du-mot-nang-1.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\khoanh-ca.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\mat-ca-ngu-dai-duong-01.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\muc-kho-cau.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\muc-la-tuoi-hieu-hai-san.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\muc-mot-nang.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\muc-ong-hieu-hai-san.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\muc-tam-gia-vi-hieu-hai-san.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\ngao-2-coi-hieu-hai-san.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\nghe-dai-ngheu-co.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\nuong-muc-trung.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\oc-bulot-phap-nhap-khau.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\oc-gai-hieu-hai-san.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\oc-huong-thien-nhien.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\sa-sung-kho-loai-1-01.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\so-diep-nhat-song-01.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\so-do-nhap-khau.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\so-duong-song-hieu-hai-san.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\so-huyet-dai-so-huyet-co.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\thit-ghe-01.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\thit-tom-tich-hap-chin.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\tom-bac-bien.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\tom-cang-do-nauy-19.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\tom-cang-mon-37.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\tom-cang-xanh-hcm.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\tom-hum-alaska-tom-hum-canada.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\tom-hum-bong-hieu-hai-san.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\tom-hum-canada-hap-chin.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\tom-hum-hap-ruou-vang-hhs-2.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\tom-hum-rang-me-hhs-1.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\tom-hum-sashimi-an-song-hhs.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\tom-hum-xanh-song-tuoi.png" />
+    <Content Include="Assets\Client\datafiles\setone\tom-kho-ca-mau.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\tom-su-me-hieu-hai-san.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\tom-tich-tom-tit-song.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\trung-ca-ngu-01.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\trung-ca-tam-caviar.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\tu-hai-hieu-hai-san.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\vem-xanh-new-zealand.jpg" />
+    <Content Include="Assets\Client\datafiles\setone\vi-ca-map-nguyen-vay-01.jpg" />
+    <Content Include="Assets\Client\datafiles\thumb_15009687235260_zalo-hhs2.png" />
+    <Content Include="Assets\Client\images\favicon\android-icon-192x192.png" />
+    <Content Include="Assets\Client\images\favicon\apple-icon-114x114.png" />
+    <Content Include="Assets\Client\images\favicon\apple-icon-120x120.png" />
+    <Content Include="Assets\Client\images\favicon\apple-icon-144x144.png" />
+    <Content Include="Assets\Client\images\favicon\apple-icon-152x152.png" />
+    <Content Include="Assets\Client\images\favicon\apple-icon-180x180.png" />
+    <Content Include="Assets\Client\images\favicon\apple-icon-57x57.png" />
+    <Content Include="Assets\Client\images\favicon\apple-icon-60x60.png" />
+    <Content Include="Assets\Client\images\favicon\apple-icon-72x72.png" />
+    <Content Include="Assets\Client\images\favicon\apple-icon-76x76.png" />
+    <Content Include="Assets\Client\images\favicon\favicon-16x16.png" />
+    <Content Include="Assets\Client\images\favicon\favicon-32x32.png" />
+    <Content Include="Assets\Client\images\favicon\favicon-96x96.png" />
+    <Content Include="Assets\Client\images\favicon\ms-icon-144x144.png" />
+    <Content Include="Assets\Client\images\website\1.png" />
+    <Content Include="Assets\Client\images\website\2.png" />
+    <Content Include="Assets\Client\images\website\3.png" />
+    <Content Include="Assets\Client\images\website\4.png" />
+    <Content Include="Assets\Client\images\website\en.gif" />
+    <Content Include="Assets\Client\images\website\favicon.ico" />
+    <Content Include="Assets\Client\images\website\icon-search.png" />
+    <Content Include="Assets\Client\images\website\icon_giohang.png" />
+    <Content Include="Assets\Client\images\website\icon_thanhvien.png" />
+    <Content Include="Assets\Client\images\website\logo.png" />
+    <Content Include="Assets\Client\images\website\phone.png" />
+    <Content Include="Assets\Client\images\website\vi.gif" />
+    <Content Include="Assets\Client\js2\cloud-zoom.1.0.2.min.js" />
+    <Content Include="Assets\Client\js2\global.js" />
+    <Content Include="Assets\Client\js2\jquery-1.7.2.min.js" />
+    <Content Include="Assets\Client\js2\jquery.carouFredSel.js" />
+    <Content Include="Assets\Client\js2\jquery.lazy.min.js" />
+    <Content Include="Assets\Client\js2\jquery.mousewheel.min.js" />
+    <Content Include="Assets\Client\js2\jquery.touchSwipe.min.js" />
+    <Content Include="Assets\Client\js2\script218.js" />
+    <Content Include="Assets\Client\js\md5.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Assets\Client\images\favicon\manifest.json" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-brands-400.eot" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-brands-400.ttf" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-brands-400.woff" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-brands-400.woff2" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-regular-400.eot" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-regular-400.ttf" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-regular-400.woff" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-regular-400.woff2" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-solid-900.eot" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-solid-900.ttf" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-solid-900.woff" />
+    <Content Include="Assets\Admin\CssFont\webfonts\fa-solid-900.woff2" />
+    <Content Include="Areas\Admin\Views\DanhMucs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucs\Index.cshtml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutClient.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\GioHang\XemGioHang.cshtml" />
+    <Content Include="Views\GioHang\GioHangPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50737</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44380/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

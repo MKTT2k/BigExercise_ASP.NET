@@ -1,0 +1,66 @@
+﻿@using BTL_ASP_HieuHaiSan.Models;
+
+@model List<ItemGioHang>
+@{
+    ViewBag.Title = "XemGioHang";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+@if (Model == null || Model.Count == 0)
+{
+    <h1 style="color:#000;">Giỏ hàng trống!</h1>
+}
+else
+{
+    <div class="pagewrap">
+        <h2>Giỏ hàng</h2>
+        <div class="clr"></div>
+    </div>
+    <div class="left_conten">
+        <div id="cart_list">
+            <form id="form_cart" name="form_cart" action="#" method="post">
+                <table width="100%" cellspacing="1" cellpadding="0">
+                    <tr>
+                        <th width="18%">Hình ảnh</th>
+                        <th>Tên sản phẩm</th>
+                        <th width="10%">Số lượng</th>
+                        <th width="15%">Đơn giá (VNĐ)</th>
+                        <th width="15%">Thành tiền</th>
+                        <th width="10%">Thao tác</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><img src="../datafiles/setone/thumb_16064685597832_tom-cang-xanh-hcm.jpg" width="220" height="210" /></td>
+                            <td style="text-align:left"><a href="@Url.Action("Details", "Home", new { id = item.ID_SanPham })" )>Tôm Càng Xanh</a></td>
+                            <td class="quantity2">
+                                <input name="quantity2[]" onchange="update_cart()" class="qty" value="1" type="text" />
+                                <input type="button" class="minus" value="-">
+                                <input type="button" class="plus" value="+">
+                            </td>
+                            <td style="text-align:right">@String.Format("{0:0,0}", item.GiaGoc)</td>
+                            <td style="text-align:right">@String.Format("{0:0,0}", item.DonGia)</td>
+                            <td><a class="pro_del" href="@Url.Action("XoaGioHang", "GioHang", new { @MaSP = item.ID_SanPham })" onclick="delete_cart(304);">Xóa</a></td>
+                        </tr>
+                    }
+                    <input type="hidden" name="nid[]" id="nid" value="1061" />
+                    <tr>
+                        <td colspan="6">
+                            <span id="pro_sum">
+                                Tổng tiền:
+                                <label>@String.Format("{0:0,0}", ViewBag.TongTien) VNĐ</label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            <a href="@Url.Action("Index", "Home")" class="pro_del mar">Tiếp tục mua</a>
+                            <a href="javascript:" onclick="update_cart()" class="pro_del mar">Cập nhật</a> <a href="https://hieuhaisan.com/thanh-toan.html" style="margin-left:4px;" class="pro_del mar">Thanh toán</a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="clr"></div>
+    </div>
+}
