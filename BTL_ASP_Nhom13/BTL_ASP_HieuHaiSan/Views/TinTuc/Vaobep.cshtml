@@ -1,0 +1,152 @@
+﻿
+@using BTL_ASP_HieuHaiSan.DAO;
+@{
+    ViewBag.Title = "Vào bếp";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+
+    SanPhamDAO sanPhamDAO = new SanPhamDAO();
+}
+<div class="conten">
+    <div class="link_title">
+        <div class="pagewrap">
+            <h2>@ViewBag.Title</h2>
+            <ul>
+                <li><a href="#">Trang chủ</a> <a style="text-decoration: none;" href="https://hieuhaisan.com/"></a> | <a style="text-decoration: none;" href="#">Vào Bếp</a> </li>
+            </ul>
+            <div class="clr"></div>
+        </div>
+    </div>
+    <div class="pagewrap">
+        <div class="left_conten">
+            <div class="placeSlide_main">
+                <div class="placeSlide_page">
+                    <div class="tintuc_page">
+                        @foreach (var item in ViewBag.getVaoBep)
+                        {
+                            <ul>
+                                <li><img src="~/Assets/Client/datafiles/tintuc/@item.HinhAnh" class="lazy" alt="@item.HinhAnh" width="850" height="478" /></li>
+                                <h2><a href="@Url.Action("DetailVaoBep", "TinTuc", new {id = item.ID_TinTuc})">@item.TieuDe</a></h2>
+                                <h3><img src="~/Assets/Client/images/website/icon_tame.jpg" width="12" height="12" />Thứ sáu, 07:56 Ngày 06/12/2019 </h3>
+                                <div class="tintuc_conten">
+                                    <p>@item.TieuDe rất thú vị với bạn!!!! Hãy đọc....</p>
+                                </div>
+                                <div class="clr"></div>
+                            </ul>
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div class="clr"></div>
+            <div class="nums">
+                <ul>
+                    <li class="page"><a style="cursor: text;" class=" pagination" href="javascript:void(0)">&lt;</a></li>
+                    <li class="page"><a class="active pagination" href="https://hieuhaisan.com/che-bien-hai-san/1">1</a></li>
+                    <li class="page"><a class="pagination" href="https://hieuhaisan.com/che-bien-hai-san/2">2</a></li>
+                    <li class="page"><a class="pagination" href="https://hieuhaisan.com/che-bien-hai-san/3">3</a></li>
+                    <li class="page"><a class="pagination" href="https://hieuhaisan.com/che-bien-hai-san/4">4</a></li>
+                    <li class="page"><a class="pagination" href="https://hieuhaisan.com/che-bien-hai-san/5">5</a></li>
+                    <li class="page"><a class="pagination" href="https://hieuhaisan.com/che-bien-hai-san/6">6</a></li>
+                    <li class="page"><a class="pagination" href="https://hieuhaisan.com/che-bien-hai-san/7">7</a></li>
+                    <li class="page"><a class="pagination" href="https://hieuhaisan.com/che-bien-hai-san/8">8</a></li>
+                    <li class="page"><a class="pagination" href="https://hieuhaisan.com/che-bien-hai-san/9">9</a></li>
+                    <li class="page"><a class="pagination" href="https://hieuhaisan.com/che-bien-hai-san/10">10</a></li>
+                    <li class="page"><a class=" pagination" href="https://hieuhaisan.com/che-bien-hai-san/2">&gt;</a></li>
+                </ul>
+                <div class="clr"></div>
+            </div>
+        </div>
+        <div class="right_conten">
+            <div class="menu_left desktop">
+                <ul>
+                    <h2>Sản phẩm</h2>
+                    <li><a href="https://hieuhaisan.com/tom.html">» Tôm </a></li>
+                    <li><a href="https://hieuhaisan.com/ca.html">» Cá tươi sống</a></li>
+                    <li><a href="https://hieuhaisan.com/cua-ghe.html">» Cua - Ghẹ</a></li>
+                    <li><a href="https://hieuhaisan.com/so-oc.html">» Ngao - Sò - Ốc</a></li>
+                    <li><a href="https://hieuhaisan.com/muc.html">» Mực</a></li>
+                    <li><a href="https://hieuhaisan.com/hai-san-nhap-khau.html">» Hải Sản Nhập Khẩu</a></li>
+                    <li><a href="https://hieuhaisan.com/hai-san-tien-loi.html">» Hải Sản Tiện Lợi</a></li>
+                    <li><a href="https://hieuhaisan.com/hai-san-kho-mot-nang.html">» Hải Sản Khô Một Nắng</a></li>
+                </ul>
+            </div>
+            <div class="box_right_conten desktop">
+                <h2>Sản phẩm bán chạy</h2>
+                @foreach (var item in sanPhamDAO.getTop8())
+                {
+                    <ul>
+                        <a href="@Url.Action("Details", "Home", new {id = item.ID_SanPham})">
+                            <li><img alt="@item.TenSanPham" src="~/Assets/Client/datafiles/setone/@item.HinhAnh" class="lazy" width="250" height="250" /></li>
+                            <h3>@item.TenSanPham</h3>
+                            <h4>Giá: @item.GiaBan đ </h4>
+                        </a>
+                    </ul>
+                }
+                <div class="box_right_conten">
+                    <h2>TIN NÓNG</h2>
+                    <div class="marquee">
+                        <ul>
+                            <a href="https://hieuhaisan.com/hieu-hai-san-dong-hanh-cung-ban.html">
+                                <li><img alt="Giãn cách không xa cách - Hiếu đồng hành cùng bạn" src="~/Assets/Client/datafiles/setone/16298689672662_thumb-thongcao.jpg" class="lazy" width="400" height="250" /></li>
+                                <h3>Giãn cách không xa cách - Hiếu đồng hành cùng bạn</h3>
+                            </a>
+                        </ul>
+                        <ul>
+                            <a href="https://hieuhaisan.com/binh-on-gia-hai-san-2021.html">
+                                <li><img alt="Bình ổn giá mùa giãn cách tại Hiếu Hải Sản" src="~/Assets/Client/datafiles/setone/16261781069589_banner-binh-on-giapng.jpg" class="lazy" width="400" height="250" /></li>
+                                <h3>Bình ổn giá mùa giãn cách tại Hiếu Hải Sản</h3>
+                            </a>
+                        </ul>
+                        <ul>
+                            <a href="https://hieuhaisan.com/tom-hum-hap-ruou-vang.html">
+                                <li><img alt="Tôm hùm hấp rượu vang" src="~/Assets/Client/datafiles/setone/14656368918363_tom-hum-hap-ruou-vang-hhs-2.jpg" class="lazy" width="400" height="250" /></li>
+                                <h3>Tôm hùm hấp rượu vang</h3>
+                            </a>
+                        </ul>
+                        <ul>
+                            <a href="https://hieuhaisan.com/tom-hum-rang-me.html">
+                                <li><img alt="Tôm hùm rang me" src="~/Assets/Client/datafiles/setone/14656376158133_tom-hum-rang-me-hhs-1.jpg" class="lazy" width="400" height="250" /></li>
+                                <h3>Tôm hùm rang me</h3>
+                            </a>
+                        </ul>
+                        <ul>
+                            <a href="https://hieuhaisan.com/tom-hum-sashimi.html">
+                                <li><img alt="Tôm hùm sashimi" src="~/Assets/Client/datafiles/setone/14656326441203_tom-hum-sashimi-an-song-hhs.jpg" class="lazy" width="400" height="250" /></li>
+                                <h3>Tôm hùm sashimi</h3>
+                            </a>
+                        </ul>
+                    </div>
+                    <script>
+                        $('.marquee').marquee({
+                            duration: 19000,
+                            gap: 0,
+                            delayBeforeStart: 0,
+                            direction: 'up',
+                            duplicated: true,
+                            startVisible: true
+                        });
+                    </script>
+                </div>
+                <div class="hotrokhachhang_right">
+                    <h2>HỖ TRỢ KHÁCH HÀNG</h2>
+                    <div class="list-yahoo">
+                        <ul>
+                            Hotline:: 091 5555 437
+                        </ul>
+                    </div>
+                </div>
+                <div class="banner_right desktop">
+                    <ul>
+                        <li>
+                            <a href="https://hieuhaisan.com/tom-hum-canada-song.html"><img src="~/Assets/Client/datafiles/banners/14736666535386_300-300-tom-hum-canada-2.png" class="lazy" width="180" height="316" /></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+</div>
+

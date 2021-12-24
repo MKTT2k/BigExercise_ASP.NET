@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BTL_ASP_HieuHaiSan.Models;
-
+using PagedList;
 namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
 {
     public class SanPhamsController : Controller
@@ -20,7 +20,14 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
             var sanPhams = db.SanPhams.Include(s => s.DanhMuc);
             return View(sanPhams.ToList());
         }
-
+        public ActionResult Display(int ?page)
+        {
+            var sanpham = db.SanPhams.Select(s => s);
+            sanpham = sanpham.OrderBy(s => s.ID_SanPham);
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(sanpham.ToPagedList(pageNumber, pageSize));
+        }
         // GET: Admin/SanPhams/Details/5
         public ActionResult Details(int? id)
         {

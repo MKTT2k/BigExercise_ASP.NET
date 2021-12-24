@@ -1,4 +1,4 @@
-﻿@using BTL_ASP_HieuHaiSan.DAO; 
+﻿@using BTL_ASP_HieuHaiSan.DAO;
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
@@ -36,48 +36,55 @@
                     </div>
                     <script type="text/javascript" src="~/Assets/Client/js2/cloud-zoom.1.0.2.min.js"></script>
                     <script type="text/javascript">
-                            jQuery(document).ready(function() {
+                        jQuery(document).ready(function () {
 
-                                $("#pro_img_slide").carouFredSel({
+                            $("#pro_img_slide").carouFredSel({
 
-                                    circular: false,
+                                circular: false,
 
-                                    infinite: false,
+                                infinite: false,
 
-                                    auto: false,
+                                auto: false,
 
-                                    scroll: {
+                                scroll: {
 
-                                        items: "page",
+                                    items: "page",
 
-                                    },
+                                },
 
-                                    prev: {
+                                prev: {
 
-                                        button: "#pro_slide_prev",
+                                    button: "#pro_slide_prev",
 
-                                        key: "left"
+                                    key: "left"
 
-                                    },
+                                },
 
-                                    next: {
+                                next: {
 
-                                        button: "#pro_slide_next",
+                                    button: "#pro_slide_next",
 
-                                        key: "right"
+                                    key: "right"
 
-                                    }
-
-                                });
+                                }
 
                             });
+
+                        });
                     </script>
                 </div>
             </div>
 
             <div class="viewRight">
                 <div class="titleView">@Model.TenSanPham</div>
-                <h1>Giá bán: @Model.GiaBan đ <del style="color:black">@Model.GiaGoc đ</del></h1>
+                <h1>
+                    Giá bán: @Model.GiaBan đ
+                    @if (Model.GiaBan != Model.GiaGoc)
+                    {
+                        <span>@Model.GiaGoc đ</span>
+                    }
+                </h1>
+
                 <ul class="desc">
                     @Model.MoTa
                 </ul>
@@ -113,14 +120,14 @@
                     {
                         <ul>
                             <a href="#">
-                            <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh"></li>
-                            <h2>@sp.TenSanPham</h2>
-                            <h3>Giá: @sp.GiaBan đ </h3>
+                                <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh"></li>
+                                <h2>@sp.TenSanPham</h2>
+                                <h3>Giá: @sp.GiaBan đ </h3>
                             </a>
                         </ul>
                     }
-                        <div class="clr"></div>
-                    </div>
+                    <div class="clr"></div>
+                </div>
             </div>
             <div class="clr"></div>
         </div>
@@ -137,9 +144,9 @@
                         {
                             <ul>
                                 <a href="#">
-                                <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh"></li>
-                                <h2>@sp.TenSanPham</h2>
-                                <h3>Giá: @sp.GiaBan đ </h3>
+                                    <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh"></li>
+                                    <h2>@sp.TenSanPham</h2>
+                                    <h3>Giá: @sp.GiaBan đ </h3>
                                 </a>
                             </ul>
                         }
@@ -162,30 +169,30 @@
 
             <a href="#" class="placeNav prev">&lsaquo;</a><a href="#" class="placeNav next">&rsaquo;</a>
             <script type="text/javascript">
-                    jQuery(document).ready(function() {
-                        var $placeSlide = $('.placeSlide ul');
-                        $(".placeSlide ul").carouFredSel({
-                            circular: false,
-                            infinite: true,
-                            auto: {
-                                pauseDuration: 5000,
-                            },
-                            scroll: {
-                                items: 1,
-                                fx: 'linear'
-                            },
-                            prev: ".placeNav.prev",
-                            next: ".placeNav.next",
-                            swipe: {
-                                onMouse: true,
-                                onTouch: true
-                            },
+                jQuery(document).ready(function () {
+                    var $placeSlide = $('.placeSlide ul');
+                    $(".placeSlide ul").carouFredSel({
+                        circular: false,
+                        infinite: true,
+                        auto: {
+                            pauseDuration: 5000,
+                        },
+                        scroll: {
+                            items: 1,
+                            fx: 'linear'
+                        },
+                        prev: ".placeNav.prev",
+                        next: ".placeNav.next",
+                        swipe: {
+                            onMouse: true,
+                            onTouch: true
+                        },
 
-                            items: {
-                                height: "variable"
-                            }
-                        });
+                        items: {
+                            height: "variable"
+                        }
                     });
+                });
             </script>
         </div>
     </div>

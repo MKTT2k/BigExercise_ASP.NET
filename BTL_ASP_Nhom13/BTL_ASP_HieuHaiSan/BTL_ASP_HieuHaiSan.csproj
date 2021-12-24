@@ -138,14 +138,17 @@
     <Compile Include="Areas\Admin\Controllers\DanhMucsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TinTucVaoBepController.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\TaiKhoanDangNhap.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TaikhoansController.cs" />
+    <Compile Include="Controllers\TinTucController.cs" />
     <Compile Include="DAO\DanhMucDAO.cs" />
     <Compile Include="DAO\SanPhamDAO.cs" />
     <Compile Include="DAO\TaiKhoanDAO.cs" />
+    <Compile Include="DAO\TinTucDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -313,6 +316,28 @@
     <Content Include="Assets\Client\datafiles\setone\vem-xanh-new-zealand.jpg" />
     <Content Include="Assets\Client\datafiles\setone\vi-ca-map-nguyen-vay-01.jpg" />
     <Content Include="Assets\Client\datafiles\thumb_15009687235260_zalo-hhs2.png" />
+    <Content Include="Assets\Client\datafiles\tintuc\banner-voucher.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\bao-ngu-lon.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\binh-on-giapng.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\ca-hoi-thi-la-sua.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\ca_hoi_ap_chao.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\ca_hoi_kho_ba_roi.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\chan-cua-alaska-kingcrab.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\cua-nuong_moi.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\cua-rang-muoi-hai-phong-cuc-chuan.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\cua-tuyet-gia-re.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\cua_hap.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\cua_nuong_pho_mai.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\cua_rang_man.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\cua_rang_me.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\cua_rang_muoi.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\cua_rang_muoi_hk.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\cua_rang_toi.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\dac-san-nha-trang-6.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\loi-ich-an-bach-tuoc-baby.png" />
+    <Content Include="Assets\Client\datafiles\tintuc\nuong-muc-trung.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\thumb-thongcao.jpg" />
+    <Content Include="Assets\Client\datafiles\tintuc\tom-cang-do-nauy-19.jpg" />
     <Content Include="Assets\Client\images\favicon\android-icon-192x192.png" />
     <Content Include="Assets\Client\images\favicon\apple-icon-114x114.png" />
     <Content Include="Assets\Client\images\favicon\apple-icon-120x120.png" />
@@ -386,6 +411,13 @@
     <Content Include="Areas\Admin\Views\SanPhams\Details.cshtml" />
     <Content Include="Areas\Admin\Views\SanPhams\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SanPhams\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TinTucVaoBep\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TinTucVaoBep\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\TinTucVaoBep\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\TinTucVaoBep\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TinTucVaoBep\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TinTucVaoBep\Display.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Display.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -415,6 +447,10 @@
     <Content Include="Views\Taikhoans\Dangnhap.cshtml" />
     <Content Include="Views\GioHang\XemGioHang.cshtml" />
     <Content Include="Views\GioHang\GioHangPartial.cshtml" />
+    <Content Include="Views\TinTuc\Details.cshtml" />
+    <Content Include="Views\TinTuc\DetailVaoBep.cshtml" />
+    <Content Include="Views\TinTuc\Tintuc.cshtml" />
+    <Content Include="Views\TinTuc\Vaobep.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
