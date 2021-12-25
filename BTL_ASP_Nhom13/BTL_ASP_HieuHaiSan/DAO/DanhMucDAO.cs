@@ -64,5 +64,9 @@ namespace BTL_ASP_HieuHaiSan.DAO
             db.SaveChanges();
 
         }
+        public bool check(string tenDm)
+        {
+            return db.DanhMucs.Count(d => d.TenDanhMuc == tenDm) > 0;
+        }
     }
 }

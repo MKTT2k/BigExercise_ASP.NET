@@ -14,12 +14,6 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
     {
         private HaiSanDB db = new HaiSanDB();
 
-        // GET: Admin/SanPhams
-        public ActionResult Index()
-        {
-            var sanPhams = db.SanPhams.Include(s => s.DanhMuc);
-            return View(sanPhams.ToList());
-        }
         public ActionResult Display(int ?page)
         {
             var sanpham = db.SanPhams.Select(s => s);
@@ -62,7 +56,7 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
                 if (ModelState.IsValid)
                 {
                     sanPham.HinhAnh = "";
-                    var f = Request.Files["ImageFile"];
+                    var f = Request.Files["a"];
                     if (f != null && f.ContentLength > 0)
                     {
                         string FileName = System.IO.Path.GetFileName(f.FileName);
@@ -72,8 +66,9 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
                     }
                     db.SanPhams.Add(sanPham);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Display");
                 }
+                ViewBag.ID_DanhMuc = new SelectList(db.DanhMucs, "ID_DanhMuc", "TenDanhMuc", sanPham.ID_DanhMuc);
                 return View(sanPham);
             }
             catch (Exception e)
@@ -111,9 +106,18 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    sanPham.HinhAnh = "";
+                    var f = Request.Files["a"];
+                    if (f != null && f.ContentLength > 0)
+                    {
+                        string FileName = System.IO.Path.GetFileName(f.FileName);
+                        string UploadPath = Server.MapPath("~/Assets/Client/datafiles/setone/" + FileName);
+                        f.SaveAs(UploadPath);
+                        sanPham.HinhAnh = FileName;
+                    }
                     db.Entry(sanPham).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Display");
                 }
                 return View(sanPham);
             }
@@ -149,7 +153,7 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
             SanPham sanPham = db.SanPhams.Find(id);
             db.SanPhams.Remove(sanPham);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Display");
         }
 
         protected override void Dispose(bool disposing)

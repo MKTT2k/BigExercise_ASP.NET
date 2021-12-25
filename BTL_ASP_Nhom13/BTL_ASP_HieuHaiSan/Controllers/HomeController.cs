@@ -33,5 +33,11 @@ namespace BTL_ASP_HieuHaiSan.Controllers
             var sp = sanPhamDAO.findById(id);
             return View(sp);
         }
+
+        public ActionResult ViewCate(int id)
+        {
+            var dm = danhMucDAO.findByIdObject(id);
+            return View(dm);
+        }
     }
 }

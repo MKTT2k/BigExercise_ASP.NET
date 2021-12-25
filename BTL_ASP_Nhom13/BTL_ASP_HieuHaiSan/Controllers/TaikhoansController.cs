@@ -1,8 +1,7 @@
 ﻿using BTL_ASP_HieuHaiSan.Common;
 using BTL_ASP_HieuHaiSan.DAO;
 using BTL_ASP_HieuHaiSan.Models;
-using System.Security.Cryptography;
-using System.Text;
+
 using System.Web.Mvc;
 
 namespace BTL_ASP_HieuHaiSan.Controllers
@@ -37,7 +36,7 @@ namespace BTL_ASP_HieuHaiSan.Controllers
                 {
                     var tk = new TaiKhoan();
                     tk.Email = model.Email;
-                    tk.MatKhau = model.MatKhau;
+                    tk.MatKhau = Encyptor.MD5Hash(model.MatKhau);
                     tk.HoTen = model.HoTen;
                     tk.GioiTinh = model.GioiTinh;
                     tk.SDT = model.SDT;
@@ -69,7 +68,7 @@ namespace BTL_ASP_HieuHaiSan.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new TaiKhoanDAO();
-                var ketqua = dao.Login(model.Email, model.Matkhau);
+                var ketqua = dao.Login(model.Email, Encyptor.MD5Hash(model.Matkhau));
                 if (ketqua == 0)
                 {
                     ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không chính xác.");
@@ -93,18 +92,9 @@ namespace BTL_ASP_HieuHaiSan.Controllers
             return RedirectToAction("Dangnhap");
         }
 
-        //mã hóa password MD5
-        public static string GetMD5(string str)
-        {
-            MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] fromData = Encoding.UTF8.GetBytes(str);
-            byte[] targetData = md5.ComputeHash(fromData);
-            string byte2String = null;
-            for (int i = 0; i < targetData.Length; i++)
-            {
-                byte2String += targetData[i].ToString("x2");
-            }
-            return byte2String;
-        }
+
     }
 }
+
+
+

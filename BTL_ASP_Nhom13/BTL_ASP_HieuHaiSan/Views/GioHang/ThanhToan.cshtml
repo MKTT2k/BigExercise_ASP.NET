@@ -33,13 +33,10 @@ else
                             <td><img src="~/Assets/Client/datafiles/setone/@item.HinhAnh" width="220" height="210" /></td>
                             <td style="text-align:left"><a href="@Url.Action("Details", "Home", new { id = item.ID_SanPham })" )>Tôm Càng Xanh</a></td>
                             <td class="quantity2">
-                                <input name="quantity2[]" onchange="update_cart()" class="qty" value="1" type="text" />
-                                <input type="button" class="minus" value="-">
-                                <input type="button" class="plus" value="+">
+                                <input name="quantity2[]" onchange="update_cart()" class="qty" value="1" type="text" readonly />
                             </td>
                             <td style="text-align:right">@String.Format("{0:0,0}", item.GiaGoc)</td>
                             <td style="text-align:right">@String.Format("{0:0,0}", item.DonGia)</td>
-                            <td><a class="pro_del" href="@Url.Action("XoaGioHang", "GioHang", new { @MaSP = item.ID_SanPham })" onclick="delete_cart(304);">Xóa</a></td>
                         </tr>
                     }
                     <input type="hidden" name="nid[]" id="nid" value="435" />

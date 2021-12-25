@@ -57,14 +57,32 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_TinTuc,TieuDe,HinhAnh,NgayTao,NoiDung,Status")] TinTuc_VaoBep tinTuc_VaoBep)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.TinTuc_VaoBep.Add(tinTuc_VaoBep);
-                db.SaveChanges();
+                if (ModelState.IsValid)
+                {
+                    tinTuc_VaoBep.HinhAnh = "";
+                    var f = Request.Files["a"];
+                    if (f != null && f.ContentLength > 0)
+                    {
+                        string FileName = System.IO.Path.GetFileName(f.FileName);
+                        string UploadPath = Server.MapPath("~/Assets/Client/datafiles/tintuc/" + FileName);
+                        f.SaveAs(UploadPath);
+                        tinTuc_VaoBep.HinhAnh = FileName;
+                    }
+                    db.TinTuc_VaoBep.Add(tinTuc_VaoBep);
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Display");
             }
+            catch (Exception)
+            {
+                ViewBag.Error = "Lỗi thêm tin tức!";
+                return View(tinTuc_VaoBep);
+            }
+            
 
-            return View(tinTuc_VaoBep);
+           
         }
 
         // GET: Admin/TinTucVaoBep/Edit/5
@@ -93,23 +111,23 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    //tinTuc_VaoBep.HinhAnh = "";
-                    //var f = Request.Files["ImageFile"];
-                    //if(f!=null && f.ContentLength > 0)
-                    //{
-                    //    string FileName = System.IO.Path.GetFileName(f.FileName);
-                    //    string UpLoadPath = Server.MapPath("~/Assets/Client/datafiles/tintuc/" + FileName);
-                    //f.SaveAs(UpLoadPath);
-                    //tinTuc_VaoBep.HinhAnh = FileName;
-                    //}
+                    tinTuc_VaoBep.HinhAnh = "";
+                    var f = Request.Files["a"];
+                    if (f != null && f.ContentLength > 0)
+                    {
+                        string FileName = System.IO.Path.GetFileName(f.FileName);
+                        string UpLoadPath = Server.MapPath("~/Assets/Client/datafiles/tintuc/" + FileName);
+                        f.SaveAs(UpLoadPath);
+                        tinTuc_VaoBep.HinhAnh = FileName;
+                    }
                     db.Entry(tinTuc_VaoBep).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Display");
                 }
-                return View(tinTuc_VaoBep);
+                return RedirectToAction("Display");
             }
             catch (Exception)
             {
+                ViewBag.Error = "Lỗi không sửa được tin tức";
                 return View(tinTuc_VaoBep);
             }
 
