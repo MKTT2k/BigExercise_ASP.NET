@@ -451,6 +451,8 @@
     <Content Include="Views\TinTuc\DetailVaoBep.cshtml" />
     <Content Include="Views\TinTuc\Tintuc.cshtml" />
     <Content Include="Views\TinTuc\Vaobep.cshtml" />
+    <Content Include="Views\GioHang\ThanhToan.cshtml" />
+    <Content Include="Views\GioHang\ThongBao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

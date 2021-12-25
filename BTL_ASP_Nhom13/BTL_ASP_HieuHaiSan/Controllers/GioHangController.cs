@@ -125,5 +125,13 @@ namespace BTL_ASP_HieuHaiSan.Controllers
             lstGioHang.Remove(spCheck);
             return RedirectToAction("XemGioHang");
         }
+
+        public ActionResult ThanhToan()
+        {
+            List<ItemGioHang> lstGioHang = LayGioHang();
+            ViewBag.TongSoLuong = TinhTongSoLuong();
+            ViewBag.TongTien = TinhTongTien();
+            return View(lstGioHang);
+        }
     }
 }

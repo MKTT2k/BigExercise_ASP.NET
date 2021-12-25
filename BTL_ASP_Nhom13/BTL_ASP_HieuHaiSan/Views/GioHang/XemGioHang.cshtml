@@ -6,13 +6,16 @@
 
 @if (Model == null || Model.Count == 0)
 {
-    <h1 style="color:#000;">Giỏ hàng trống!</h1>
+    <br />
+    <h1 style="color:#000; text-align:center;">Giỏ hàng trống!</h1>
 }
 else
 {
-    <div class="pagewrap">
-        <h2>Giỏ hàng</h2>
-        <div class="clr"></div>
+    <div class="link_title">
+        <div class="pagewrap">
+            <h2>Xem giỏ hàng</h2>
+            <div class="clr"></div>
+        </div>
     </div>
     <div class="left_conten">
         <div id="cart_list">
@@ -53,7 +56,8 @@ else
                     <tr>
                         <td colspan="6">
                             <a href="@Url.Action("Index", "Home")" class="pro_del mar">Tiếp tục mua</a>
-                            <a href="javascript:" onclick="update_cart()" class="pro_del mar">Cập nhật</a> <a href="https://hieuhaisan.com/thanh-toan.html" style="margin-left:4px;" class="pro_del mar">Thanh toán</a>
+                            <a href="javascript:" onclick="update_cart()" class="pro_del mar">Cập nhật</a> 
+                            <a href="@Url.Action("ThanhToan", "GioHang")" style="margin-left:4px;" class="pro_del mar">Thanh toán</a>
                         </td>
                     </tr>
                 </table>
