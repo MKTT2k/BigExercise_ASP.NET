@@ -1,0 +1,57 @@
+﻿@using BTL_ASP_HieuHaiSan.Models;
+@using BTL_ASP_HieuHaiSan.DAO;
+@{
+    ViewBag.Title = "ViewCate";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+    SanPhamDAO sanPhamDAO = new SanPhamDAO();
+}
+
+<div class="link_title">
+    <div class="pagewrap">
+        <h2>@Model.TenDanhMuc</h2>
+        <ul>
+            <li>
+                <a style='text-decoration: none;' href='@Url.Action("Index")'>Trang chủ</a> | <a style='text-decoration: none;' href=#'>@Model.TenDanhMuc</a>
+            </li>
+        </ul>
+        <div class="clr"></div>
+    </div>
+</div>
+<div class="left_conten">
+    <div class="placeSlide_main">
+        <div class="placeSlide_page">
+            <div class="product_list">
+                @foreach (var item in sanPhamDAO.getAllByCateId(Model.ID_DanhMuc))
+                {
+                    <ul>
+                        @if (item.GiaBan != item.GiaGoc)
+                        {
+                            var pt = (@item.GiaGoc - @item.GiaBan) / @item.GiaGoc * 100;
+                            pt = Math.Round(pt, 0);
+                            <div class="discount-tag">-@pt%</div>
+
+                        }
+                        <a href="@Url.Action("Details", "Home", new { @id = item.ID_SanPham})">
+                        <li><img alt="" src="~/Assets/Client/datafiles/setone/@item.HinhAnh" class="lazy" /></li>
+                        <h2>@item.TenSanPham </h2>
+                        <h3>
+                            Giá: @String.Format("{0:0,0}", item.GiaBan) đ
+                            @if (item.GiaBan != item.GiaGoc)
+                            {
+                                <span>@String.Format("{0:0,0}", item.GiaGoc) đ</span>
+                            }
+                        </h3>
+                        </a>
+                    </ul>
+                }
+                <div class="clr"></div>
+            </div>
+        </div>
+        <div class="nums">
+            <ul>
+            </ul>
+            <div class="clr"></div>
+        </div>
+    </div>
+</div>
+

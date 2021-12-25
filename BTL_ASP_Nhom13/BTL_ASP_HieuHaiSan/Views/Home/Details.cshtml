@@ -12,8 +12,7 @@
             <h2>@Model.TenSanPham</h2>
             <ul>
                 <li>
-                    <a href="https://hieuhaisan.com">Trang chủ</a>
-                    <a style='text-decoration: none;' href='../index.html'></a> | <a style='text-decoration: none;' href='https://hieuhaisan.com/ca.html'>@danhMucDAO.findByIdObject(Model.ID_DanhMuc).TenDanhMuc</a>
+                    <a style='text-decoration: none;' href='@Url.Action("Index", "Home")'>Trang chủ</a> | <a style='text-decoration: none;' href='#'>@danhMucDAO.findByIdObject(Model.ID_DanhMuc).TenDanhMuc</a>
                 </li>
             </ul>
             <div class="clr"></div>

@@ -38,6 +38,10 @@ namespace BTL_ASP_HieuHaiSan.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SanPham>()
+                .Property(e => e.HinhAnh)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<SanPham>()
                 .Property(e => e.GiaGoc)
                 .HasPrecision(19, 4);
 
@@ -69,10 +73,10 @@ namespace BTL_ASP_HieuHaiSan.Models
                 .HasMany(e => e.GioHangs)
                 .WithRequired(e => e.TaiKhoan)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<TinTuc_VaoBep>()
+                .Property(e => e.HinhAnh)
+                .IsUnicode(false);
         }
-
-        public System.Data.Entity.DbSet<BTL_ASP_HieuHaiSan.Models.DangkyModel> DangkyModels { get; set; }
-
-        public System.Data.Entity.DbSet<BTL_ASP_HieuHaiSan.Models.DangnhapModel> DangnhapModels { get; set; }
     }
 }

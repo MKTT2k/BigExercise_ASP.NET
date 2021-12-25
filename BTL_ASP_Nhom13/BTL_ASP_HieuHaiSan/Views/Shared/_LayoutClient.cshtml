@@ -412,7 +412,7 @@
                 @if (session != null)
                 {
                     <li>Xin chào: @session.HoTen</li>
-
+                    <div class="clr"></div>
                 }
                 else
                 {
@@ -470,7 +470,7 @@
                     {
                         var img = @item.ID_DanhMuc + ".png";
                         <li class="menuItem woman ">
-                            <strong><a href="#" title="@item.TenDanhMuc"><img src="~/Assets/Client/datafiles/setone/@img" width="19" height="15" />@item.TenDanhMuc </a></strong>
+                            <strong><a href="@Url.Action("ViewCate", "Home", new {@id = item.ID_DanhMuc})" title="@item.TenDanhMuc"><img src="~/Assets/Client/datafiles/setone/@img" width="19" height="15" />@item.TenDanhMuc </a></strong>
                             <div class="sub-cate woman">
                                 <div class="sub-cate-inner">
                                     @foreach (var sp in sanPhamDAO.getTop4(@item.ID_DanhMuc))

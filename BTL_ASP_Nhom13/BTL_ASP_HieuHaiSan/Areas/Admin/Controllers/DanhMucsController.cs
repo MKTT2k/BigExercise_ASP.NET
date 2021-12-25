@@ -7,11 +7,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BTL_ASP_HieuHaiSan.Models;
+using BTL_ASP_HieuHaiSan.DAO;
 
 namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
 {
+
     public class DanhMucsController : Controller
     {
+        DanhMucDAO danhMucDAO = new DanhMucDAO();
         private HaiSanDB db = new HaiSanDB();
 
         // GET: Admin/DanhMucs
@@ -52,9 +55,16 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    db.DanhMucs.Add(danhMuc);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+                    if (danhMucDAO.check(danhMuc.TenDanhMuc))
+                    {
+                        ModelState.AddModelError("", "Tên danh mục đã tồn tại!");
+                    }
+                    else
+                    {
+                        db.DanhMucs.Add(danhMuc);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
                 }
                 return View(danhMuc);
             }
@@ -63,8 +73,6 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
                 ViewBag.Error = "Lỗi không thêm được danh mục! " + e.Message;
                 return View(danhMuc);
             }
-
-
         }
 
         // GET: Admin/DanhMucs/Edit/5
@@ -104,7 +112,7 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
                 ViewBag.Error = "Lỗi không sửa được danh mục! " + e.Message;
                 return View(danhMuc);
             }
-            
+
         }
 
         // GET: Admin/DanhMucs/Delete/5
