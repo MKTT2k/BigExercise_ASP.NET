@@ -77,10 +77,10 @@
             <div class="viewRight">
                 <div class="titleView">@Model.TenSanPham</div>
                 <h1>
-                    Giá bán: @Model.GiaBan đ
+                    Giá bán: @String.Format("{0:0,0}", @Model.GiaBan) đ
                     @if (Model.GiaBan != Model.GiaGoc)
                     {
-                        <span>@Model.GiaGoc đ</span>
+                        <span>@String.Format("{0:0,0}", @Model.GiaGoc) đ</span>
                     }
                 </h1>
 
@@ -121,7 +121,7 @@
                             <a href="#">
                                 <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh"></li>
                                 <h2>@sp.TenSanPham</h2>
-                                <h3>Giá: @sp.GiaBan đ </h3>
+                                <h3>Giá: @String.Format("{0:0,0}", sp.GiaBan) đ </h3>
                             </a>
                         </ul>
                     }
@@ -141,13 +141,20 @@
                     <div class="product_list">
                         @foreach (var sp in sanPhamDAO.get8ByCateId(Model.ID_DanhMuc))
                         {
-                            <ul>
-                                <a href="#">
-                                    <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh"></li>
-                                    <h2>@sp.TenSanPham</h2>
-                                    <h3>Giá: @sp.GiaBan đ </h3>
-                                </a>
-                            </ul>
+                        <ul>
+                            @if (sp.GiaBan != sp.GiaGoc)
+                            {
+                                var pt = (@sp.GiaGoc - @sp.GiaBan) / @sp.GiaGoc * 100;
+                                pt = Math.Round(pt, 0);
+                                <div class="discount-tag">-@pt%</div>
+
+                            }
+                            <a href="@Url.Action("Details", "Home", new {id = sp.ID_SanPham})">
+                            <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh" class="lazy" /></li>
+                            <h2>@sp.TenSanPham</h2>
+                            <h3>Giá: @String.Format("{0:0,0}", sp.GiaBan) đ </h3>
+                            </a>
+                        </ul>
                         }
                         <div class="clr"></div>
                     </div>

@@ -12,7 +12,7 @@ namespace BTL_ASP_HieuHaiSan.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TaiKhoan()
         {
-            GioHangs = new HashSet<GioHang>();
+            DonHangs = new HashSet<DonHang>();
         }
 
         [Key]
@@ -43,6 +43,6 @@ namespace BTL_ASP_HieuHaiSan.Models
         public bool TrangThai { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GioHang> GioHangs { get; set; }
+        public virtual ICollection<DonHang> DonHangs { get; set; }
     }
 }
