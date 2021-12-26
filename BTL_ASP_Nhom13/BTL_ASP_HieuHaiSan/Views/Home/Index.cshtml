@@ -12,16 +12,16 @@
         <div id="bannerMain">
             <div id="banner">
                 <li>
-                    <img src="~/Assets/Client/datafiles/banners/16357459169704_coverfacebook.png" alt="as" width="700px" />
+                    <img src="~/Assets/Client/datafiles/banners/16357459169704_coverfacebook.png" alt="as" width="700" />
                 </li>
                 <li>
-                    <img src="~/Assets/Client/datafiles/banners/16049779327740_banner.jpg" alt="as" width="700px" />
+                    <img src="~/Assets/Client/datafiles/banners/16049779327740_banner.jpg" alt="as" width="700" />
                 </li>
                 <li>
-                    <img src="~/Assets/Client/datafiles/banners/16315083449812_banner-ship-hieuhaisan.jpg" alt="as" width="700px" />
+                    <img src="~/Assets/Client/datafiles/banners/16315083449812_banner-ship-hieuhaisan.jpg" alt="as" width="700" />
                 </li>
                 <li>
-                    <img src="~/Assets/Client/datafiles/banners/15079765026777_hieu-hai-san-02.jpg" alt="as" width="700px" />
+                    <img src="~/Assets/Client/datafiles/banners/15079765026777_hieu-hai-san-02.jpg" alt="as" width="700" />
                 </li>
 
             </div>
@@ -160,7 +160,7 @@
             <li><img src="~/Assets/Client/images/website/3.png" width="128" height="128" /></li>
             <ul>
                 <h2>QUY CÁCH GỌN GÀNG</h2>
-                <p>Sang Trọng v&agrave; Chuy&ecirc;n Nghiệp</p>
+                <p>Sang Trọng và Chuyên Nghiệp</p>
             </ul>
             <div class="clr"></div>
         </div>
@@ -169,7 +169,7 @@
             <ul>
                 <h2>ƯU ĐÃI FREESHIP</h2>
                 <p>
-                    Cho Đơn H&agrave;ng Lần Thứ 2
+                    Cho Đơn Hàng Lần Thứ 2
                 </p>
             </ul>
             <div class="clr"></div>
@@ -191,7 +191,7 @@
                         <a href="@Url.Action("Details", "Home", new {id = sp.ID_SanPham})">
                         <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh" width="250" height="250" /></li>
                         <h2>@sp.TenSanPham</h2>
-                        <h3>Giá: @sp.GiaBan đ </h3>
+                        <h3>Giá: @String.Format("{0:0,0}", sp.GiaBan) đ </h3>
                         </a>
                     </ul>
                 }
@@ -230,29 +230,39 @@
 <div class="left_conten">
     @foreach (var item in ViewBag.listDm)
     {
-        <div class="box_id">
-            <div class="title_page_home">
-                <h2>@item.TenDanhMuc</h2>
-                <div class="clr"></div>
-            </div>
-            <div class="placeSlide_main">
-                <div class="placeSlide_page">
-                    <div class="product_list">
-                        @foreach (var sp in sanPhamDAO.get8ByCateId(@item.ID_DanhMuc))
-                        {
-                            <ul>
-                                <a href="@Url.Action("Details", "Home", new {id = sp.ID_SanPham})">
-                                <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh" class="lazy" /></li>
-                                <h2>@sp.TenSanPham</h2>
-                                <h3>Giá: @sp.GiaBan đ </h3>
-                                </a>
-                            </ul>
-                        }
-                        <div class="clr"></div>
-                    </div>
+        if (sanPhamDAO.getAllByCateId(item.ID_DanhMuc).Count != 0)
+        {
+            <div class="box_id">
+                <div class="title_page_home">
+                    <h2>@item.TenDanhMuc</h2>
                     <div class="clr"></div>
                 </div>
+                <div class="placeSlide_main">
+                    <div class="placeSlide_page">
+                        <div class="product_list">
+                            @foreach (var sp in sanPhamDAO.get8ByCateId(@item.ID_DanhMuc))
+                            {
+                                <ul>
+                                    @if (sp.GiaBan != sp.GiaGoc)
+                                    {
+                                        var pt = (@sp.GiaGoc - @sp.GiaBan) / @sp.GiaGoc * 100;
+                                        pt = Math.Round(pt, 0);
+                                        <div class="discount-tag">-@pt%</div>
+
+                                    }
+                                    <a href="@Url.Action("Details", "Home", new { id = sp.ID_SanPham })">
+                                    <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh" class="lazy" /></li>
+                                    <h2>@sp.TenSanPham</h2>
+                                    <h3>Giá: @String.Format("{0:0,0}", sp.GiaBan) đ </h3>
+                                    </a>
+                                </ul>
+                            }
+                            <div class="clr"></div>
+                        </div>
+                        <div class="clr"></div>
+                    </div>
+                </div>
             </div>
-        </div>
+        }
     }
 </div>
