@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using BTL_ASP_HieuHaiSan.Models;
 using BTL_ASP_HieuHaiSan.DAO;
+using PagedList;
 
 namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
 {
@@ -18,9 +19,45 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
         private HaiSanDB db = new HaiSanDB();
 
         // GET: Admin/DanhMucs
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchName, string currentFilter, int? page)
         {
-            return View(db.DanhMucs.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.SapTheoTen = String.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";
+            ViewBag.SapTheoMa = sortOrder == "id" ? "id_desc" : "id";
+
+            if (searchName != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchName = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchName;
+            var danhMucs = db.DanhMucs.Select(p => p);
+
+            if (!String.IsNullOrEmpty(searchName))
+            {
+                danhMucs = danhMucs.Where(p => p.TenDanhMuc.Contains(searchName));
+            }
+            switch (sortOrder)
+            {
+                case "id":
+                    danhMucs = danhMucs.OrderBy(s => s.ID_DanhMuc);
+                    break;
+                case "id_desc":
+                    danhMucs = danhMucs.OrderByDescending(s => s.ID_DanhMuc);
+                    break;
+                case "ten_desc":
+                    danhMucs = danhMucs.OrderByDescending(s => s.TenDanhMuc);
+                    break;
+                default:
+                    danhMucs = danhMucs.OrderBy(s => s.TenDanhMuc);
+                    break;
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(danhMucs.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Admin/DanhMucs/Details/5
