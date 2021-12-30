@@ -14,10 +14,49 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
     {
         private HaiSanDB db = new HaiSanDB();
 
-        public ActionResult Display(int ?page)
+        public ActionResult Display(string sortOrder, string searchTenSP, string currentFilterTenSP, int ?page)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.SapTheoDM = sortOrder == "dm" ? "dm_desc" : "dm";
+            ViewBag.SapTheoTen = String.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";
+            ViewBag.SapTheoGia = sortOrder == "gia" ? "gia_desc" : "gia";
+
+            if(searchTenSP != null)
+            {
+                page = 1;
+            }else
+            {
+                searchTenSP = currentFilterTenSP;
+            }
+            ViewBag.CurrentFilterTenSP = searchTenSP;
+
             var sanpham = db.SanPhams.Select(s => s);
-            sanpham = sanpham.OrderBy(s => s.ID_SanPham);
+
+            if (!String.IsNullOrEmpty(searchTenSP))
+            {
+                sanpham = sanpham.Where(p=>p.TenSanPham.Contains(searchTenSP));
+            }
+            switch (sortOrder)
+            {
+                case "dm":
+                    sanpham = sanpham.OrderBy(s => s.DanhMuc.TenDanhMuc);
+                    break;
+                case "dm_desc":
+                    sanpham = sanpham.OrderByDescending(s => s.DanhMuc.TenDanhMuc);
+                    break;
+                case "gia":
+                    sanpham = sanpham.OrderBy(s => s.GiaBan);
+                    break;
+                case "gia_desc":
+                    sanpham = sanpham.OrderByDescending(s => s.GiaBan);
+                    break;
+                case "ten_desc":
+                    sanpham = sanpham.OrderByDescending(s => s.TenSanPham);
+                    break;
+                default:
+                    sanpham = sanpham.OrderBy(s => s.TenSanPham);
+                    break;
+            }
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(sanpham.ToPagedList(pageNumber, pageSize));
