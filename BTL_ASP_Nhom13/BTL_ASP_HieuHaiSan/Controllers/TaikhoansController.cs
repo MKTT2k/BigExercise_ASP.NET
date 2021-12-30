@@ -1,4 +1,5 @@
-﻿using BTL_ASP_HieuHaiSan.Common;
+﻿using BotDetect.Web.Mvc;
+using BTL_ASP_HieuHaiSan.Common;
 using BTL_ASP_HieuHaiSan.DAO;
 using BTL_ASP_HieuHaiSan.Models;
 
@@ -23,6 +24,7 @@ namespace BTL_ASP_HieuHaiSan.Controllers
         }
 
         [HttpPost]
+        [CaptchaValidationActionFilter("Mã Captcha", "dangKyCaptcha", "Mã xác nhận không đúng!")]
         public ActionResult Dangky(DangkyModel model)
         {
             if (ModelState.IsValid)
