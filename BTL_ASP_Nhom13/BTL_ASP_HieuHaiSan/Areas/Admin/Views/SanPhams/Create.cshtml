@@ -25,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.HinhAnh, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <img id="output" class="img-rounded" width="180" src="~/Assets/Client/datafiles/setone/a.png" />
+                <img id="output" class="img-rounded" width="250" src="~/Assets/Client/datafiles/setone/a.png" />
                 <p><label for="ufile" class="btn btn-default">Chọn file ảnh</label></p>
                 <input type="file" name="a" id="ufile" style="display:none" onchange="loadFile(event)" />
             </div>
@@ -87,7 +87,6 @@
     <br />
     <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
 }
-
 
 <script>
     var loadFile = function (event) {

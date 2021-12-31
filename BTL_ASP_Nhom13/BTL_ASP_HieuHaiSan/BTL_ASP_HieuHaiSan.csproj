@@ -489,7 +489,6 @@
     <Content Include="Areas\Admin\Views\TinTucVaoBep\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\TinTucVaoBep\Details.cshtml" />
     <Content Include="Areas\Admin\Views\TinTucVaoBep\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\TinTucVaoBep\Index.cshtml" />
     <Content Include="Areas\Admin\Views\TinTucVaoBep\Display.cshtml" />
     <Content Include="Areas\Admin\Views\SanPhams\Display.cshtml" />
     <Content Include="Assets\Admin\css\bootstrap.css.map" />

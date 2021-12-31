@@ -28,6 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.HinhAnh, "Hình ảnh", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+                <input type="hidden" name="img" value="@Model.HinhAnh" />
                 <img id="output" class="img-rounded" alt="Ảnh" width="180" src="@Url.Content(ImagePath)" />
                 <p><label for="ufile" style="cursor:pointer;">Chọn file ảnh</label></p>
                 <input name="a" type="file" id="ufile" style="display:none;" onchange="loadFile(event)" />
@@ -71,7 +72,7 @@
 }
 
 <div>
-    @Html.ActionLink("Quay lại", "Index")
+    @Html.ActionLink("Trở lại", "Display", null, new { @class = "btn btn-info" })
 </div>
 
 @if (ViewBag.Error != null)

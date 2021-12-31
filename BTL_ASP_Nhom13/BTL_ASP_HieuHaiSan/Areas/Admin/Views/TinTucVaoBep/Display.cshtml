@@ -30,10 +30,10 @@
     @foreach (var item in Model)
     {
         <tr style="font-size:16px;color:black">
-            <td style="width:30%">
+            <td style="width:30%; vertical-align: middle;">
                 @Html.DisplayFor(modelItem => item.TieuDe)
             </td>
-            <td style="text-align:center">
+            <td style="text-align: center; vertical-align: middle;">
                 @{
                     string imagePath = "~/Assets/Client/datafiles/tintuc/" + item.HinhAnh;
                 }
@@ -41,7 +41,7 @@
 
             </td>
 
-            <td style="text-align:center">
+            <td style="text-align: center; vertical-align: middle;">
                 @{
                     string s = item.NgayTao.ToString("dd/MM/yyyy");
                 }
@@ -51,21 +51,21 @@
 
             @if (item.Status)
             {
-                <td style="text-align:center">
+                <td style="text-align: center; vertical-align: middle;">
                     Tin tức
                 </td>
             }
             else
             {
-                <td style="text-align:center">
+                <td style="text-align: center; vertical-align: middle;">
                     Vào bếp
                 </td>
             }
 
-            <td style="text-align:center">
-                @Html.ActionLink("Sửa", "Edit", new { id = item.ID_TinTuc }) |
-                @Html.ActionLink("Chi tiết", "Details", new { id = item.ID_TinTuc }) |
-                @Html.ActionLink("Xóa", "Delete", new { id = item.ID_TinTuc })
+            <td style="text-align: center; vertical-align: middle;">
+                @Html.ActionLink("Sửa", "Edit", new { id = item.ID_TinTuc }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.ID_TinTuc }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Xóa", "Delete", new { id = item.ID_TinTuc }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }

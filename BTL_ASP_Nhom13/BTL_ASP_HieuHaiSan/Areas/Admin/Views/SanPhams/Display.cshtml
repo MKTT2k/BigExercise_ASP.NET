@@ -5,6 +5,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var color = "inherit";
 }
 
 <h2>Danh sách sản phẩm</h2>
@@ -14,18 +15,27 @@
 </p>
 @using (Html.BeginForm())
 {
-    <p>
-        Nhập tên sản phẩm @Html.TextBox("SearchTenSP", ViewBag.CurrentFilterTenSP as string)
-        <input type="submit" value="Tìm" class="btn btn-default" />
-    </p>
+<div style="width:500px; float:right;">
+    <dl>
+        <dt>Nhập tên sản phẩm</dt>
+        <dd>
+            @Html.TextBox("SearchTenSP", ViewBag.CurrentFilterTenSP as string)
+        </dd>
+    </dl>
+    <dl>
+        <dt>Nhập khoảng giá</dt>
+        <dd>@Html.TextBox("SearchPrice1", ViewBag.CurrentFilterPrice1 as string) đến  @Html.TextBox("SearchPrice2", ViewBag.CurrentFilterPrice2 as string)</dd>
+    </dl>
+    <div class="text-center"><input type="submit" value="Tìm" class="btn btn-default" /></div>
+</div>
 }
 <table class="table align-middle">
     <tr>
         <th style="text-align:center; width: 130px">
-            @Html.ActionLink("Danh mục", "Display", new {sortOrder = ViewBag.SapTheoDM, currentFilterTenSP = ViewBag.CurrentFilterTenSP })
+            @Html.ActionLink("Danh mục", "Display", new { sortOrder = ViewBag.SapTheoDM, currentFilterTenSP = ViewBag.CurrentFilterTenSP, currentFilterPrice1 = ViewBag.CurrentFilterPrice1, currentFilterPrice2 = ViewBag.CurrentFilterPrice2 })
         </th>
         <th>
-            @Html.ActionLink("Tên sản phẩm", "Display", new { sortOrder = ViewBag.SapTheoTen, currentFilterTenSP = ViewBag.CurrentFilterTenSP })
+            @Html.ActionLink("Tên sản phẩm", "Display", new { sortOrder = ViewBag.SapTheoDM, currentFilterTenSP = ViewBag.CurrentFilterTenSP, currentFilterPrice1 = ViewBag.CurrentFilterPrice1, currentFilterPrice2 = ViewBag.CurrentFilterPrice2 })
         </th>
         <th style="text-align:center">
             Hình ảnh
@@ -34,7 +44,7 @@
             Giá gốc
         </th>
         <th>
-            @Html.ActionLink("Giá bán", "Display", new { sortOrder = ViewBag.SapTheoGia, currentFilterTenSP = ViewBag.CurrentFilterTenSP })
+            @Html.ActionLink("Giá bán", "Display", new { sortOrder = ViewBag.SapTheoDM, currentFilterTenSP = ViewBag.CurrentFilterTenSP, currentFilterPrice1 = ViewBag.CurrentFilterPrice1, currentFilterPrice2 = ViewBag.CurrentFilterPrice2 })
         </th>
         <th style="text-align:center">
             Số lượng
@@ -44,14 +54,22 @@
 
     @foreach (var item in Model)
     {
-        <tr>
+        if (item.SoLuong < 5)
+        {
+            color = "lightcoral";
+        }
+        else
+        {
+            color = "inherit";
+        }
+        <tr style="color:@color">
             <td style="text-align:center; vertical-align: middle">
                 @Html.DisplayFor(modelItem => item.DanhMuc.TenDanhMuc)
             </td>
             <td style="vertical-align: middle">
                 @Html.DisplayFor(modelItem => item.TenSanPham)
             </td>
-            <td style="text-align:center" style="vertical-align: middle">
+            <td style="text-align:center; vertical-align: middle">
                 @{
                     string ImagePath = "~/Assets/Client/datafiles/setone/" + item.HinhAnh;
                 }
@@ -77,4 +95,5 @@
 </table>
 <br />
 Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
-@Html.PagedListPager(Model, page => Url.Action("Display", new { page, sortOrder = ViewBag.CurrentSort, currentFilterTenSP = ViewBag.CurrentFilterTenSP }))
+@Html.PagedListPager(Model, page => Url.Action("Display", new { page, sortOrder = ViewBag.CurrentSort, 
+    currentFilterTenSP = ViewBag.CurrentFilterTenSP, currentFilterPrice1 = ViewBag.CurrentFilterPrice1, currentFilterPrice2 = ViewBag.CurrentFilterPrice2 }))

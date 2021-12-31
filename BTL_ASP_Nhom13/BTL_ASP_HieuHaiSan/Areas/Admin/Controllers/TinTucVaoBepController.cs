@@ -111,7 +111,7 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    tinTuc_VaoBep.HinhAnh = "";
+                    tinTuc_VaoBep.HinhAnh = Request["img"];
                     var f = Request.Files["a"];
                     if (f != null && f.ContentLength > 0)
                     {
