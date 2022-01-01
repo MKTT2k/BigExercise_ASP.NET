@@ -2,11 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-    using System.Web.Mvc;
 
     [Table("SanPham")]
     public partial class SanPham
@@ -14,50 +12,48 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SanPham()
         {
-            ChiTietGioHangs = new HashSet<ChiTietGioHang>();
+            ChiTietDonHangs = new HashSet<ChiTietDonHang>();
         }
 
         [Key]
-        [DisplayName("Mã sản phẩm")]
+        [Display(Name = "Mã sản phẩm")]
         public int ID_SanPham { get; set; }
 
         [Required(ErrorMessage = "Tên sản phẩm không được để trống!")]
         [StringLength(100)]
-        [DisplayName("Tên sản phẩm")]
+        [Display(Name = "Tên sản phẩm")]
         public string TenSanPham { get; set; }
 
-        [Required]
-        [StringLength(100)]
+        [Required(ErrorMessage = "Chưa chọn hình ảnh!")]
         [Column(TypeName = "text")]
-        [DisplayName("Hình ảnh")]
+        [Display(Name = "Hình ảnh")]
         public string HinhAnh { get; set; }
 
-        [Required(ErrorMessage = "Giá gốc không được để trống!")]
+        [Required(ErrorMessage = "Chưa nhập giá gốc!")]
         [Column(TypeName = "money")]
-        [DisplayName("Giá gốc")]
+        [Display(Name = "Giá gốc")]
         public decimal GiaGoc { get; set; }
 
-        [Required(ErrorMessage = "Giá bán không được để trống!")]
+        [Required(ErrorMessage = "Chưa nhập giá bán!")]
         [Column(TypeName = "money")]
-        [DisplayName("Giá bán")]
+        [Display(Name = "Giá bán")]
         public decimal GiaBan { get; set; }
 
-        [Required(ErrorMessage = "Mô tả sản phẩm không được để trống!")]
+        [Required(ErrorMessage = "Mô tả không được để trống!")]
         [Column(TypeName = "ntext")]
-        [DisplayName("Mô tả")]
+        [Display(Name = "Mô tả")]
         public string MoTa { get; set; }
 
-        [Required(ErrorMessage = "Số lượng không được để trống!")]
-        [DisplayName("Số lượng")]
+        [Required(ErrorMessage = "Chưa nhập số lượng!")]
+        [Display(Name = "Số lượng")]
         public int SoLuong { get; set; }
 
-        [DisplayName("Danh mục")]
-        [Required(ErrorMessage = "Danh mục không được để trống!")]
+        [Required(ErrorMessage = "Chưa chọn danh mục sản phẩm!")]
+        [Display(Name = "Danh mục")]
         public int ID_DanhMuc { get; set; }
-        public IEnumerable<SelectListItem> CategoryList { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietGioHang> ChiTietGioHangs { get; set; }
+        public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
 
         public virtual DanhMuc DanhMuc { get; set; }
     }

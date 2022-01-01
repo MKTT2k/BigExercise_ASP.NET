@@ -21,13 +21,6 @@ namespace BTL_ASP_HieuHaiSan.DAO
             return category;
         }
 
-        public dynamic getAllWithPage()
-        {
-            var category = db.DanhMucs.Select(s => s);
-            category = category.OrderBy(s => s.ID_DanhMuc);
-            return category;
-        }
-
         public DanhMuc findByName(string name)
         {
             var category = (from s in db.DanhMucs where s.TenDanhMuc == name select s).FirstOrDefault();
@@ -63,6 +56,10 @@ namespace BTL_ASP_HieuHaiSan.DAO
             db.DanhMucs.Remove(delete);
             db.SaveChanges();
 
+        }
+        public bool check(string tenDm)
+        {
+            return db.DanhMucs.Count(d => d.TenDanhMuc == tenDm) > 0;
         }
     }
 }

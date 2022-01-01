@@ -3,11 +3,12 @@
 @{
     ViewBag.Title = "Sửa";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var ImagePath = "~/Assets/Client/datafiles/setone/" + Model.HinhAnh;
 }
 
 <h2>Sửa thông tin sản phẩm</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "SanPhams", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -27,8 +28,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.HinhAnh, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.HinhAnh, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
+                <img id="output" class="img-rounded" width="180" src="@Url.Content(ImagePath)" />
+                <p><label for="ufile" class="btn btn-default">Chọn file ảnh</label></p>
+                <input type="file" name="a" id="ufile" style="display:none" onchange="loadFile(event)" />
             </div>
         </div>
 
@@ -81,10 +83,16 @@
 }
 
 <div>
-    @Html.ActionLink("Trở lại", "Index", null, new { @class = "btn btn-info" })
+    @Html.ActionLink("Trở lại", "Display", null, new { @class = "btn btn-info" })
 </div>
 @if (ViewBag.Error != null)
 {
     <br />
     <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
 }
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>

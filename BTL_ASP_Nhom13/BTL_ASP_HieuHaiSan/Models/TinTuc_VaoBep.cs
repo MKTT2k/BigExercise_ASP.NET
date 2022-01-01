@@ -15,8 +15,7 @@ namespace BTL_ASP_HieuHaiSan.Models
         [StringLength(100)]
         public string TieuDe { get; set; }
 
-        [Required]
-        [StringLength(100)]
+        [Column(TypeName = "text")]
         public string HinhAnh { get; set; }
 
         public DateTime NgayTao { get; set; }

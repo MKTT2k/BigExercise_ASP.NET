@@ -16,6 +16,7 @@ namespace BTL_ASP_HieuHaiSan.DAO
             return products;
         }
 
+
         public List<SanPham> getTop4(int id)
         {
             List<SanPham> products = (from t in db.SanPhams where t.ID_DanhMuc == id orderby t.SoLuong select t).Take(4).ToList();

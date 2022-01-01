@@ -6,21 +6,22 @@
 }
 
 <h2>Xóa danh mục</h2>
-
+<br />
 <h3>Bạn có chắc chắn muốn xóa danh mục này?</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.ID_DanhMuc)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_DanhMuc)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.ID_DanhMuc)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.ID_DanhMuc)
+        </dd>
 
-        </dl>
+    </dl>
+
+    <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.TenDanhMuc)
         </dt>
@@ -28,18 +29,20 @@
         <dd>
             @Html.DisplayFor(model => model.TenDanhMuc)
         </dd>
-
     </dl>
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Đồng ý" class="btn btn-default" /> |
-            @Html.ActionLink("Trở lại", "Index")
+        <div class="form-actions no-color text-center" >
+            <input type="submit" value="Đồng ý" class="btn btn-default" />
         </div>
     }
+</div>
+<br />
+<div>
+    @Html.ActionLink("Trở lại", "Index", null, new { @class = "btn btn-info" })
 </div>
 
 @if (ViewBag.Error != null)

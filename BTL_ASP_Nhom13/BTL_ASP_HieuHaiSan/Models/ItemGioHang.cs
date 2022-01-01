@@ -24,7 +24,7 @@ namespace BTL_ASP_HieuHaiSan.Models
             HinhAnh = sp.HinhAnh;
             DonGia = sp.GiaBan;
             SoLuong = 1;
-            ThanhTien = SoLuong * DonGia;
+            this.ThanhTien = SoLuong * DonGia;
             GiaGoc = sp.GiaGoc;
         }
 
@@ -36,7 +36,7 @@ namespace BTL_ASP_HieuHaiSan.Models
             HinhAnh = sp.HinhAnh;
             DonGia = sp.GiaBan;
             SoLuong = sl;
-            ThanhTien = SoLuong * DonGia;
+            this.ThanhTien = SoLuong * DonGia;
         }
     }
 }
