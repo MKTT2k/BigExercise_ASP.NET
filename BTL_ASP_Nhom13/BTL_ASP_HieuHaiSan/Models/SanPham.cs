@@ -24,7 +24,6 @@
         [Display(Name = "Tên sản phẩm")]
         public string TenSanPham { get; set; }
 
-        [Required(ErrorMessage = "Chưa chọn hình ảnh!")]
         [Column(TypeName = "text")]
         [Display(Name = "Hình ảnh")]
         public string HinhAnh { get; set; }

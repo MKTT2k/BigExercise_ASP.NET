@@ -28,6 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.HinhAnh, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+                <input type="hidden" name="img" value="@Model.HinhAnh" />
                 <img id="output" class="img-rounded" width="180" src="@Url.Content(ImagePath)" />
                 <p><label for="ufile" class="btn btn-default">Chọn file ảnh</label></p>
                 <input type="file" name="a" id="ufile" style="display:none" onchange="loadFile(event)" />

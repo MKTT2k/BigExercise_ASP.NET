@@ -14,18 +14,30 @@
 </p>
 @using (Html.BeginForm())
 {
-    <p>
-        Nhập tên sản phẩm @Html.TextBox("SearchTenSP", ViewBag.CurrentFilterTenSP as string)
-        <input type="submit" value="Tìm" class="btn btn-default" />
-    </p>
+    <div style="display:flex; margin-top: 20px">
+        <dl style="width:40%; margin-right:20px">
+            <dt>Tìm sản phẩm theo tên</dt>
+            <dd>@Html.TextBox("SearchTenSP", ViewBag.CurrentFilterTenSP as string, new { placeholder = "Nhập tên sản phẩm ..." , @class = "form-control" })</dd>
+        </dl>
+        <dl style="width: 30%; margin-right: 20px">
+            <dt>Tìm sản phẩm theo giá bán</dt>
+            <dd>
+                @Html.TextBox("Price1", ViewBag.CurrentPrice1 as string, new { @class = "form-control" }) đến
+            @Html.TextBox("Price2", ViewBag.CurrentPrice2 as string, new { @class = "form-control" })
+            </dd>
+        </dl>
+        <div class="text-center align-middle"; style="width:10%">
+            <input type="submit" value="Tìm" class="btn btn-default" />
+        </div>
+    </div>
 }
 <table class="table align-middle">
     <tr>
         <th style="text-align:center; width: 130px">
-            @Html.ActionLink("Danh mục", "Display", new {sortOrder = ViewBag.SapTheoDM, currentFilterTenSP = ViewBag.CurrentFilterTenSP })
+            @Html.ActionLink("Danh mục", "Display", new { sortOrder = ViewBag.SapTheoDM, currentFilterTenSP = ViewBag.CurrentFilterTenSP, currentPrice1 = ViewBag.CurrentPrice1, currentPrice2 = ViewBag.CurrentPrice2 })
         </th>
         <th>
-            @Html.ActionLink("Tên sản phẩm", "Display", new { sortOrder = ViewBag.SapTheoTen, currentFilterTenSP = ViewBag.CurrentFilterTenSP })
+            @Html.ActionLink("Tên sản phẩm", "Display", new { sortOrder = ViewBag.SapTheoTen, currentFilterTenSP = ViewBag.CurrentFilterTenSP, currentPrice1 = ViewBag.CurrentPrice1, currentPrice2 = ViewBag.CurrentPrice2 })
         </th>
         <th style="text-align:center">
             Hình ảnh
@@ -34,10 +46,10 @@
             Giá gốc
         </th>
         <th>
-            @Html.ActionLink("Giá bán", "Display", new { sortOrder = ViewBag.SapTheoGia, currentFilterTenSP = ViewBag.CurrentFilterTenSP })
+            @Html.ActionLink("Giá bán", "Display", new { sortOrder = ViewBag.SapTheoGia, currentFilterTenSP = ViewBag.CurrentFilterTenSP, currentPrice1 = ViewBag.CurrentPrice1, currentPrice2 = ViewBag.CurrentPrice2 })
         </th>
         <th style="text-align:center">
-            Số lượng
+            @Html.ActionLink("Số lượng", "Display", new { sortOrder = ViewBag.SapTheoSL, currentFilterTenSP = ViewBag.CurrentFilterTenSP, currentPrice1 = ViewBag.CurrentPrice1, currentPrice2 = ViewBag.CurrentPrice2 })
         </th>
         <th></th>
     </tr>
@@ -77,4 +89,11 @@
 </table>
 <br />
 Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
-@Html.PagedListPager(Model, page => Url.Action("Display", new { page, sortOrder = ViewBag.CurrentSort, currentFilterTenSP = ViewBag.CurrentFilterTenSP }))
+@Html.PagedListPager(Model, page => Url.Action("Display", new
+{
+    page,
+    sortOrder = ViewBag.SapTheoSL,
+    currentFilterTenSP = ViewBag.CurrentFilterTenSP,
+    currentPrice1 = ViewBag.CurrentPrice1,
+    currentPrice2 = ViewBag.CurrentPrice2
+}))

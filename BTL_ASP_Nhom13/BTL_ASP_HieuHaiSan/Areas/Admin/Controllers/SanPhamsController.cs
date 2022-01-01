@@ -14,21 +14,27 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
     {
         private HaiSanDB db = new HaiSanDB();
 
-        public ActionResult Display(string sortOrder, string searchTenSP, string currentFilterTenSP, int ?page)
+        public ActionResult Display(string sortOrder, string searchTenSP, string currentFilterTenSP, 
+            string price1, string price2, string currentPrice1, string currentPrice2, int ?page)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.SapTheoDM = sortOrder == "dm" ? "dm_desc" : "dm";
             ViewBag.SapTheoTen = String.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";
             ViewBag.SapTheoGia = sortOrder == "gia" ? "gia_desc" : "gia";
+            ViewBag.SapTheoSL = sortOrder == "sl" ? "sl_desc" : "sl";
 
-            if(searchTenSP != null)
+            if(searchTenSP != null && price1 != null && price2 !=null)
             {
                 page = 1;
             }else
             {
                 searchTenSP = currentFilterTenSP;
+                price1 = currentPrice1;
+                price2 = currentPrice2;
             }
             ViewBag.CurrentFilterTenSP = searchTenSP;
+            ViewBag.CurrentPrice1 = price1;
+            ViewBag.CurrentPrice2 = price2;
 
             var sanpham = db.SanPhams.Select(s => s);
 
@@ -36,6 +42,17 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
             {
                 sanpham = sanpham.Where(p=>p.TenSanPham.Contains(searchTenSP));
             }
+            if (!String.IsNullOrEmpty(price1))
+            {
+                decimal gia1 = decimal.Parse(price1);
+                sanpham = sanpham.Where(p => p.GiaBan>=gia1);
+            }
+            if (!String.IsNullOrEmpty(price2))
+            {
+                decimal gia2 = decimal.Parse(price2);
+                sanpham = sanpham.Where(p => p.GiaBan >= gia2);
+            }
+
             switch (sortOrder)
             {
                 case "dm":
@@ -50,6 +67,12 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
                 case "gia_desc":
                     sanpham = sanpham.OrderByDescending(s => s.GiaBan);
                     break;
+                case "sl":
+                    sanpham = sanpham.OrderBy(s => s.SoLuong);
+                    break;
+                case "sl_desc":
+                    sanpham = sanpham.OrderByDescending(s => s.SoLuong);
+                    break;
                 case "ten_desc":
                     sanpham = sanpham.OrderByDescending(s => s.TenSanPham);
                     break;
@@ -57,7 +80,7 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
                     sanpham = sanpham.OrderBy(s => s.TenSanPham);
                     break;
             }
-            int pageSize = 10;
+            int pageSize = 8;
             int pageNumber = (page ?? 1);
             return View(sanpham.ToPagedList(pageNumber, pageSize));
         }
@@ -145,7 +168,7 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    sanPham.HinhAnh = "";
+                    sanPham.HinhAnh = Request["img"];
                     var f = Request.Files["a"];
                     if (f != null && f.ContentLength > 0)
                     {

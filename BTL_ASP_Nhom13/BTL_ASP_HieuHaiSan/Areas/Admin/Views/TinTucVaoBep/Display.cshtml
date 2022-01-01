@@ -63,9 +63,9 @@
             }
 
             <td style="text-align:center">
-                @Html.ActionLink("Sửa", "Edit", new { id = item.ID_TinTuc }) |
-                @Html.ActionLink("Chi tiết", "Details", new { id = item.ID_TinTuc }) |
-                @Html.ActionLink("Xóa", "Delete", new { id = item.ID_TinTuc })
+                @Html.ActionLink("Sửa", "Edit", new { id = item.ID_TinTuc }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.ID_TinTuc }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Xóa", "Delete", new { id = item.ID_TinTuc }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }

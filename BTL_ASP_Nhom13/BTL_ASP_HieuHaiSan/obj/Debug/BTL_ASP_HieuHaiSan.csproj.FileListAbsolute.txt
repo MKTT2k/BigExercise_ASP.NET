@@ -431,7 +431,6 @@ F:\HP7\ASP\BTL\Folder\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\obj\
 F:\HP7\ASP\BTL\Folder\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\obj\Debug\BTL_ASP_HieuHaiSan.csproj.CopyComplete
 F:\HP7\ASP\BTL\Folder\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\obj\Debug\BTL_ASP_HieuHaiSan.dll
 F:\HP7\ASP\BTL\Folder\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\obj\Debug\BTL_ASP_HieuHaiSan.pdb
-D:\Documents\Semester-7\Web-based_database_application_programming\Exercises\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\obj\Debug\BTL_ASP_HieuHaiSan.csproj.AssemblyReference.cache
 C:\Users\ADMIN\OneDrive\Máy tính\HOC ONLINE\KÌ 1 NĂM 4\Web C#\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\bin\BotDetect.dll
 C:\Users\ADMIN\OneDrive\Máy tính\HOC ONLINE\KÌ 1 NĂM 4\Web C#\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\bin\BotDetect.Web.Mvc.dll
 C:\Users\ADMIN\OneDrive\Máy tính\HOC ONLINE\KÌ 1 NĂM 4\Web C#\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\bin\System.Data.SQLite.dll
@@ -440,3 +439,8 @@ C:\Users\Administrator\Documents\GitHub\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_A
 C:\Users\Administrator\Documents\GitHub\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\bin\BotDetect.Web.Mvc.dll
 C:\Users\Administrator\Documents\GitHub\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\bin\System.Data.SQLite.dll
 C:\Users\Administrator\Documents\GitHub\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\bin\System.Data.SQLite.xml
+D:\Documents\Semester-7\Web-based_database_application_programming\Exercises\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\bin\BotDetect.dll
+D:\Documents\Semester-7\Web-based_database_application_programming\Exercises\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\bin\BotDetect.Web.Mvc.dll
+D:\Documents\Semester-7\Web-based_database_application_programming\Exercises\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\bin\System.Data.SQLite.dll
+D:\Documents\Semester-7\Web-based_database_application_programming\Exercises\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\bin\System.Data.SQLite.xml
+D:\Documents\Semester-7\Web-based_database_application_programming\Exercises\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\obj\Debug\BTL_ASP_HieuHaiSan.csproj.AssemblyReference.cache
