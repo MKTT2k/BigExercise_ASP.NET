@@ -436,3 +436,7 @@ C:\Users\ADMIN\OneDrive\Máy tính\HOC ONLINE\KÌ 1 NĂM 4\Web C#\BigExercise_AS
 C:\Users\ADMIN\OneDrive\Máy tính\HOC ONLINE\KÌ 1 NĂM 4\Web C#\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\bin\BotDetect.Web.Mvc.dll
 C:\Users\ADMIN\OneDrive\Máy tính\HOC ONLINE\KÌ 1 NĂM 4\Web C#\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\bin\System.Data.SQLite.dll
 C:\Users\ADMIN\OneDrive\Máy tính\HOC ONLINE\KÌ 1 NĂM 4\Web C#\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\bin\System.Data.SQLite.xml
+C:\Users\Administrator\Documents\GitHub\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\bin\BotDetect.dll
+C:\Users\Administrator\Documents\GitHub\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\bin\BotDetect.Web.Mvc.dll
+C:\Users\Administrator\Documents\GitHub\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\bin\System.Data.SQLite.dll
+C:\Users\Administrator\Documents\GitHub\BigExercise_ASP.NET\BTL_ASP_Nhom13\BTL_ASP_HieuHaiSan\bin\System.Data.SQLite.xml

@@ -28,25 +28,34 @@ else
                         <th width="15%">Đơn giá (VNĐ)</th>
                         <th width="15%">Thành tiền</th>
                         <th width="10%">Thao tác</th>
+                        <th width="10%">Thao tác</th>
                     </tr>
                     @foreach (var item in Model)
                     {
                         <tr>
                             <td><img src="~/Assets/Client/datafiles/setone/@item.HinhAnh" width="220" height="210" /></td>
-                            <td style="text-align:left"><a href="@Url.Action("Details", "Home", new { id = item.ID_SanPham })" )>Tôm Càng Xanh</a></td>
-                            <td class="quantity2">
-                                <input name="quantity2[]" onchange="update_cart()" class="qty" value="1" type="text" />
-                                <input type="button" class="minus" value="-">
-                                <input type="button" class="plus" value="+">
-                            </td>
-                            <td style="text-align:right">@String.Format("{0:0,0}", item.GiaGoc)</td>
-                            <td style="text-align:right">@String.Format("{0:0,0}", item.DonGia)</td>
-                            <td><a class="pro_del" href="@Url.Action("XoaGioHang", "GioHang", new { @MaSP = item.ID_SanPham })" onclick="delete_cart(304);">Xóa</a></td>
+                            <td style="text-align:left"><a href="@Url.Action("Details", "Home", new { id = item.ID_SanPham })" )>@item.TenSanPham</a></td>
+                            @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { MaSP = item.ID_SanPham }))
+                            {
+                                <td class="quantity2">
+                                    <input name="quantity" class="qty" value="@item.SoLuong" type="number" min="1" />
+                                    <input type="button" class="minus" value="-">
+                                    <input type="button" class="plus" value="+">
+                                </td>
+                                <td style="text-align:right">@String.Format("{0:0,0}", item.DonGia)</td>
+                                <td style="text-align:right">@String.Format("{0:0,0}", item.DonGia * item.SoLuong)</td>
+                                <td>
+                                    <input type="submit" value="Cập nhật" width="80" />
+                                </td>
+                                <td>
+                                    <a class="pro_del" href="@Url.Action("XoaGioHang", "GioHang", new { @MaSP = item.ID_SanPham })" onclick="delete_cart(304);">Xóa</a>
+                                </td>
+                            }
                         </tr>
                     }
-                    <input type="hidden" name="nid[]" id="nid" value="1061" />
+                    @*<input type="hidden" name="nid[]" id="nid" value="1061" />*@
                     <tr>
-                        <td colspan="6">
+                        <td colspan="7">
                             <span id="pro_sum">
                                 Tổng tiền:
                                 <label>@String.Format("{0:0,0}", ViewBag.TongTien) VNĐ</label>
@@ -54,10 +63,10 @@ else
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="6">
+                        <td colspan="7">
                             <a href="@Url.Action("Index", "Home")" class="pro_del mar">Tiếp tục mua</a>
-                            <a href="javascript:" onclick="update_cart()" class="pro_del mar">Cập nhật</a> 
-                            <a href="@Url.Action("ThanhToan", "GioHang")" style="margin-left:4px;" class="pro_del mar">Thanh toán</a>
+                            @*<a href="javascript:" onclick="update_cart()" class="pro_del mar">Cập nhật</a>*@
+                            <a href="@Url.Action("ThanhToan", "GioHang")" style="margin-left:10px;" class="pro_del mar">Thanh toán</a>
                         </td>
                     </tr>
                 </table>
