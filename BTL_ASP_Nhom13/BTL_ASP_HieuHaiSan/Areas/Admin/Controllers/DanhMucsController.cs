@@ -21,6 +21,8 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
         // GET: Admin/DanhMucs
         public ActionResult Index(string sortOrder, string searchName, string currentFilter, int? page)
         {
+            if (Session["ADMIN_SESSION"] == null || Session["ADMIN_SESSION"].ToString() == null)
+                return RedirectToAction("DangNhap", "TaiKhoans");
             ViewBag.CurrentSort = sortOrder;
             ViewBag.SapTheoTen = String.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";
             ViewBag.SapTheoMa = sortOrder == "id" ? "id_desc" : "id";

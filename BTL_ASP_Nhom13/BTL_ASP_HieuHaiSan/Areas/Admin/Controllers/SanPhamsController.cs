@@ -17,6 +17,8 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
         public ActionResult Display(string sortOrder, string searchTenSP, string currentFilterTenSP, 
             string price1, string price2, string currentPrice1, string currentPrice2, int ?page)
         {
+            if (Session["ADMIN_SESSION"] == null || Session["ADMIN_SESSION"].ToString() == null)
+                return RedirectToAction("DangNhap", "TaiKhoans");
             ViewBag.CurrentSort = sortOrder;
             ViewBag.SapTheoDM = sortOrder == "dm" ? "dm_desc" : "dm";
             ViewBag.SapTheoTen = String.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";

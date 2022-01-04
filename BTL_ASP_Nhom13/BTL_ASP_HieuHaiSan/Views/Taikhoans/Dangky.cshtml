@@ -23,93 +23,93 @@
         <div class="left_conten">
 
 
-            @*Đăng nhập*@
+            @*Đăng ký*@
             <div class="thanhvien_popup">
                 <h2>Đăng ký</h2>
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
-            <div class="form-horizontal">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @if (ViewBag.Success != null)
-                {
-                    <div class="alert alert-success">@ViewBag.Success</div>
-                }
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email" } )
-                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <br />
-                <div class="form-group">
-                    <div class="col-md-10">
-                        @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", @placeholder = "Mật khẩu" } )
-                        @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <br />
-                <div class="form-group">
-                    @Html.LabelFor(model => model.NhapLaiMatKhau, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(model => model.NhapLaiMatKhau, new { @class = "form-control", @placeholder = "Nhập lại mật khẩu" } )
-                        @Html.ValidationMessageFor(model => model.NhapLaiMatKhau, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <br />
-                <div class="form-group">
-                    @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.HoTen, new { @class = "form-control", @placeholder = "Họ tên" } )
-                        @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <br />
-                <div class="form-group">
-                    @Html.LabelFor(model => model.GioiTinh, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="checkbox">
-                            @Html.DropDownListFor(model => model.GioiTinh, new List<SelectListItem>
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @if (ViewBag.Success != null)
                         {
-                            new SelectListItem {Text = "Nam", Value = "true"},
-                            new SelectListItem {Text = "Nữ", Value = "false"},
-                        }, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
+                            <div class="alert alert-success">@ViewBag.Success</div>
+                        }
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email" })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NhapLaiMatKhau, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.PasswordFor(model => model.NhapLaiMatKhau, new { @class = "form-control", @placeholder = "Nhập lại mật khẩu" })
+                                @Html.ValidationMessageFor(model => model.NhapLaiMatKhau, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.HoTen, new { @class = "form-control", @placeholder = "Họ tên" })
+                                @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.GioiTinh, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.DropDownListFor(model => model.GioiTinh, new List<SelectListItem>
+                                {
+                                    new SelectListItem {Text = "Nam", Value = "true"},
+                                    new SelectListItem {Text = "Nữ", Value = "false"},
+                                }, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SDT, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.SDT, new { @class = "form-control", @placeholder = "Điện thoại" })
+                                @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control", @placeholder = "Địa chỉ" })
+                                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <p><label for="dangKyCaptcha">Mã Captcha</label></p>
+                            <div class="col-md-10">
+                                @Html.Captcha(dangKyCaptcha)
+                                @Html.TextBox("Mã Captcha")
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Đăng ký" class="btn btn-default" style="background: #DDDDDD; color: #333333; font: 16px bold; display: block; width: 100%; height: 50px; border-radius: 5px" />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <br />
-                <div class="form-group">
-                    @Html.LabelFor(model => model.SDT, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.SDT, new { @class = "form-control", @placeholder = "Điện thoại" } )
-                        @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <br />
-                <div class="form-group">
-                    @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control", @placeholder = "Địa chỉ" } })
-                        @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <br />
-                <div class="form-group">
-                   <p><label for="dangKyCaptcha">Mã Captcha</label></p>
-                    <div class="col-md-10">
-                        @Html.Captcha(dangKyCaptcha)
-                        @Html.TextBox("Mã Captcha")
-                    </div>
-                </div>
-                <br />
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Đăng ký" class="btn btn-default" style="background: #DDDDDD; color: #333333; font: 16px bold; display: block; width: 100%; height: 50px; border-radius: 5px" />
-                    </div>
-                </div>
-            </div>
                 }
 
             </div>

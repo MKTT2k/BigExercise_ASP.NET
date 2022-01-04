@@ -22,6 +22,8 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
         }
         public ActionResult Display(int? page)
         {
+            if (Session["ADMIN_SESSION"] == null || Session["ADMIN_SESSION"].ToString() == null)
+                return RedirectToAction("DangNhap", "TaiKhoans");
             var tintuc = db.TinTuc_VaoBep.Select(s => s);
             tintuc = tintuc.OrderBy(s => s.ID_TinTuc);
             int pageSize = 8;

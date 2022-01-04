@@ -93,8 +93,6 @@ namespace BTL_ASP_HieuHaiSan.Controllers
             Session.Clear();
             return RedirectToAction("Dangnhap");
         }
-
-
     }
 }
 

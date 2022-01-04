@@ -13,6 +13,7 @@ namespace BTL_ASP_HieuHaiSan.Models
 
         [Display(Name = " ")]
         [Required(ErrorMessage = "Vui lòng nhập email")]
+        [EmailAddress(ErrorMessage = "Vui lòng nhập đúng định dạng")]
         public string Email { get; set; }
 
         [Display(Name = " ")]
@@ -35,6 +36,9 @@ namespace BTL_ASP_HieuHaiSan.Models
         public bool GioiTinh { get; set; }
 
         [Display(Name = " ")]
+        [Phone(ErrorMessage = "Vui lòng nhập đúng định dạng")]
+        [MinLength(5, ErrorMessage = "Số điện thoại quá ngắn")]
+        [MaxLength(15, ErrorMessage = "Số điện thoại quá dài")]
         [Required(ErrorMessage = "Vui lòng nhập số điện thoại")]
         public string SDT { get; set; }
 

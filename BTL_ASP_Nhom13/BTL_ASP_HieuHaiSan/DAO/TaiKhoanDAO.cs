@@ -24,36 +24,13 @@ namespace BTL_ASP_HieuHaiSan.DAO
         public int Login(string email, string matkhau)
         {
             var ketqua = db.TaiKhoans.FirstOrDefault(x => x.Email == email && x.MatKhau == matkhau);
-            if (ketqua == null)
+            if (ketqua != null)
             {
-                return 0;
+                if (ketqua.TrangThai == true) return 1; // user
+                else return 2; // admin  
             }
-            else return 1;
-            //var ketqua = db.TaiKhoans.SingleOrDefault(x => x.Email == email);
-            //if (ketqua == null)
-            //{
-            //    //Tài khoản không tồn tại
-            //    return 0;
-            //}
-            //else if (ketqua.MatKhau == matkhau)
-            //{
-            //    if (ketqua.TrangThai == true)
-            //    {
-            //        //Admin and Mod
-            //        return 2;
-            //    }
-            //    else
-            //    {
-            //        //MEMBER
-            //        return 1;
-            //    }
-
-            //}
-            //else
-            //{
-            //    //Sai mật khẩu
-            //    return -1;
-            //}           
+            else
+                return 0;
         }
 
 

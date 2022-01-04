@@ -11,6 +11,8 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
         // GET: Admin/Home
         public ActionResult Index()
         {
+            if(Session["ADMIN_SESSION"] == null || Session["ADMIN_SESSION"].ToString() == null)
+                return RedirectToAction("DangNhap", "TaiKhoans");
             return View();
         }
     }
