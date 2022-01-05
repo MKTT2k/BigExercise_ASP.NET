@@ -21,8 +21,8 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
         public ActionResult Index(string sortOrder, string searchStringName, string searchStringPhone,
             string currentFilter1, string currentFilter2, int? page)
         {
-            if (Session["ADMIN_SESSION"] == null || Session["ADMIN_SESSION"].ToString() == null)
-                return RedirectToAction("DangNhap", "TaiKhoans");
+            //if (Session["ADMIN_SESSION"] == null || Session["ADMIN_SESSION"].ToString() == null)
+            //    return RedirectToAction("DangNhap", "TaiKhoans");
             ViewBag.CurrentSort = sortOrder; //Biến lấy yêu cầu sắp xếp hiện tại
 
             ViewBag.SapTheoTen = String.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";

@@ -180,37 +180,45 @@ namespace BTL_ASP_HieuHaiSan.Controllers
             TaiKhoanDangNhap acc = (TaiKhoanDangNhap)Session[BTL_ASP_HieuHaiSan.Common.CommonConstants.USER_SESSION];
 
             List<ItemGioHang> lstGioHang = LayGioHang();
-
-            dh.ID_TaiKhoan = acc.ID_TaiKhoan;
-            dh.NguoiNhan = f["txt_cfullname"].ToString();
-            dh.SDTNhan = f["txt_nphone"].ToString();
-            dh.DiaChiNhan = f["txt_caddress"].ToString();
-            dh.EmailNhan = f["txt_cemail"].ToString();
-            dh.GhiChu = f["txt_cnote"].ToString();
-            int x = int.Parse(f["type_payment"].ToString());
-            if (x == 1)
+            if (acc != null)
             {
-                dh.PTThanhToan = true;
+                dh.ID_TaiKhoan = acc.ID_TaiKhoan;
+                dh.NguoiNhan = f["txt_cfullname"].ToString();
+                dh.SDTNhan = f["txt_nphone"].ToString();
+                dh.DiaChiNhan = f["txt_caddress"].ToString();
+                dh.EmailNhan = f["txt_cemail"].ToString();
+                dh.GhiChu = f["txt_cnote"].ToString();
+                int x = int.Parse(f["type_payment"].ToString());
+                if (x == 1)
+                {
+                    dh.PTThanhToan = true;
+                }
+                else
+                {
+                    dh.PTThanhToan = false;
+                }
+                dh.NgayDat =(DateTime) DateTime.Today;
+                dh.TrangThai = 1;
+                db.DonHangs.Add(dh);
+                db.SaveChanges();
+                foreach (var item in lstGioHang)
+                {
+                    ChiTietDonHang ctdh = new ChiTietDonHang();
+                    ctdh.ID_DonHang = dh.ID_DonHang;
+                    ctdh.ID_SanPham = item.ID_SanPham;
+                    ctdh.SoLuongMua = item.SoLuong;
+                    db.ChiTietDonHangs.Add(ctdh);
+
+                }
+                db.SaveChanges();
+                Session["GioHang"] = null;
+
+                return RedirectToAction("XacNhanDonHang", "GioHang");
             }
             else
-            {
-                dh.PTThanhToan = false;
-            }
-            db.DonHangs.Add(dh);
-            db.SaveChanges();
-            foreach (var item in lstGioHang)
-            {
-                ChiTietDonHang ctdh = new ChiTietDonHang();
-                ctdh.ID_DonHang = dh.ID_DonHang;
-                ctdh.ID_SanPham = item.ID_SanPham;
-                ctdh.SoLuongMua = item.SoLuong;
-                db.ChiTietDonHangs.Add(ctdh);
+                return RedirectToAction("Dangnhap", "Taikhoans");
 
-            }
-            db.SaveChanges();
-            Session["GioHang"] = null;
 
-            return RedirectToAction("XacNhanDonHang", "GioHang");
         }
 
         public ActionResult XacNhanDonHang()
