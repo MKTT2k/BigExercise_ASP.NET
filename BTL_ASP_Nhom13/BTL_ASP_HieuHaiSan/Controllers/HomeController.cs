@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BTL_ASP_HieuHaiSan.DAO;
+using PagedList;
 
 namespace BTL_ASP_HieuHaiSan.Controllers
 {
@@ -39,5 +40,52 @@ namespace BTL_ASP_HieuHaiSan.Controllers
             var dm = danhMucDAO.findByIdObject(id);
             return View(dm);
         }
+        //public ActionResult GetAllProductByCate(int id, string sortOrder, string searchString, string currentFilter, int? page)
+        //{
+        //    ViewBag.CurrentSort = sortOrder;
+
+        //    ViewBag.SapTheoTenAZ = "ten_asc";
+        //    ViewBag.SapTheoTenZA = "ten_desc";
+        //    ViewBag.GiaTangDan = "gia_asc";
+        //    ViewBag.GiaGiamDan = "gia_desc";
+
+        //    if (searchString != null)
+        //    {
+        //        page = 1;
+        //    }
+        //    else
+        //    {
+        //        searchString = currentFilter;
+        //    }
+        //    ViewBag.CurrentFilter = searchString;
+
+        //    var model = sanPhamDAO.getAllByCateId(id);
+
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        model = model.Where(p => p.TenSanPham.ToLower().Contains(searchString.ToLower())).ToList();
+        //    }
+
+        //    //Sắp xếp
+        //    switch (sortOrder)
+        //    {
+        //        case "ten_desc":
+        //            model = model.OrderByDescending(s => s.TenSanPham).ToList();
+        //            break;
+        //        case "gia_asc":
+        //            model = model.OrderBy(s => s.GiaGoc).ToList();
+        //            break;
+        //        case "gia_desc":
+        //            model = model.OrderByDescending(s => s.GiaGoc).ToList();
+        //            break;
+        //        default:
+        //            model = model.OrderBy(s => s.TenSanPham).ToList();
+        //            break;
+        //    }
+        //    int pageSize = 12;
+        //    int pageNumber = (page ?? 1);
+
+        //    return View(model.ToPagedList(pageNumber, pageSize));
+        //}
     }
 }

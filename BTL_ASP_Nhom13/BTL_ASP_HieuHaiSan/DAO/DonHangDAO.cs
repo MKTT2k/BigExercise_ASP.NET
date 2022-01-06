@@ -22,5 +22,14 @@ namespace BTL_ASP_HieuHaiSan.DAO
             ChiTietDonHang ct = (from s in db.ChiTietDonHangs where s.ID_DonHang == id_dh && s.ID_SanPham == id_sp select s).FirstOrDefault();
             return ct;
         }
+        public void delete(int id)
+        {
+            List<ChiTietDonHang> ctdh = db.ChiTietDonHangs.Where(x => x.ID_DonHang == id).ToList();
+            foreach (ChiTietDonHang c in ctdh)
+            {
+                db.ChiTietDonHangs.Remove(c);
+                db.SaveChanges();
+            }
+        }
     }
 }   

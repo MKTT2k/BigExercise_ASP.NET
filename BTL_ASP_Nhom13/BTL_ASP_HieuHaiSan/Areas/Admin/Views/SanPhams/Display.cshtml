@@ -5,6 +5,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var bg = "";
 }
 
 <h2>Danh sách sản phẩm</h2>
@@ -16,7 +17,7 @@
 {
     <div style="display:flex; margin-top: 20px">
         <dl style="width:40%; margin-right:20px">
-            <dt>Tìm sản phẩm theo tên</dt>
+            <dt>Tìm sản phẩm</dt>
             <dd>@Html.TextBox("SearchTenSP", ViewBag.CurrentFilterTenSP as string, new { placeholder = "Nhập tên sản phẩm ..." , @class = "form-control" })</dd>
         </dl>
         <dl style="width: 30%; margin-right: 20px">
@@ -53,10 +54,17 @@
         </th>
         <th></th>
     </tr>
-
+    
     @foreach (var item in Model)
     {
-        <tr>
+        if (item.SoLuong <= 5)
+        {
+            bg = "pink";
+        } else
+        {
+            bg = "inherit";
+        }
+        <tr style="background:@bg">
             <td style="text-align:center; vertical-align: middle">
                 @Html.DisplayFor(modelItem => item.DanhMuc.TenDanhMuc)
             </td>

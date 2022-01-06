@@ -234,7 +234,7 @@
         {
             <div class="box_id">
                 <div class="title_page_home">
-                    <h2>@item.TenDanhMuc</h2>
+                    <a style="font-size: 20px; font-weight:bold" href="@Url.Action("ViewCate", "Home", new {@id = item.ID_DanhMuc})">@item.TenDanhMuc.ToUpper()</a>
                     <div class="clr"></div>
                 </div>
                 <div class="placeSlide_main">

@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "ChinhSachChung";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<div class="link_title">
+    <div class="pagewrap">
+        <h2>Chính sách chung</h2>
+        <ul>
+            <li>
+                <a style='text-decoration: none;' href='@Url.Action("Index")'>Trang chủ</a> | <a style='text-decoration: none;' href='#'>Chính sách chung</a>
+            </li>
+        </ul>
+        <div class="clr"></div>
+    </div>
+</div>
+<div class="left_conten"style="line-height: 2em; font-size: 15px; text-align: justify; ">
+    <h2><span style="color: #ff6600;" data-text-color="secondary"><strong>CHÍNH SÁCH GIAO HÀNG</strong></span></h2>
+    <h3><span data-text-color="primary"><strong>1. MỤC ĐÍCH:</strong></span></h3>
+    <p>Quy định chính sách giao nhận hàng với mong muốn tạo ra các giá trị gia tăng cho sản phẩm khi khách hàng mua sắm tại hieuhaisan.com.</p>
+    <h3><span data-text-color="primary"><strong>2 PHẠM VI ÁP DỤNG:</strong></span></h3>
+    <h4><strong>2.1 Đối tượng áp dụng:</strong></h4>
+    <p>Tất cả các khách hàng mua sản phẩm tại HIẾU HẢI SẢN</p>
+    <h4><strong>2.2 Khu vực áp dụng:</strong></h4>
+    <h5>2.2.1 Giao hàng miễn phí:</h5>
+    <p>&#8211; Giao hàng miễn phí tại khu vực Tp.HCM trong bán kính 5 Km được tính từ địa chỉ tại Hiếu Hải Sản, và áp dụng cho đơn hàng giá trị từ 1 triệu đồng trở lên.</p>
+    <h5>2.2.2. Phí vận chuyển phát sinh:</h5>
+    <p>Từ Km thứ 6 &#8211; tính từ địa chỉ của Hiếu Hải Sản, phí vận chuyển phát sinh sẽ được tính như sau:</p>
+    <p>&#8211; Phí vận chuyển phát sinh: 10.000 đ/Km</p>
+    <p><strong><em>Lưu ý</em></strong><strong>:</strong> Khách hàng vui lòng thanh toán chi phí đổi trả hàng và chi phí vận chuyển phát sinh (nếu có).</p>
+    <h2><span style="color: #ff6600;" data-text-color="secondary"><strong>CHÍNH SÁCH THANH TOÁN</strong></span></h2>
+    <h3><span data-text-color="primary"><strong>PHƯƠNG THỨC GIAO HÀNG &#8211; TRẢ TIỀN MẶT</strong>:</span></h3>
+    <p> &#8211; Phương thức Giao hàng &#8211; Trả tiền mặt chỉ áp dụng đối với những khu vực Công ty TNHH Hiếu Hải Sản hỗ trợ giao nhận (phạm vi giao hàng ≤ 20km) hoặc trả tiền mua hàng trực tiếp tại Công ty TNHH Hiếu Hải Sản.</p>
+    <p>&#8211; Với phương thức thanh toán trực tiếp Quý khách có thể đặt hàng trên website <strong>hieuhaisan.com </strong>hoặc đặt hàng qua điện thoại <strong>0915 555 437</strong>. Nhân viên chúng tôi sẽ tiến hành xuất hàng cho Quý khách và xác nhận ngày giờ giao hàng với Quý khách sau khi xuất hàng.</p>
+    <p>&#8211; Quý khách có trách nhiệm thanh toán đầy đủ toàn bộ giá trị đơn hàng cho Nhân viên giao nhận hoặc Nhân viên bán hàng và chăm sóc khách hàng của Công ty TNHH Hiếu Hải Sản ngay khi hoàn tất kiểm tra hàng hóa và nhận Phiếu giao hàng kiêm phiếu xuất kho. Quý khách thanh toán đúng số tiền trên Phiếu đã ghi, nếu có bất cứ thắc mắc nào Quý khách gọi lại cho Hotline: 0915 555 437 để được thông tin cụ thể hơn.</p>
+    <p>&#8211; Phương thức thanh toán bằng chuyển khoản ngân hàng: <strong><a href="@Url.Action("ThanhToanDoiTra", "ChinhSach")"><em>tại đây</em></a></strong></p>
+    <h2><span style="color: #ff6600;" data-text-color="secondary"><strong>CHÍNH SÁCH ĐỔI TRẢ</strong></span></h2>
+    <p>&#8211; Những trường hợp dưới đây Hiếu Hải Sản sẽ đổi trả hoặc hoàn tiền tuỳ mức độ hàng</p>
+    <p>+ Đối với hàng hải sản nhập khẩu sống: Nếu khách dùng hàng gặp các vấn đề như: bở, ốp, thịt nhão, có mùi hôi hoặc có sinh vật lạ… Shop sẽ bồi hoàn từ 10-40% tuỳ mức độ và tình trạng! Hình thức bồi hoàn sẽ được chuyển khoản qua tài khoản khách hàng.</p>
+    <p>+ Đối với hàng đông lạnh  Việt Nam: Cam kết 1 đổi 1 nếu khách dùng sản phẩm bị các tình trạng: thịt bở, hôi, ăn không ngon….các vấn đề liên quan đến chất lượng khách cứ giữ lại hàng, mang đến cửa hàng shop sẽ 1 đổi 1 cho mình (đảm bảo điều kiện hàng vẫn còn nguyên, không bị rả đông hay không bị cắt nhỏ)</p>
+    <p>&#8211; Lưu ý: Điều kiện bắt buộc: khách cần chụp hình (càng nhiều càng tốt), quay clip, nêu rõ tình trạng của mặt hàng càng tốt. Shop sẽ giải quyết nhanh nhất và thoả đáng nhất có thể!</p>
+    <p>Qúy khách có thể đổi trả hàng, theo các điều kiện quy định của từng sản phẩm.</p>
+    <p>Mọi chi tiết hoặc thắc mắc Quý khách vui lòng liên hệ với chúng tôi qua số điện thoại hỗ trợ Hotline: 0915 555 437.</p>
+    <p>Thời gian làm việc: Thứ 2 – thứ 7: 08:00 AM – 05:30 PM.</p>
+
+</div>
+
+

@@ -32,7 +32,7 @@ else
                     {
                         <tr>
                             <td><img src="~/Assets/Client/datafiles/setone/@item.HinhAnh" width="220" height="210" /></td>
-                            <td style="text-align:left"><a href="@Url.Action("Details", "Home", new { id = item.ID_SanPham })" )>Tôm Càng Xanh</a></td>
+                            <td style="text-align:left"><a href="@Url.Action("Details", "Home", new { id = item.ID_SanPham })" )>@item.TenSanPham</a></td>
                             <td class="quantity2">
                                 <input name="quantity2[]" onchange="update_cart()" class="qty" value="@item.SoLuong" type="text" readonly />
                             </td>
@@ -40,7 +40,6 @@ else
                             <td style="text-align:right">@String.Format("{0:0,0}", item.DonGia * item.SoLuong)</td>
                         </tr>
                     }
-                    @*<input type="hidden" name="nid[]" id="nid" value="435" />*@
                     <tr>
                         <td colspan="6">
                             <span id="pro_sum">
@@ -61,37 +60,39 @@ else
         }
         <div id="contactcart" class="box_dathang_id">
             <div class="contact">
-                @*<form action="#" class="formBox" method="post" name="FormNameContact" id="OrderForm">*@
-                @using (Html.BeginForm("DatHang", "GioHang"))
+                @using (Html.BeginForm("DatHang", "GioHang", FormMethod.Post, new { onsubmit = "return checkEmpty();" }))
                 {
                     <div class="formBox" name="FormNameContact" id="OrderForm">
-
                         <div class="left">
                             <li class="row_input name">
-                                <i class="fas fa-user"></i><input id="txt_cfullname" name="txt_cfullname" type="text" value="Họ tên" onFocus="if (this.value == 'Họ tên'){this.value='';}" onBlur="if (this.value == '') {this.value='Họ tên';}" />
-                            </li>
+                                <i class="fas fa-user"></i><input id="txt_cfullname" name="txt_cfullname" type="text" placeholder="Họ tên" />
+
                             <li class="row_input phone">
-                                <input onClick="this.select()" id="txt_nphone" name="txt_nphone" class="input {validate:{required:true,number:true, rangelength:[6,12]}}" type="text" value="Điện thoại / Điện thoại di động" onFocus="if (this.value == 'Điện thoại / Điện thoại di động'){this.value='';}"
-                                       onBlur="if (this.value == '') {this.value='Điện thoại / Điện thoại di động';}" />
+                                <input onClick="this.select()" id="txt_nphone" name="txt_nphone" class="input {validate:{required:true,number:true, rangelength:[6,12]}}" type="text" placeholder="Điện thoại" />
                             </li>
+
                             <li class="row_input mail">
-                                <input id="txt_cemail" name="txt_cemail" type="text" value="Email" onFocus="if (this.value == 'Email'){this.value='';}" onBlur="if (this.value == '') {this.value='Email';}" />
+                                <input id="txt_cemail" name="txt_cemail" type="text" placeholder="Email" />
                             </li>
+
                             <li class="row_input local">
-                                <input id="txt_caddress" name="txt_caddress" type="text" value="Địa chỉ" onFocus="if (this.value == 'Địa chỉ'){this.value='';}" onBlur="if (this.value == '') {this.value='Địa chỉ';}" />
+                                <input id="txt_caddress" name="txt_caddress" type="text" placeholder="Địa chỉ" />
                             </li>
                         </div>
+
                         <div class="right">
                             <li class="row_input mess">
-                                <textarea id="txt_cnote" name="txt_cnote" cols="" rows="" value="" onFocus="if (this.value == 'Nội Dung'){this.value='';}" onBlur="if (this.value == '') {this.value='Nội Dung';}">Nội Dung</textarea>
+                                <textarea id="txt_cnote" name="txt_cnote" value="" onFocus="if (this.value == 'Nội Dung'){this.value='';}" onBlur="if (this.value == '') {this.value='Nội Dung';}">Nội Dung</textarea>
                             </li>
-                            <li class="row_input code">
+
+                            @*<li class="row_input code">
                                 <span>VJXMLL</span>
                                 <input name="txt_captcha" id="txt_captcha" type="text" value="Mã bảo vệ" onFocus="if (this.value == 'Mã bảo vệ'){this.value='';}" onBlur="if (this.value == '') {this.value='Mã bảo vệ';}" />
                                 <input type="hidden" id="hidden_captcha" value="VJXMLL" />
                                 <input name="sendmail" type="hidden" style="width:100%" value="2" class="box_input">
-                            </li>
+                            </li>*@
                         </div>
+
                         <div class="clr"></div>
                         <script>
                             $(document).ready(function () {
@@ -144,96 +145,64 @@ else
                                         <p>&nbsp;</p>
                                     </div>
                                 </li>
-                                @*<li class="payment_method_input">
-                                        <label><div class="radio_check"><input type="radio" value="3" name="type_payment" id="type3"></div><div class="txt_payment">Thanh toán qua ngân lượng</div><div class="clr"></div></label>
-                                        <div class="payIds" style="display:none;" id="payId3">
-                                            <p>Đang cập nhật</p>
-                                        </div>
-                                    </li>*@
+
                                 <div class="clr"></div>
                             </ul>
                             <div class="clr"></div>
-                            @*<a href="javascript:" onClick="document.getElementById('OrderForm').reset()" style="cursor:pointer" class="button">LÀM LẠI</a>*@
                             <input type="reset" style="cursor:pointer" class="button" value="LÀM LẠI" />
-                            @*<a href="javascript:" onClick="js_SetSubmitContactButtonClick(document.getElementById('OrderForm'),this.name)"
-                                style="cursor:pointer" class="button">Xác nhận đặt hàng</a>*@
                             <input type="submit" value="Xác nhận đặt hàng" class="button" style="cursor:pointer" />
                         </div>
                         <div class="clr"></div>
-                        @*</form>*@
                     </div>
                 }
             </div>
         </div>
+        <script>
+            function checkEmpty() {
+
+                if (document.getElementById('txt_cfullname').value == '') {
+                    alert('Vui lòng nhập họ tên');
+                    document.getElementById('txt_cfullname').focus();
+                    return false;
+                }
+
+                else if (document.getElementById('txt_nphone').value == '') {
+                    alert('Vui lòng nhập số điện thoại');
+                    document.getElementById('txt_nphone').focus();
+                    return false;
+                }
+
+                else if (document.getElementById('txt_cemail').value == '') {
+                    alert('Vui lòng nhập địa chỉ email');
+                    document.getElementById('txt_cemail').focus();
+                    return false;
+                }
+                else if (document.getElementById('txt_caddress').value == '') {
+
+                    alert('Vui lòng nhập địa chỉ');
+
+                    document.getElementById('txt_caddress').focus();
+                    return false;
+                }
+
+                //else if (document.getElementById('txt_captcha').value == 'Mã bảo vệ') {
+                //    alert('Vui lòng nhập mã bảo vệ');
+                //    document.getElementById('txt_captcha').focus();
+                //    return false;
+                //}
+
+                //else if (document.getElementById('txt_captcha').value != document.getElementById('hidden_captcha').value) {
+                //    alert('Vui lòng nhập đúng mã bảo vệ');
+                //    document.getElementById('txt_captcha').value = '';
+                //    document.getElementById('txt_captcha').focus();
+                //    return false;
+                //}
+
+                //else if ($('input[name=type_payment]:checked').length == 0) {
+                //    alert('Vui lòng chọn hình thức thanh toán');
+                //    return false;
+                //}
+            };
+        </script>
     </div>
 }
-<script>
-    function js_SetSubmitContactButtonClick(obj_form, btn_name) {
-        if (document.getElementById('txt_cfullname').value == 'Họ tên') {
-
-            alert('Vui lòng nhập họ tên');
-
-            document.getElementById('txt_cfullname').focus();
-            return;
-        }
-
-        if (document.getElementById('txt_cemail').value == 'Email') {
-            alert('Vui lòng nhập địa chỉ email');
-            document.getElementById('txt_cemail').focus();
-            return;
-        }
-        if (checkEmailContact() == false)
-            return;
-
-        if (document.getElementById('txt_caddress').value == 'Địa chỉ') {
-
-            alert('Vui lòng nhập địa chỉ');
-
-            document.getElementById('txt_caddress').focus();
-            return;
-        }
-        if (document.getElementById('txt_nphone').value == 'Điện thoại') {
-            alert('Vui lòng nhập số điện thoại');
-            document.getElementById('txt_nphone').focus();
-            return;
-        }
-
-        if (isNumber(document.getElementById('txt_nphone').value) == false) {
-            alert('Vui lòng nhập đúng định dạng số điện thoại');
-            document.getElementById('txt_nphone').focus();
-            return;
-        }
-
-        if (document.getElementById('txt_captcha').value == 'Mã bảo vệ') {
-            alert('Vui lòng nhập mã bảo vệ');
-            document.getElementById('txt_captcha').focus();
-            return;
-        }
-
-        if (document.getElementById('txt_captcha').value != document.getElementById('hidden_captcha').value) {
-            alert('Vui lòng nhập đúng mã bảo vệ');
-            document.getElementById('txt_captcha').value = '';
-            document.getElementById('txt_captcha').focus();
-            return;
-        }
-        if ($('input[name=type_payment]:checked').length == 0) {
-            alert('Vui lòng chọn hình thức thanh toán');
-            return;
-        }
-        obj_form.submit();
-    }
-    function checkEmailContact() {
-        var email = document.getElementById('txt_cemail');
-        //var filter = /^([a-zA-Z0-9_\.\-])+\(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        if (!filter.test(email.value)) {
-            alert('Vui lòng nhập đúng định dạng email');
-            email.focus;
-            return false;
-        }
-    }
-    function isNumber(n) {
-        return !isNaN(parseFloat(n)) && isFinite(n);
-    }
-</script>
-
-

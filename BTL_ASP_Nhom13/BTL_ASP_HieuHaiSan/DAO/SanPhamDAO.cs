@@ -16,6 +16,13 @@ namespace BTL_ASP_HieuHaiSan.DAO
             return products;
         }
 
+        public List<SanPham> GetAll()
+        {
+            var model = from c in db.SanPhams
+                        select c;
+            return model.GroupBy(x => x.ID_SanPham).Select(x => x.FirstOrDefault()).ToList();
+        }
+
 
         public List<SanPham> getTop4(int id)
         {
@@ -73,6 +80,15 @@ namespace BTL_ASP_HieuHaiSan.DAO
                           select s).First();
             db.SanPhams.Remove(delete);
             db.SaveChanges();
+        }
+        public void delete(int id)
+        {
+            List<SanPham> products = db.SanPhams.Where(x=>x.ID_DanhMuc == id).ToList();
+            foreach (SanPham product in products)
+            {
+                db.SanPhams.Remove(product);
+                db.SaveChanges();
+            }
         }
     }
 }

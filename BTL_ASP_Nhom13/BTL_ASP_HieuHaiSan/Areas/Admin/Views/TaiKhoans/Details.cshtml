@@ -67,6 +67,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Sửa", "Edit", new { id = Model.ID_TaiKhoan }) |
-    @Html.ActionLink("Quay lại", "Index")
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.ID_TaiKhoan }, new { @class = "btn btn-warning")
+    @Html.ActionLink("Trở lại", "Index", null, new { @class = "btn btn-info" })
 </p>
