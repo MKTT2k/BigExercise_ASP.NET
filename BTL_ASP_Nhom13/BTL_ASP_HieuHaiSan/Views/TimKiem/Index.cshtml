@@ -1,0 +1,55 @@
+﻿@model PagedList.IPagedList<BTL_ASP_HieuHaiSan.Models.SanPham>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<div class="left_conten">
+    <div class="placeSlide_main">
+        <div class="placeSlide_page">
+            <div class="product_list">
+                @if (Model == null || Model.Count == 0 || Model.ToString() == "")
+                {
+                    <h2 style="margin-top:20px">Không tìm thấy sản phẩm nào!</h2>
+                }
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <ul>
+                            @if (item.GiaBan != item.GiaGoc)
+                            {
+                                var pt = (@item.GiaGoc - @item.GiaBan) / @item.GiaGoc * 100;
+                                pt = Math.Round(pt, 0);
+                                <div class="discount-tag">-@pt%</div>
+
+                            }
+                            <a href="@Url.Action("Details", "Home", new { @id = item.ID_SanPham })">
+                            <li><img alt="" src="~/Assets/Client/datafiles/setone/@item.HinhAnh" class="lazy" /></li>
+                            <h2>@item.TenSanPham </h2>
+                            <h3>
+                                Giá: @String.Format("{0:0,0}", item.GiaBan) đ
+                                @if (item.GiaBan != item.GiaGoc)
+                                {
+                                    <span>@String.Format("{0:0,0}", item.GiaGoc) đ</span>
+                                }
+                            </h3>
+                            </a>
+                        </ul>
+                    }
+                }
+                <div class="clr"></div>
+            </div>
+        </div>
+        <div class="nums">
+            <ul>
+            </ul>
+            <div class="clr"></div>
+        </div>
+
+    </div>
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", "TimKiem", new {page, currentString = ViewBag.CurrentString }))
+</div>

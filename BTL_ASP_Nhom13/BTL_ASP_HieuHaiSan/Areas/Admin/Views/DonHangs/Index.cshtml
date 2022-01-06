@@ -105,7 +105,7 @@
                 @Html.ActionLink("Xác nhận", "Accept", new { id = item.ID_DonHang }, new { @class = "btn btn-warning" })
                 @Html.ActionLink("Đã giao", "Pass", new { id = item.ID_DonHang }, new { @class = "btn btn-success" })
                 @Html.ActionLink("Hủy", "Cancel", new { id = item.ID_DonHang }, new { @class = "btn btn-danger" })
-                <a id="confirm_delete_order" data-target="#delete_order_modal_@item.ID_DonHang" class="btn btn-danger" style="cursor:pointer">Xóa</a>
+                @Html.ActionLink("Xóa", "Delete", new { id = item.ID_DonHang }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }

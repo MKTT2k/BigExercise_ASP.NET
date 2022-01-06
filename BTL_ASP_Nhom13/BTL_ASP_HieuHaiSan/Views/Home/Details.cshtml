@@ -93,7 +93,7 @@
                     <div class="addthis_toolbox addthis_default_style ">
                         <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
                         <a class="addthis_button_tweet"></a>
-                        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                        <a class="addthis_button_google_plusone" g:plusone:size="medium" style="margin-left:20px"></a>
                         <a class="addthis_counter addthis_pill_style"></a>
                     </div>
                     <script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-502225fb496239a5"></script>
@@ -101,17 +101,13 @@
                 </div>
                 <form action="#" method="post" name="orderform" id="orderform">
                     <div class="quantity">
-                        <p>Chọn mua</p>
-                        <label>Số lượng:</label>
-                        <input type="button" class="minus" value="-">
-                        <input class="input-text qty text" title="Qty" size="4" value="1" name="quantity" id="quantity" class="qty" max="50" min="1" step="1">
-                        <input type="button" class="plus" value="+">
-                        <a href="@Url.Action("ThemGioHang", "GioHang", new { @MaSP = Model.ID_SanPham, @strURL = Request.Url.ToString()})" style="cursor:pointer">Mua hàng</a>
+                        <br />
+                        <a href="@Url.Action("ThemGioHang", "GioHang", new { @MaSP = Model.ID_SanPham, @strURL = Request.Url.ToString()})" onclick="alert('Sản phẩm đã được thêm vào giỏ!')" style="cursor:pointer; bottom: -50px; padding: 0 30px;">Mua hàng</a>
                         <div class="clr"></div>
                     </div>
                 </form>
                 <div class="clr"></div>
-            </div>+
+            </div>
             <div class="gianhanggoiy_id desktop">
                 <h1>Sản phẩm gợi ý</h1>
                 <div class="product_list">

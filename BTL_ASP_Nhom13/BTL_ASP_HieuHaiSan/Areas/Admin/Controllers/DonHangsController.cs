@@ -161,7 +161,10 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            
             DonHang donHang = db.DonHangs.Find(id);
+            var dao = new DonHangDAO();
+            dao.delete(id);
             db.DonHangs.Remove(donHang);
             db.SaveChanges();
             return RedirectToAction("Index");

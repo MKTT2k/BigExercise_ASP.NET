@@ -12,197 +12,98 @@
       rel="stylesheet" type="text/css" />
 @{ MvcCaptcha dangKyCaptcha = new MvcCaptcha("dangKyCaptcha"); }
 
-<div class="conten">
-    <div class="link_title">
-        <div class="pagewrap">
-            <h2></h2>
-            <div class="clr"></div>
-        </div>
-    </div>
-    <div class="pagewrap">
-        <div class="left_conten">
+
+<div class="left_conten">
 
 
-            @*Đăng ký*@
-            <div class="thanhvien_popup">
-                <h2>Đăng ký</h2>
-                @using (Html.BeginForm())
+    @*Đăng ký*@
+    <div class="thanhvien_popup">
+        <h2>Đăng ký</h2>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @if (ViewBag.Success != null)
                 {
-                    @Html.AntiForgeryToken()
-                    <div class="form-horizontal">
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        @if (ViewBag.Success != null)
+                    <div class="alert alert-success">@ViewBag.Success</div>
+                }
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                        @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NhapLaiMatKhau, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(model => model.NhapLaiMatKhau, new { @class = "form-control", @placeholder = "Nhập lại mật khẩu" })
+                        @Html.ValidationMessageFor(model => model.NhapLaiMatKhau, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.HoTen, new { @class = "form-control", @placeholder = "Họ tên" })
+                        @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GioiTinh, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.DropDownListFor(model => model.GioiTinh, new List<SelectListItem>
                         {
-                            <div class="alert alert-success">@ViewBag.Success</div>
-                        }
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email" })
-                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <br />
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", @placeholder = "Mật khẩu" })
-                                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <br />
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.NhapLaiMatKhau, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.PasswordFor(model => model.NhapLaiMatKhau, new { @class = "form-control", @placeholder = "Nhập lại mật khẩu" })
-                                @Html.ValidationMessageFor(model => model.NhapLaiMatKhau, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <br />
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.HoTen, new { @class = "form-control", @placeholder = "Họ tên" })
-                                @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <br />
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.GioiTinh, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                <div class="checkbox">
-                                    @Html.DropDownListFor(model => model.GioiTinh, new List<SelectListItem>
-                                {
-                                    new SelectListItem {Text = "Nam", Value = "true"},
-                                    new SelectListItem {Text = "Nữ", Value = "false"},
-                                }, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
-                        <br />
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.SDT, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.SDT, new { @class = "form-control", @placeholder = "Điện thoại" })
-                                @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <br />
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control", @placeholder = "Địa chỉ" })
-                                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <br />
-                        <div class="form-group">
-                            <p><label for="dangKyCaptcha">Mã Captcha</label></p>
-                            <div class="col-md-10">
-                                @Html.Captcha(dangKyCaptcha)
-                                @Html.TextBox("Mã Captcha")
-                            </div>
-                        </div>
-                        <br />
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Đăng ký" class="btn btn-default" style="background: #DDDDDD; color: #333333; font: 16px bold; display: block; width: 100%; height: 50px; border-radius: 5px" />
-                            </div>
+                            new SelectListItem {Text = "Nam", Value = "true"},
+                            new SelectListItem {Text = "Nữ", Value = "false"},
+                        }, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
                         </div>
                     </div>
-                }
+                </div>
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SDT, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.SDT, new { @class = "form-control", @placeholder = "Điện thoại" })
+                        @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control", @placeholder = "Địa chỉ" })
+                        @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <p><label for="dangKyCaptcha">Mã Captcha</label></p>
+                    <div class="col-md-10">
+                        @Html.Captcha(dangKyCaptcha)
+                        @Html.TextBox("Mã Captcha")
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Đăng ký" class="btn btn-default" style="background: #DDDDDD; color: #333333; font: 16px bold; display: block; width: 100%; height: 50px; border-radius: 5px" />
+                    </div>
+                </div>
+            </div>
+        }
 
-            </div>
-        </div>
-        <div class="right_conten">
-            <div class="menu_left desktop">
-                <ul>
-                    <h2>Sản phẩm</h2>
-                    <li><a href="https://hieuhaisan.com/tom.html">» Tôm </a></li>
-                    <li><a href="https://hieuhaisan.com/ca.html">» Cá tươi sống</a></li>
-                    <li><a href="https://hieuhaisan.com/cua-ghe.html">» Cua - Ghẹ</a></li>
-                    <li><a href="https://hieuhaisan.com/so-oc.html">» Ngao - Sò - Ốc</a></li>
-                    <li><a href="https://hieuhaisan.com/muc.html">» Mực</a></li>
-                    <li><a href="https://hieuhaisan.com/hai-san-nhap-khau.html">» Hải Sản Nhập Khẩu</a></li>
-                    <li><a href="https://hieuhaisan.com/hai-san-tien-loi.html">» Hải Sản Tiện Lợi</a></li>
-                    <li><a href="https://hieuhaisan.com/hai-san-kho-mot-nang.html">» Hải Sản Khô Một Nắng</a></li>
-                </ul>
-            </div>
-            <div class="box_right_conten desktop">
-                <h2>Sản phẩm bán chạy</h2>
-                @foreach (var item in sanPhamDAO.getTop8())
-                {
-                    <ul>
-                        <a href="@Url.Action("Details", "Home", new {id = item.ID_SanPham})">
-                        <li><img alt="@item.TenSanPham" src="~/Assets/Client/datafiles/setone/@item.HinhAnh" class="lazy" width="250" height="250" /></li>
-                        <h3>@item.TenSanPham</h3>
-                        <h4>Giá: @item.GiaBan đ </h4>
-                        </a>
-                    </ul>
-                }
-                <div class="box_right_conten">
-                    <h2>TIN NÓNG</h2>
-                    <div class="marquee">
-                        <ul>
-                            <a href="https://hieuhaisan.com/hieu-hai-san-dong-hanh-cung-ban.html">
-                            <li><img alt="Giãn cách không xa cách - Hiếu đồng hành cùng bạn" src="~/Assets/Client/datafiles/setone/16298689672662_thumb-thongcao.jpg" class="lazy" width="400" height="250" /></li>
-                            <h3>Giãn cách không xa cách - Hiếu đồng hành cùng bạn</h3>
-                            </a>
-                        </ul>
-                        <ul>
-                            <a href="https://hieuhaisan.com/binh-on-gia-hai-san-2021.html">
-                            <li><img alt="Bình ổn giá mùa giãn cách tại Hiếu Hải Sản" src="~/Assets/Client/datafiles/setone/16261781069589_banner-binh-on-giapng.jpg" class="lazy" width="400" height="250" /></li>
-                            <h3>Bình ổn giá mùa giãn cách tại Hiếu Hải Sản</h3>
-                            </a>
-                        </ul>
-                        <ul>
-                            <a href="https://hieuhaisan.com/tom-hum-hap-ruou-vang.html">
-                            <li><img alt="Tôm hùm hấp rượu vang" src="~/Assets/Client/datafiles/setone/14656368918363_tom-hum-hap-ruou-vang-hhs-2.jpg" class="lazy" width="400" height="250" /></li>
-                            <h3>Tôm hùm hấp rượu vang</h3>
-                            </a>
-                        </ul>
-                        <ul>
-                            <a href="https://hieuhaisan.com/tom-hum-rang-me.html">
-                            <li><img alt="Tôm hùm rang me" src="~/Assets/Client/datafiles/setone/14656376158133_tom-hum-rang-me-hhs-1.jpg" class="lazy" width="400" height="250" /></li>
-                            <h3>Tôm hùm rang me</h3>
-                            </a>
-                        </ul>
-                        <ul>
-                            <a href="https://hieuhaisan.com/tom-hum-sashimi.html">
-                            <li><img alt="Tôm hùm sashimi" src="~/Assets/Client/datafiles/setone/14656326441203_tom-hum-sashimi-an-song-hhs.jpg" class="lazy" width="400" height="250" /></li>
-                            <h3>Tôm hùm sashimi</h3>
-                            </a>
-                        </ul>
-                    </div>
-                    <script>
-                        $('.marquee').marquee({
-                            duration: 19000,
-                            gap: 0,
-                            delayBeforeStart: 0,
-                            direction: 'up',
-                            duplicated: true,
-                            startVisible: true
-                        });
-                    </script>
-                </div>
-                <div class="hotrokhachhang_right">
-                    <h2>HỖ TRỢ KHÁCH HÀNG</h2>
-                    <div class="list-yahoo">
-                        <ul>
-                            Hotline:: 091 5555 437
-                        </ul>
-                    </div>
-                </div>
-                <div class="banner_right desktop">
-                    <ul>
-                        <li>
-                            <a href="https://hieuhaisan.com/tom-hum-canada-song.html"><img src="~/Assets/Client/datafiles/banners/14736666535386_300-300-tom-hum-canada-2.png" class="lazy" width="180" height="316" /></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="clr"></div>
-        </div>
     </div>
-    <div class="clr"></div>
 </div>

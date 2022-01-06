@@ -100,11 +100,12 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
                 var dao = new TaiKhoanDAO();
                 if (dao.CheckEmail(taiKhoan.Email))
                 {
-                    ViewBag.UserName = "Email đã tồn tại.";
+                    ModelState.AddModelError("", "Email đã tồn tại.");
                 }
                 else
                 {
                     taiKhoan.MatKhau = Encyptor.MD5Hash(taiKhoan.MatKhau);
+                    taiKhoan.TrangThai = true;
                     db.TaiKhoans.Add(taiKhoan);
                     db.SaveChanges();
                     return RedirectToAction("Index");

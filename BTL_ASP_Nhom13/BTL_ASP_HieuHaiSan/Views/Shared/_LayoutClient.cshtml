@@ -56,7 +56,6 @@
     <meta itemprop="name" content="Hiếu Hải Sản - Chuyên hải sản tươi sống và nhập khẩu">
     <meta itemprop="description" content="chuyên hải sản tươi sống và hàng nhập khẩu giá tốt nhất thị trường, chất lượng hải sản tươi ngon dinh dưỡng. Nhận giao hải sản tận nơi tại TPHCM và các tỉnh thành. Thương hiệu uy tín 12 năm tin dùng. Hãy liên hệ ngay!">
     <meta itemprop="image" content="~/Assets/Client/datafiles/thumb_15009687235260_zalo-hhs2.png">
-    <meta itemprop="url" content="https://hieuhaisan.com/">
     <link href="~/Assets/Client/css2/style.css" rel="stylesheet" type="text/css" />
     <link href="~/Assets/Client/css2/item.global.css" media="screen" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="~/Assets/Client/images/website/favicon.ico" type="image/x-icon">
@@ -101,213 +100,7 @@
 
         });
     </script>
-    <script>
-        function udght() {
-            $.ajax({
-                type: "POST",
-                url: "https://hieuhaisan.com/cn_cart_top",
-                success: function (response) {
-                    $("#giohang_top").html(response);
-                    $("#sendorder").click(function () {
-                        $("#contactcart").slideToggle('slow');
-                        $(this).hide();
-                    });
-                }
-            });
-        }
-
-        function delete_cart(nid) {
-            var r = confirm("Bạn có muốn xóa hay không?");
-            if (r) {
-                var dataString = "nid=" + nid;
-                $.ajax({
-                    type: "POST",
-                    url: "https://hieuhaisan.com/delete_cart",
-                    data: dataString,
-                    success: function (response) {
-                        alert("Bạn đã xóa sản phẩm thành công");
-                        $("#cart_list").html(response);
-                        update_quick_cart();
-                    }
-                });
-            } else {
-                return false;
-            }
-        }
-
-        
-
-        function add_to_cart(nid) {
-            var quantity = $('#quantity').val();
-            var dataString = "nid=" + nid + "&quantity=" + quantity;
-            $.ajax({
-                type: "POST",
-                url: "https://hieuhaisan.com/add_cart",
-                data: dataString,
-                success: function (response) {
-                    alert("Bạn đã thêm sản phẩm vào giỏ hàng");
-                    $("#slgiohang_top").html(response);
-                }
-            });
-        }
-
-        function update_cart() {
-            var dataString = $('#form_cart').serializeArray();
-            //console.log(dataString);
-            $.ajax({
-                type: "POST",
-                url: "https://hieuhaisan.com/update_cart",
-                data: dataString,
-                success: function (response) {
-                    $("#cart_list").html(response);
-                }
-            });
-        }
-
-        function update_quick_cart() {
-            $.ajax({
-                type: "POST",
-                url: "https://hieuhaisan.com/show_cart_point_2",
-                success: function (response) {
-                    $("#slgiohang_top").html(response);
-                }
-            });
-        }
-
-        function update_quick_total() {
-            $.ajax({
-                type: "POST",
-                url: "https://hieuhaisan.com/show_cart_point_3",
-                success: function (response) {
-                    $("#total_top").html(response);
-                }
-            });
-        }
-
-        function delete_quick_cart(nid) {
-            var r = confirm("Bạn có muốn xóa hay không?");
-            if (r) {
-                var dataString = "nid=" + nid;
-                $.ajax({
-                    type: "POST",
-                    url: "https://hieuhaisan.com/delete_quick_cart",
-                    data: dataString,
-                    success: function (response) {
-                        alert("Bạn đã xóa sản phẩm thành công");
-                        $("#cart_loader").html(response);
-                    }
-                });
-            } else {
-                return false;
-            }
-        }
-    </script>
     <script type="text/javascript" src="js/md5.js"></script>
-    <script>
-        var fullpath = "https://hieuhaisan.com";
-        var current = "http://hieuhaisan.com/";
-        var current2 = "https://hieuhaisan.com/vi/trang-chu.html";
-        $(document).ready(function () {
-            $(document).on("click", "#loginbt", function (e) {
-                if ($('#username').val() == '') {
-                    $('.messenge').html('Email ?');
-                    $('#username').focus();
-                    return false;
-                }
-                if ($('#password').val() == '') {
-                    $('.messenge').html('Mật khẩu ?');
-                    $('#password').focus();
-                    return false;
-                }
-                var dataString = "txtUsername=" + $('#username').val() + "&txtPassword=" + MD5('2u.com.vn' + $('#password').val());
-                $.ajax({
-                    type: "POST",
-                    url: "https://hieuhaisan.com/login",
-                    data: dataString,
-                    success: function (response) {
-                        var obj = jQuery.parseJSON(response);
-                        if (obj.error > 0) {
-                            $('.messenge').html(obj.ms);
-                        } else {
-                            document.location = current;
-                        }
-
-                    }
-                });
-            });
-            $(document).on("click", "#logoutbt", function (e) {
-                var r = confirm('Bạn thật sự muốn đăng xuất?');
-                if (r == false) {
-                    return false;
-                }
-                $.ajax({
-                    type: "POST",
-                    url: "https://hieuhaisan.com/logout",
-                    success: function (response) {
-                        document.location = current;
-                    }
-                });
-            });
-            $(document).on("click", "#changepassbt", function (e) {
-                if ($('#repassword').val() == '') {
-                    $('.mserror').html('Vui lòng nhập mật mẩu cũ ?');
-                    $('#repassword').focus();
-                    return false;
-                }
-                if ($('#passwordnew').val() == '') {
-                    $('.mserror').html('Vui lòng nhập mật mẩu mới ?');
-                    $('#passwordnew').focus();
-                    return false;
-                }
-                if ($('#repasswordnew').val() == '') {
-                    $('.mserror').html('Vui lòng nhập lại mật mẩu mới ?');
-                    $('#repasswordnew').focus();
-                    return false;
-                }
-                if ($('#passwordnew').val() != $('#repasswordnew').val()) {
-                    $('.mserror').html('Mật khẩu mới nhập lại không giống ?');
-                    $('#repasswordnew').focus();
-                    return;
-                }
-                var dataString = "repassword=" + $('#repassword').val() + "&passwordnew=" + $('#passwordnew').val();
-                $.ajax({
-                    type: "POST",
-                    url: "https://hieuhaisan.com/changepass",
-                    data: dataString,
-                    success: function (response) {
-                        var obj = jQuery.parseJSON(response);
-                        if (obj.error > 0) {
-                            $('.mserror').html(obj.ms);
-                        } else {
-                            alert("Đổi mật khẩu thành công.");
-                            document.location = current;
-                        }
-                    }
-                });
-            });
-            $(document).on("click", "#forgotbt", function (e) {
-                if ($('#txt_femail').val() == '') {
-                    alert("Vui lòng nhập địa chỉ email");
-                    $('#txt_femail').focus();
-                    return;
-                }
-                var dataString = "txt_cemail=" + $('#txt_femail').val();
-                $.ajax({
-                    type: "POST",
-                    url: "https://hieuhaisan.com/forgotpass",
-                    data: dataString,
-                    success: function (response) {
-                        var obj = jQuery.parseJSON(response);
-                        if (obj.error > 0) {
-                            $('.messenge').html(obj.ms);
-                        } else {
-                            alert(obj.ms);
-                        }
-                    }
-                });
-            });
-        });
-    </script>
     <link rel="stylesheet" href="~/Assets/Client/css2/widget.css" />
     <link rel="stylesheet" media="(max-width:480px)" href="~/Assets/Client/css2/480.css" />
     <link rel="stylesheet" media="(min-width:481px) and (max-width:780px)" href="~/Assets/Client/css2/780.css" />
@@ -343,28 +136,6 @@
         gtag('config', 'AW-1011334338');
     </script>
 
-    <script>
-        ! function (f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-            n = f.fbq = function () {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = '2.0';
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1391447464243678');
-        fbq('track', 'PageView');
-    </script>
     <noscript>
         <img height="1" width="1" style="display:none"
              src="https://www.facebook.com/tr?id=1391447464243678&ev=PageView&noscript=1" />
@@ -373,37 +144,7 @@
 </head>
 
 <body>
-    <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '182017528850593',
-                xfbml: true,
-                version: 'v2.5'
-            });
-        };
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {
-                return;
-            }
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
     <div id="fb-root"></div>
-    <script>
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.6&appId=182017528850593";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
     <div class="header_id_top">
         <div class="pagewrap">
             <ul>
@@ -428,31 +169,28 @@
         <div id="header_box">
             <div id="logo_top">
                 <li>
-                    <a href="index.html"><img src="~/Assets/Client/datafiles/banners/15917715812613_untitled-1.jpg" width="373" height="78" /></a>
+                    <a href="@Url.Action("Index", "Home")"><img src="~/Assets/Client/datafiles/banners/15917715812613_untitled-1.jpg" width="373" height="78" /></a>
                 </li>
                 <div class="clr"></div>
             </div>
-            <div id="timkiem_top">
-                <script>
-                    function js_SetSubmitSearchButtonClick(obj_form, btn_name) {
-                        if (document.getElementById('input_search').value == 'Nhập từ khóa cần tìm') {
-
-                            alert('');
-                            document.getElementById('input_search').focus();
-                            return;
+            <script>
+                $(function () {
+                    $('#searchPro').click(function () {
+                        var inputVal = $('#SearchString').val();
+                        if (inputVal == "") {
+                            alert("Nhập tên sản phẩm cần tìm kiếm!");
                         }
-
-                        obj_form.submit();
-                    }
-                </script>
-                <form id="FormNameSearch" action="https://hieuhaisan.com/search" method="get">
-                    <div id="search">
-                        <a href="#" onClick="js_SetSubmitSearchButtonClick(document.getElementById('FormNameSearch'),this.name)" style="cursor:pointer">
-                            Nhập từ khóa cần tìm
-                        </a>
-                        <input class="input_search" id="input_search" name="k" type="text" value="Nhập từ khóa cần tìm" onFocus="if (this.value == 'Nhập từ khóa cần tìm'){this.value='';}" onBlur="if (this.value == '') {this.value='Nhập từ khóa cần tìm';}" />
+                    });
+                });
+            </script>
+            <div id="timkiem_top" style="width:50%">
+                @using (Html.BeginForm("Index", "TimKiem", FormMethod.Get))
+                {
+                    <div class="input-group mb-3">
+                        @Html.TextBox("SearchString", ViewBag.CurrentString as string, new { @class = "form-control", @placeholder = "Nhập từ khóa cần tìm", style = "width: 80%; float: left" })
+                        <button id="searchPro" style="border: none; padding: 5px 10px; height: 46px; background: orange; color: #fff; border-bottom-right-radius: 3px; border-top-right-radius: 3px" type="submit">Tìm kiếm</button>
                     </div>
-                </form>
+                }
                 <div class="clr"></div>
             </div>
             <div id="right_header">
@@ -502,7 +240,7 @@
                             <a href="@Url.Action("ViewCate", "Home", new {@id = 8})">@danhMucDAO.findByIdObject(8).TenDanhMuc</a>
                         </li>
                         <li class="show">
-                            <a href="https://hieuhaisan.com/thong-tin-chinh-sach.html">Chính sách mua hàng</a>
+                            <a href="@Url.Action("ChinhSachChung", "ChinhSach")">Chính sách chung</a>
                         </li>
                         <li class="show">
                             @Html.ActionLink("Vào bếp","Vaobep","TinTuc")
@@ -558,46 +296,21 @@
                                     <h2>TIN NÓNG</h2>
                                     <div class="marquee">
                                         <ul>
-                                            <a href="https://hieuhaisan.com/hieu-hai-san-dong-hanh-cung-ban.html">
-                                            <li><img alt="Giãn cách không xa cách - Hiếu đồng hành cùng bạn" src="~/Assets/Client/datafiles/setone/16298689672662_thumb-thongcao.jpg" class="lazy" width="400" height="250" /></li>
+                                            <a href="@Url.Action("Index", "TinTuc", new {id = 1}))">
+                                            <li><img src="~/Assets/Client/datafiles/tintuc/banner-voucher.jpg" class="lazy" width="400" height="250" /></li>
                                             <h3>Giãn cách không xa cách - Hiếu đồng hành cùng bạn</h3>
                                             </a>
                                         </ul>
-                                        <ul>
-                                            <a href="https://hieuhaisan.com/binh-on-gia-hai-san-2021.html">
-                                            <li><img alt="Bình ổn giá mùa giãn cách tại Hiếu Hải Sản" src="~/Assets/Client/datafiles/setone/16261781069589_banner-binh-on-giapng.jpg" class="lazy" width="400" height="250" /></li>
-                                            <h3>Bình ổn giá mùa giãn cách tại Hiếu Hải Sản</h3>
-                                            </a>
-                                        </ul>
-                                        <ul>
-                                            <a href="https://hieuhaisan.com/tom-hum-hap-ruou-vang.html">
-                                            <li><img alt="Tôm hùm hấp rượu vang" src="~/Assets/Client/datafiles/setone/14656368918363_tom-hum-hap-ruou-vang-hhs-2.jpg" class="lazy" width="400" height="250" /></li>
-                                            <h3>Tôm hùm hấp rượu vang</h3>
-                                            </a>
-                                        </ul>
-                                        <ul>
-                                            <a href="https://hieuhaisan.com/tom-hum-rang-me.html">
-                                            <li><img alt="Tôm hùm rang me" src="~/Assets/Client/datafiles/setone/14656376158133_tom-hum-rang-me-hhs-1.jpg" class="lazy" width="400" height="250" /></li>
-                                            <h3>Tôm hùm rang me</h3>
-                                            </a>
-                                        </ul>
-                                        <ul>
-                                            <a href="https://hieuhaisan.com/tom-hum-sashimi.html">
-                                            <li><img alt="Tôm hùm sashimi" src="~/Assets/Client/datafiles/setone/14656326441203_tom-hum-sashimi-an-song-hhs.jpg" class="lazy" width="400" height="250" /></li>
-                                            <h3>Tôm hùm sashimi</h3>
-                                            </a>
-                                        </ul>
-                                    </div>
-                                    <script>
-                                        $('.marquee').marquee({
-                                            duration: 19000,
-                                            gap: 0,
-                                            delayBeforeStart: 0,
-                                            direction: 'up',
-                                            duplicated: true,
-                                            startVisible: true
-                                        });
-                                    </script>
+                                        @foreach (var sp in sanPhamDAO.getTop4(2))
+                                        {
+                                            <ul>
+                                                <a href="@Url.Action("Details", "Home", new {id = sp.ID_SanPham})">
+                                                <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh" class="lazy" width="400" height="250" /></li>
+                                                <h3>Giá: @String.Format("{0:0,0}", sp.GiaBan) đ </h3>
+                                                </a>
+                                            </ul>
+                                        }
+                                        </div>
                                 </div>
                                 <div class="hotrokhachhang_right">
                                     <h2>HỖ TRỢ KHÁCH HÀNG</h2>
@@ -610,7 +323,7 @@
                                 <div class="banner_right desktop" style="overflow:hidden">
                                     <ul>
                                         <li>
-                                            <a href="https://hieuhaisan.com/tom-hum-canada-song.html"><img src="~/Assets/Client/datafiles/banners/14736666535386_300-300-tom-hum-canada-2.png" class="lazy" width="180" height="316" /></a>
+                                            <a href="@Url.Action("Details", "Home", new {id = 17})"><img src="~/Assets/Client/datafiles/setone/tom-hum-alaska-tom-hum-canada.jpg" class="lazy" width="180" height="316" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -648,17 +361,17 @@
                                 <h3>Chính sách mua hàng</h3>
                                 <ul>
                                     <li>
-                                        <a href="https://hieuhaisan.com/chinh-sach-chung.html" title="Chính sách chung">
+                                        <a href="@Url.Action("ChinhSachChung", "ChinhSach")" title="Chính sách chung">
                                             Chính sách chung
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://hieuhaisan.com/chinh-sach-bao-mat.html" title="Chính sách bảo mật">
+                                        <a href="@Url.Action("ChinhSachBaoMat", "ChinhSach")" title="Chính sách bảo mật">
                                             Chính sách bảo mật
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://hieuhaisan.com/hinh-thuc-thanh-toan.html" title="Hình Thức Thanh Toán">
+                                        <a href="@Url.Action("ThanhToanDoiTra", "ChinhSach")" title="Hình Thức Thanh Toán">
                                             Hình Thức Thanh Toán
                                         </a>
                                     </li>
@@ -667,14 +380,16 @@
                             </div>
                             <div class="face_bottom">
                                 <div class="fb-page" data-href="https://www.facebook.com/hoa.lavan.90" data-tabs="timeline" data-width="325" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                                    <blockquote cite="https://www.facebook.com/hoa.lavan.90" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/hoa.lavan.90">Hiếu Hải Sản</a></blockquote>
+                                    <blockquote cite="https://www.facebook.com/hoa.lavan.90" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/hoa.lavan.90">Facebook: Hiếu Hải Sản</a></blockquote>
                                 </div>
                             </div>
                             <div class="clr"></div>
                             <div class="sanphamtieubieu_bottom">
                                 <h2>DÒNG SẢN PHẨM TIÊU BIỂU</h2>
                                 <div class="clr"></div>
-                                <a href="https://hieuhaisan.com/tags/hai-san-tuoi-song">hai san tuoi song</a> | <a href="https://hieuhaisan.com/tags/ngao-so-oc">ngao so oc</a> | <a href="https://hieuhaisan.com/tags/cua-ghe">cua ghe</a> | <a href="https://hieuhaisan.com/tags/tom-bien">tom bien</a>                | <a href="https://hieuhaisan.com/tags/tom-cua-muc">tom cua muc</a> | <a href="https://hieuhaisan.com/tags/ca-mao-ech">ca mao ech</a> | <a href="https://hieuhaisan.com/tags/ca-mat-quy">ca mat quy</a> | <a href="https://hieuhaisan.com/tags/ca-bop">ca bop</a>                | <a href="https://hieuhaisan.com/tags/ca-chim">ca chim</a> | <a href="https://hieuhaisan.com/tags/ca-lang">ca lang</a> | <a href="https://hieuhaisan.com/tags/ca-mu">ca mu</a> | <a href="https://hieuhaisan.com/tags/ca-bien-tuoi">ca bien tuoi</a>                | <a href="https://hieuhaisan.com/tags/hai-san-nhap-khau">hai san nhap khau</a> | <a href="https://hieuhaisan.com/tags/ca-hoi-nauy">ca hoi nauy</a> | <a href="https://hieuhaisan.com/tags/ca-tuyet">ca tuyet</a> | <a href="https://hieuhaisan.com/tags/bao-ngu-uc">bao ngu uc</a>                | <a href="https://hieuhaisan.com/tags/oc-bulot">oc bulot</a> | <a href="https://hieuhaisan.com/tags/cua-hoang-de">cua hoang de</a> | <a href="https://hieuhaisan.com/tags/alaska">alaska</a> | <a href="https://hieuhaisan.com/tags/king-crab">king crab</a>                | <a href="https://hieuhaisan.com/tags/tom-hum-canada">tom hum canada</a> | <a href="https://hieuhaisan.com/tags/lobster">lobster</a> | <a href="https://hieuhaisan.com/tags/hai-san">hai san</a> | <a href="https://hieuhaisan.com/tags/sa-sung">sa sung</a>                | <a href="https://hieuhaisan.com/tags/so-diep-tuoi">so diep tuoi</a> | <a href="https://hieuhaisan.com/tags/trung-ca">trung ca</a> | <a href="https://hieuhaisan.com/tags/cha-muc">cha muc</a> | <a href="https://hieuhaisan.com/tags/kho-muc">kho muc</a>                | <a href="https://hieuhaisan.com/tags/tom-kho">tom kho</a> | <a href="https://hieuhaisan.com/tags/ca-kho">ca kho</a> | <a href="https://hieuhaisan.com/tags/ca-trich">ca trich</a> | <a href="https://hieuhaisan.com/tags/ca-dua-can-gio">ca dua can gio</a>                | <a href="https://hieuhaisan.com/tags/ca-muc">ca muc</a>
+                                @foreach (var item in danhMucDAO.getAll()) {
+                                    <a href="@Url.Action("ViewCate", "Home", new {@id = item.ID_DanhMuc})">@item.TenDanhMuc.ToLower()</a> 
+                                    }
                             </div>
                             <script src="https://uhchat.net/code.php?f=2e7beb"></script>
                             <div class="bottom_id_copyright">Copyright © 2022 Bản quyền thuộc về <strong>Nhóm 13 - CNTT2 - K13</strong></div>

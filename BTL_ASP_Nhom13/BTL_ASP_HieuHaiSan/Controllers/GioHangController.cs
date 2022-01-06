@@ -149,27 +149,11 @@ namespace BTL_ASP_HieuHaiSan.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            //TaiKhoan tk = new TaiKhoan();
-            //if (Session[BTL_ASP_HieuHaiSan.Common.CommonConstants.USER_SESSION] == null)
-            //{
-            //    tk = t;
-            //    db.TaiKhoans.Add(tk);
-            //    db.SaveChanges();
-            //}
-            //else
-            //{
-            //    TaiKhoan acc = Session[BTL_ASP_HieuHaiSan.Common.CommonConstants.USER_SESSION] as TaiKhoan;
-            //    tk.HoTen = acc.HoTen;
-            //    tk.GioiTinh = acc.GioiTinh;
-            //    tk.DiaChi = acc.DiaChi;
-            //    tk.Email = acc.Email;
-            //    tk.SDT = acc.SDT;
-            //    tk.TrangThai = acc.TrangThai;
-            //    tk.MatKhau = acc.MatKhau;
-            //    db.TaiKhoans.Add(tk);
-            //    db.SaveChanges();
-
-            //}
+            TaiKhoanDangNhap acc = (TaiKhoanDangNhap)Session[BTL_ASP_HieuHaiSan.Common.CommonConstants.USER_SESSION];
+            if (acc == null)
+            {
+                return RedirectToAction("Dangnhap", "Taikhoans");
+            }
             return View(lstGioHang);
 
         }

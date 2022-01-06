@@ -19,60 +19,75 @@ else
     </div>
     <div class="left_conten">
         <div id="cart_list">
-            <form id="form_cart" name="form_cart" action="#" method="post">
-                <table width="100%" cellspacing="1" cellpadding="0">
+
+            <table width="100%" cellspacing="1" cellpadding="0">
+                <tr>
+                    <th width="18%">Hình ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th width="10%">Số lượng</th>
+                    <th width="15%">Đơn giá (VNĐ)</th>
+                    <th width="15%">Thành tiền</th>
+                    <th width="10%">Thao tác</th>
+                    <th width="10%">Thao tác</th>
+                </tr>
+                @foreach (var item in Model)
+                {
                     <tr>
-                        <th width="18%">Hình ảnh</th>
-                        <th>Tên sản phẩm</th>
-                        <th width="10%">Số lượng</th>
-                        <th width="15%">Đơn giá (VNĐ)</th>
-                        <th width="15%">Thành tiền</th>
-                        <th width="10%">Thao tác</th>
-                        <th width="10%">Thao tác</th>
+                        <td><img src="~/Assets/Client/datafiles/setone/@item.HinhAnh" width="220" height="210" /></td>
+                        <td style="text-align:left"><a href="@Url.Action("Details", "Home", new { id = item.ID_SanPham })" )>@item.TenSanPham</a></td>
+                        @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { MaSP = item.ID_SanPham }))
+                        {
+                            <td class="quantity2">
+                                <input name="quantity" class="qty" value="@item.SoLuong" type="number" min="1" />
+                                <input type="button" class="minus" value="-">
+                                <input type="button" class="plus" value="+">
+                            </td>
+                            <td style="text-align:right">@String.Format("{0:0,0}", item.DonGia)</td>
+                            <td style="text-align:right">@String.Format("{0:0,0}", item.DonGia * item.SoLuong)</td>
+                            <td>
+                                <input type="submit" value="Cập nhật" style="background: red; font-size: 13px; padding: 8px 14px; font-weight: 400; color: #fff; width: 80px; cursor: pointer" />
+                            </td>
+                            <td>
+                                <a class="pro_del" href="@Url.Action("XoaGioHang", "GioHang", new { @MaSP = item.ID_SanPham })" onclick="delete_cart(304);">Xóa</a>
+                            </td>
+                        }
                     </tr>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td><img src="~/Assets/Client/datafiles/setone/@item.HinhAnh" width="220" height="210" /></td>
-                            <td style="text-align:left"><a href="@Url.Action("Details", "Home", new { id = item.ID_SanPham })" )>@item.TenSanPham</a></td>
-                            @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { MaSP = item.ID_SanPham }))
-                            {
-                                <td class="quantity2">
-                                    <input name="quantity" class="qty" value="@item.SoLuong" type="number" min="1" />
-                                    <input type="button" class="minus" value="-">
-                                    <input type="button" class="plus" value="+">
-                                </td>
-                                <td style="text-align:right">@String.Format("{0:0,0}", item.DonGia)</td>
-                                <td style="text-align:right">@String.Format("{0:0,0}", item.DonGia * item.SoLuong)</td>
-                                <td>
-                                    <input type="submit" value="Cập nhật" width="80" />
-                                </td>
-                                <td>
-                                    <a class="pro_del" href="@Url.Action("XoaGioHang", "GioHang", new { @MaSP = item.ID_SanPham })" onclick="delete_cart(304);">Xóa</a>
-                                </td>
-                            }
-                        </tr>
-                    }
-                    @*<input type="hidden" name="nid[]" id="nid" value="1061" />*@
-                    <tr>
-                        <td colspan="7">
-                            <span id="pro_sum">
-                                Tổng tiền:
-                                <label>@String.Format("{0:0,0}", ViewBag.TongTien) VNĐ</label>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="7">
-                            <a href="@Url.Action("Index", "Home")" class="pro_del mar">Tiếp tục mua</a>
-                            @*<a href="javascript:" onclick="update_cart()" class="pro_del mar">Cập nhật</a>*@
-                            <a href="@Url.Action("ThanhToan", "GioHang")" style="margin-left:10px;" class="pro_del mar">Thanh toán</a>
-                        </td>
-                    </tr>
-                </table>
-            </form>
+                }
+                <tr>
+                    <td colspan="7">
+                        <span id="pro_sum">
+                            Tổng tiền:
+                            <label>@String.Format("{0:0,0}", ViewBag.TongTien) VNĐ</label>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <a href="@Url.Action("Index", "Home")" class="pro_del mar">Tiếp tục mua</a>
+                        <a href="@Url.Action("ThanhToan", "GioHang")" style="margin-left:10px;" class="pro_del mar">Thanh toán</a>
+                    </td>
+                </tr>
+            </table>
         </div>
         <div class="clr"></div>
     </div>
 }
+
+<script>
+    function delete_cart(nid) {
+        if (confirm("Bạn có muốn xóa hay không?")) {
+            var dataString = nid;
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("XoaGioHang", "GioHang")",
+                data: dataString,
+                success: function (response) {
+                    alert("Bạn đã xóa sản phẩm thành công");
+                    $("#cart_list").html(response);
+                    update_quick_cart();
+                }
+            });
+        }
+    }
+</script>
 

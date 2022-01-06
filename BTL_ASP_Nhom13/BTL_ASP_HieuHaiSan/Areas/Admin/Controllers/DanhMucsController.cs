@@ -174,9 +174,11 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            var products = new SanPhamDAO();
             DanhMuc danhMuc = db.DanhMucs.Find(id);
             try
             {
+                products.delete(id);
                 db.DanhMucs.Remove(danhMuc);
                 db.SaveChanges();
                 return RedirectToAction("Index");
