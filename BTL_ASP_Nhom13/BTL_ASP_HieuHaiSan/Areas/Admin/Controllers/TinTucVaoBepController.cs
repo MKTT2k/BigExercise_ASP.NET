@@ -39,6 +39,7 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             TinTuc_VaoBep tinTuc_VaoBep = db.TinTuc_VaoBep.Find(id);
+            System.Diagnostics.Debug.WriteLine(tinTuc_VaoBep.NoiDung);
             if (tinTuc_VaoBep == null)
             {
                 return HttpNotFound();
@@ -82,9 +83,9 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
                 ViewBag.Error = "Lỗi thêm tin tức!";
                 return View(tinTuc_VaoBep);
             }
-            
 
-           
+
+
         }
 
         // GET: Admin/TinTucVaoBep/Edit/5
@@ -107,7 +108,8 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_TinTuc,TieuDe,HinhAnh,NgayTao,NoiDung,Status")] TinTuc_VaoBep tinTuc_VaoBep)
+        [ValidateInput(false)]
+        public ActionResult Edit([Bind(Include = "ID_TinTuc,TieuDe,HinhAnh,NoiDung,NgayTao,Status")] TinTuc_VaoBep tinTuc_VaoBep, FormCollection fo)
         {
             try
             {
@@ -115,13 +117,17 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
                 {
                     tinTuc_VaoBep.HinhAnh = Request["img"];
                     var f = Request.Files["a"];
+                    var Noidung = fo["NoiDung"];
+                    System.Diagnostics.Debug.WriteLine(Noidung);
                     if (f != null && f.ContentLength > 0)
                     {
                         string FileName = System.IO.Path.GetFileName(f.FileName);
                         string UpLoadPath = Server.MapPath("~/Assets/Client/datafiles/tintuc/" + FileName);
                         f.SaveAs(UpLoadPath);
                         tinTuc_VaoBep.HinhAnh = FileName;
+
                     }
+                    tinTuc_VaoBep.NoiDung = Noidung;
                     db.Entry(tinTuc_VaoBep).State = EntityState.Modified;
                     db.SaveChanges();
                 }

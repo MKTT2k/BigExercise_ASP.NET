@@ -94,6 +94,7 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             SanPham sanPham = db.SanPhams.Find(id);
+            System.Diagnostics.Debug.WriteLine(sanPham.MoTa);
             if (sanPham == null)
             {
                 return HttpNotFound();
@@ -164,7 +165,8 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_SanPham,TenSanPham,HinhAnh,GiaGoc,GiaBan,MoTa,SoLuong,ID_DanhMuc")] SanPham sanPham)
+        [ValidateInput(false)]
+        public ActionResult Edit([Bind(Include = "ID_SanPham,TenSanPham,HinhAnh,GiaGoc,GiaBan,MoTa,SoLuong,ID_DanhMuc")] SanPham sanPham, FormCollection fo)
         {
             try
             {
@@ -172,6 +174,7 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
                 {
                     sanPham.HinhAnh = Request["img"];
                     var f = Request.Files["a"];
+                    var moTa = fo["MoTa"];
                     if (f != null && f.ContentLength > 0)
                     {
                         string FileName = System.IO.Path.GetFileName(f.FileName);
@@ -179,6 +182,7 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
                         f.SaveAs(UploadPath);
                         sanPham.HinhAnh = FileName;
                     }
+                    sanPham.MoTa = moTa;
                     db.Entry(sanPham).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Display");

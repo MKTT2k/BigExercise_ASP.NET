@@ -131,12 +131,15 @@ namespace BTL_ASP_HieuHaiSan.Controllers
         public ActionResult CapNhatGioHang(int MaSP, FormCollection f)
         {
             List<ItemGioHang> lstGioHang = LayGioHang();
-            //ViewBag.TongSoLuong = TinhTongSoLuong();
-            //ViewBag.TongTien = TinhTongTien();
+            SanPham sp = db.SanPhams.SingleOrDefault(n => n.ID_SanPham == MaSP);
             ItemGioHang spCheck = lstGioHang.SingleOrDefault(n => n.ID_SanPham == MaSP);
             if (spCheck != null)
             {
                 spCheck.SoLuong = int.Parse(f["quantity"].ToString());
+            }
+            if (spCheck.SoLuong > sp.SoLuong)
+            {
+                return View("ThongBao");
             }
             return RedirectToAction("XemGioHang");
         }

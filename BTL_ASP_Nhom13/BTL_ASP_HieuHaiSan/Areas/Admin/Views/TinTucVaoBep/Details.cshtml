@@ -1,9 +1,11 @@
 ﻿@model BTL_ASP_HieuHaiSan.Models.TinTuc_VaoBep
+@using System;
+@using System.Web;
+@using System.IO;
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-
 }
 
 <h3>Chi tiết Tin tức - Vào Bếp</h3>
@@ -29,7 +31,6 @@
             }
             <img src="@Url.Content(img)" width="170" class="img-rounded" />
         </dd>
-
         <dt>
             Ngày tạo:
         </dt>
@@ -46,7 +47,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NoiDung)
+            @Html.Raw(@Model.NoiDung)
         </dd>
 
         <dt>

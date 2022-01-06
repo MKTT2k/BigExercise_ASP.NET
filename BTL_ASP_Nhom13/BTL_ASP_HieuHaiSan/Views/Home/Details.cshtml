@@ -85,7 +85,7 @@
                 </h1>
 
                 <ul class="desc">
-                    @Model.MoTa
+                    @Html.Raw(@Model.MoTa)
                 </ul>
                 <div class="clr"></div>
                 <div id="sharelink">
@@ -114,7 +114,7 @@
                     @foreach (var sp in sanPhamDAO.getTop4(Model.ID_DanhMuc))
                     {
                         <ul>
-                            <a href="#">
+                            <a href="@Url.Action("Details","Home", new {@id = sp.ID_SanPham})">
                                 <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh"></li>
                                 <h2>@sp.TenSanPham</h2>
                                 <h3>Giá: @String.Format("{0:0,0}", sp.GiaBan) đ </h3>

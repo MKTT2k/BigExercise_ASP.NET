@@ -31,7 +31,7 @@ namespace BTL_ASP_HieuHaiSan.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                model = model.Where(p => p.TenSanPham.Contains(searchString)).ToList();
+                model = model.Where(p => p.TenSanPham.ToLower().Contains(searchString.ToLower())).ToList();
             }
             else
             {

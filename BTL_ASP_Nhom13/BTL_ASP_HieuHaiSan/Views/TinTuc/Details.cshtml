@@ -22,10 +22,10 @@
             <div class="showText">
                 <h2>@Model.TieuDe</h2>
                 <img alt="@Model.HinhAnh" src="~/Assets/Client/datafiles/tintuc/@Model.HinhAnh" class="img-rounded" width="500">
-                <p style="text-align: center;">@Model.NoiDung</p>
+                @Html.Raw(@Model.NoiDung)
                 <p style="text-align: center;">@Model.NgayTao</p>
             </div>
-            
+
             <div class="tintuckhac_conten">
                 <h1>Bài viết liên quan</h1>
                 <div class="clr"></div>
@@ -36,9 +36,9 @@
                 {
                     <ul>
                         <a href="@Url.Action("Details", "TinTuc", new {id = tt.ID_TinTuc})">
-                            <li><img alt="@tt.HinhAnh" src="~/Assets/Client/datafiles/tintuc/@tt.HinhAnh"></li>
+                        <li><img alt="@tt.HinhAnh" src="~/Assets/Client/datafiles/tintuc/@tt.HinhAnh"></li>
 
-                            <h2>@tt.TieuDe</h2>
+                        <h2>@tt.TieuDe</h2>
                         </a>
                     </ul>
                 }
@@ -65,9 +65,9 @@
                 {
                     <ul>
                         <a href="@Url.Action("Details", "Home", new {id = item.ID_SanPham})">
-                            <li><img alt="@item.TenSanPham" src="~/Assets/Client/datafiles/setone/@item.HinhAnh" class="lazy" width="250" height="250" /></li>
-                            <h3>@item.TenSanPham</h3>
-                            <h4>Giá: @item.GiaBan đ </h4>
+                        <li><img alt="@item.TenSanPham" src="~/Assets/Client/datafiles/setone/@item.HinhAnh" class="lazy" width="250" height="250" /></li>
+                        <h3>@item.TenSanPham</h3>
+                        <h4>Giá: @item.GiaBan đ </h4>
                         </a>
                     </ul>
                 }
@@ -76,32 +76,32 @@
                     <div class="marquee">
                         <ul>
                             <a href="https://hieuhaisan.com/hieu-hai-san-dong-hanh-cung-ban.html">
-                                <li><img alt="Giãn cách không xa cách - Hiếu đồng hành cùng bạn" src="~/Assets/Client/datafiles/setone/16298689672662_thumb-thongcao.jpg" class="lazy" width="400" height="250" /></li>
-                                <h3>Giãn cách không xa cách - Hiếu đồng hành cùng bạn</h3>
+                            <li><img alt="Giãn cách không xa cách - Hiếu đồng hành cùng bạn" src="~/Assets/Client/datafiles/setone/16298689672662_thumb-thongcao.jpg" class="lazy" width="400" height="250" /></li>
+                            <h3>Giãn cách không xa cách - Hiếu đồng hành cùng bạn</h3>
                             </a>
                         </ul>
                         <ul>
                             <a href="https://hieuhaisan.com/binh-on-gia-hai-san-2021.html">
-                                <li><img alt="Bình ổn giá mùa giãn cách tại Hiếu Hải Sản" src="~/Assets/Client/datafiles/setone/16261781069589_banner-binh-on-giapng.jpg" class="lazy" width="400" height="250" /></li>
-                                <h3>Bình ổn giá mùa giãn cách tại Hiếu Hải Sản</h3>
+                            <li><img alt="Bình ổn giá mùa giãn cách tại Hiếu Hải Sản" src="~/Assets/Client/datafiles/setone/16261781069589_banner-binh-on-giapng.jpg" class="lazy" width="400" height="250" /></li>
+                            <h3>Bình ổn giá mùa giãn cách tại Hiếu Hải Sản</h3>
                             </a>
                         </ul>
                         <ul>
                             <a href="https://hieuhaisan.com/tom-hum-hap-ruou-vang.html">
-                                <li><img alt="Tôm hùm hấp rượu vang" src="~/Assets/Client/datafiles/setone/14656368918363_tom-hum-hap-ruou-vang-hhs-2.jpg" class="lazy" width="400" height="250" /></li>
-                                <h3>Tôm hùm hấp rượu vang</h3>
+                            <li><img alt="Tôm hùm hấp rượu vang" src="~/Assets/Client/datafiles/setone/14656368918363_tom-hum-hap-ruou-vang-hhs-2.jpg" class="lazy" width="400" height="250" /></li>
+                            <h3>Tôm hùm hấp rượu vang</h3>
                             </a>
                         </ul>
                         <ul>
                             <a href="https://hieuhaisan.com/tom-hum-rang-me.html">
-                                <li><img alt="Tôm hùm rang me" src="~/Assets/Client/datafiles/setone/14656376158133_tom-hum-rang-me-hhs-1.jpg" class="lazy" width="400" height="250" /></li>
-                                <h3>Tôm hùm rang me</h3>
+                            <li><img alt="Tôm hùm rang me" src="~/Assets/Client/datafiles/setone/14656376158133_tom-hum-rang-me-hhs-1.jpg" class="lazy" width="400" height="250" /></li>
+                            <h3>Tôm hùm rang me</h3>
                             </a>
                         </ul>
                         <ul>
                             <a href="https://hieuhaisan.com/tom-hum-sashimi.html">
-                                <li><img alt="Tôm hùm sashimi" src="~/Assets/Client/datafiles/setone/14656326441203_tom-hum-sashimi-an-song-hhs.jpg" class="lazy" width="400" height="250" /></li>
-                                <h3>Tôm hùm sashimi</h3>
+                            <li><img alt="Tôm hùm sashimi" src="~/Assets/Client/datafiles/setone/14656326441203_tom-hum-sashimi-an-song-hhs.jpg" class="lazy" width="400" height="250" /></li>
+                            <h3>Tôm hùm sashimi</h3>
                             </a>
                         </ul>
                     </div>

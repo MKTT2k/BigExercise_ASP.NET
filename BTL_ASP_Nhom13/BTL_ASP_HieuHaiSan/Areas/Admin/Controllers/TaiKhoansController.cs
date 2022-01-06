@@ -140,6 +140,7 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 taiKhoan.MatKhau = Encyptor.MD5Hash(taiKhoan.MatKhau);
+                taiKhoan.TrangThai = true;
                 db.Entry(taiKhoan).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
