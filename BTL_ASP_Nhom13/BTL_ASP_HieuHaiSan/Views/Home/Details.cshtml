@@ -101,6 +101,7 @@
                 </div>
                 <form action="#" method="post" name="orderform" id="orderform">
                     <div class="quantity">
+                        <p><b>Số lượng: @Model.SoLuong</b></p>
                         <br />
                         <a href="@Url.Action("ThemGioHang", "GioHang", new { @MaSP = Model.ID_SanPham, @strURL = Request.Url.ToString()})" onclick="alert('Sản phẩm đã được thêm vào giỏ!')" style="cursor:pointer; bottom: -50px; padding: 0 30px;">Mua hàng</a>
                         <div class="clr"></div>

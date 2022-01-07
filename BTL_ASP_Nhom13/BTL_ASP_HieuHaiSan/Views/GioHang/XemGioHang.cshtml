@@ -1,7 +1,9 @@
 ﻿@using BTL_ASP_HieuHaiSan.Models;
+@using BTL_ASP_HieuHaiSan.DAO;
 @{
     ViewBag.Title = "XemGioHang";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
+    SanPhamDAO sanPhamDAO = new SanPhamDAO();
 }
 
 @if (Model == null || Model.Count == 0)
@@ -37,8 +39,9 @@ else
                         <td style="text-align:left"><a href="@Url.Action("Details", "Home", new { id = item.ID_SanPham })" )>@item.TenSanPham</a></td>
                         @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { MaSP = item.ID_SanPham }))
                         {
+                            var slco = sanPhamDAO.SoLuongSP(item.ID_SanPham);
                             <td class="quantity2">
-                                <input name="quantity" class="qty" value="@item.SoLuong" type="number" min="1" max="50" />
+                                <input name="quantity" class="qty" value="@item.SoLuong" type="number" min="1" max="@slco" />
                                 <input type="button" class="minus" value="-">
                                 <input type="button" class="plus" value="+">
                             </td>

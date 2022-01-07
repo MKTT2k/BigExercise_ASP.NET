@@ -90,5 +90,12 @@ namespace BTL_ASP_HieuHaiSan.DAO
                 db.SaveChanges();
             }
         }
+
+        public int SoLuongSP(int id)
+        {
+            SanPham spFind = db.SanPhams.Where(s => s.ID_SanPham == id).FirstOrDefault();
+
+            return spFind.SoLuong;
+        }
     }
 }
