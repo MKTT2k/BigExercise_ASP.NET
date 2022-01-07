@@ -9,6 +9,14 @@
 <p>
     @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-success" })
 </p>
+@using (Html.BeginForm())
+{
+    <p style="width:500px;">
+        Tìm kiếm theo tiêu đề: @Html.TextBox("searchStringName", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+        <input type="submit" value="Tìm" class="btn btn-default" style="margin-top:5px" />
+    </p>
+
+}
 <br />
 <table class="table">
     <tr>
@@ -73,4 +81,4 @@
 </table>
 <br />
 Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
-@Html.PagedListPager(Model, page => Url.Action("Display", new { page }))
+@Html.PagedListPager(Model, page => Url.Action("Display", new { page, currentFilter = ViewBag.CurrentFilter }))

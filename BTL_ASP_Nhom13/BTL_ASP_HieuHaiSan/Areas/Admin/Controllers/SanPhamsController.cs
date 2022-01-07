@@ -114,7 +114,8 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_SanPham,TenSanPham,HinhAnh,GiaGoc,GiaBan,MoTa,SoLuong,ID_DanhMuc")] SanPham sanPham)
+        [ValidateInput(false)]
+        public ActionResult Create([Bind(Include = "ID_SanPham,TenSanPham,HinhAnh,GiaGoc,GiaBan,MoTa,SoLuong,ID_DanhMuc")] SanPham sanPham, FormCollection fo)
         {
             try
             {
@@ -122,6 +123,7 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
                 {
                     sanPham.HinhAnh = "";
                     var f = Request.Files["a"];
+                    var mota = fo["MoTa"];
                     if (f != null && f.ContentLength > 0)
                     {
                         string FileName = System.IO.Path.GetFileName(f.FileName);
@@ -129,6 +131,7 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
                         f.SaveAs(UploadPath);
                         sanPham.HinhAnh = FileName;
                     }
+                    sanPham.MoTa = mota;
                     db.SanPhams.Add(sanPham);
                     db.SaveChanges();
                     return RedirectToAction("Display");
@@ -166,7 +169,8 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit([Bind(Include = "ID_SanPham,TenSanPham,HinhAnh,GiaGoc,GiaBan,MoTa,SoLuong,ID_DanhMuc")] SanPham sanPham, FormCollection fo)
+        public ActionResult Edit([Bind(Include = "ID_SanPham,TenSanPham,HinhAnh,GiaGoc,GiaBan,MoTa,SoLuong,ID_DanhMuc")] 
+        SanPham sanPham, FormCollection fo)
         {
             try
             {

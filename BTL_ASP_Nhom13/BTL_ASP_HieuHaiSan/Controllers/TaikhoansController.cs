@@ -56,7 +56,7 @@ namespace BTL_ASP_HieuHaiSan.Controllers
                     }
                 }
             }
-            return View();
+            return RedirectToAction("Dangnhap", "Taikhoans");
         }
         [HttpGet]
         public ActionResult Dangnhap()

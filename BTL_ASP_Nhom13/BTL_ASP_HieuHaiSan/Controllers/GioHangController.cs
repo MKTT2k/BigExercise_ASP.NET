@@ -190,12 +190,13 @@ namespace BTL_ASP_HieuHaiSan.Controllers
                 db.SaveChanges();
                 foreach (var item in lstGioHang)
                 {
+                    SanPham sp = db.SanPhams.SingleOrDefault(n => n.ID_SanPham == item.ID_SanPham);
                     ChiTietDonHang ctdh = new ChiTietDonHang();
                     ctdh.ID_DonHang = dh.ID_DonHang;
                     ctdh.ID_SanPham = item.ID_SanPham;
                     ctdh.SoLuongMua = item.SoLuong;
                     db.ChiTietDonHangs.Add(ctdh);
-
+                    sp.SoLuong -= item.SoLuong;
                 }
                 db.SaveChanges();
                 Session["GioHang"] = null;

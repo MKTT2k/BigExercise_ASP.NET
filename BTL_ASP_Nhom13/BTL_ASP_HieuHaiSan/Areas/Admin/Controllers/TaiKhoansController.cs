@@ -38,10 +38,7 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
             }
             ViewBag.CurrentFilter1 = searchStringName;
             ViewBag.CurrentFilter2 = searchStringPhone;
-
-            //Lấy danh sách tài khoản
             var users = db.TaiKhoans.Where(s => s.TrangThai == true);
-            //Lọc 
             if (!String.IsNullOrEmpty(searchStringName))
             {
                 users = users.Where(p => p.HoTen.ToLower().Contains(searchStringName));
@@ -50,8 +47,6 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
             {
                 users = users.Where(p => p.SDT.ToLower().Contains(searchStringPhone));
             }
-
-            //Sắp xếp
             switch (sortOrder)
             {
                 case "ten_desc":
@@ -191,28 +186,6 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult DangNhap(FormCollection collection)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    var dao = new TaiKhoanDAO();
-            //    var ketqua = dao.Login(model.Email, Encyptor.MD5Hash(model.Matkhau));
-            //    if (ketqua == 2)
-            //    {
-            //        var tk = dao.Laytaikhoan(model.Email);
-            //        var userSession = new TaiKhoanDangNhap();
-            //        userSession.ID_TaiKhoan = tk.ID_TaiKhoan;
-            //        userSession.Email = tk.Email;
-            //        userSession.HoTen = tk.HoTen;
-            //        Session.Add(CommonConstants.USER_SESSION, userSession);
-            //        return Redirect("Admin/Home/Index");
-            //    }
-            //    else 
-            //    {
-            //        ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không chính xác.");
-            //    }
-
-            //}
-            //return View();
-
             var email = collection["Email"];
             var matkhau = Encyptor.MD5Hash(collection["MatKhau"]);
             if (String.IsNullOrEmpty(email))
