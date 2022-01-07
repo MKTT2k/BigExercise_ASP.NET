@@ -49,6 +49,7 @@ namespace BTL_ASP_HieuHaiSan.Controllers
                     {
                         ViewBag.Sucess = "Đăng ký thành công";
                         ModelState.Clear();
+                        return RedirectToAction("Dangnhap", "Taikhoans");
                     }
                     else
                     {
