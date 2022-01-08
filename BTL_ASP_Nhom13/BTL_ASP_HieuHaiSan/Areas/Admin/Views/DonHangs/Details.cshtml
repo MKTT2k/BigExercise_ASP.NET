@@ -1,12 +1,13 @@
 ﻿@model BTL_ASP_HieuHaiSan.Models.DonHang
-
+@using BTL_ASP_HieuHaiSan.DAO
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    DonHangDAO DonHangDAO = new DonHangDAO();
 }
 
 <div>
-    
+
     <h3>Chi tiết đơn hàng: @Model.ID_DonHang</h3>
     <br />
     <dl style="color:black" class="dl-horizontal">
@@ -108,20 +109,20 @@
                     <td>Tên sản phẩm</td>
                     <td>Số lượng</td>
                 </tr>
-                @foreach (var item in ViewBag.listSP)
+                @foreach (var item in ViewBag.ListSP)
                 {
                     <tr>
                         <td style="text-align:center">@item.TenSanPham</td>
-                        <td style="text-align:center">@ViewBag.sl</td>
+                        <td style="text-align:center">@DonHangDAO.chiTietDonHang(Model.ID_DonHang, item.ID_SanPham).SoLuongMua</td>
                     </tr>
-                         
+
                 }
-             </table>
-      </dd>
+            </table>
+        </dd>
 
 
-            </dl>
+    </dl>
 </div>
 <p>
-    @Html.ActionLink("Trở lại", "Index",new { @class = "btn btn-default" })
+    @Html.ActionLink("Trở lại", "Index", new { @class = "btn btn-default" })
 </p>

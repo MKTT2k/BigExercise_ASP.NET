@@ -44,5 +44,10 @@ namespace BTL_ASP_HieuHaiSan.DAO
             return db.TaiKhoans.Count(x => x.Email == email) > 0;
         }
 
+        public TaiKhoan TaiKhoan(int id)
+        {
+            return db.TaiKhoans.SingleOrDefault(x => x.ID_TaiKhoan == id);
+        }
+
     }
 }

@@ -19,7 +19,7 @@
     <div class="showText">
         <h2>@Model.TieuDe</h2>
         <img alt="@Model.HinhAnh" src="~/Assets/Client/datafiles/tintuc/@Model.HinhAnh" class="img-rounded" width="500">
-        <p style="text-align: center;">@Model.NoiDung</p>
+        <p style="text-align: center;"> @Html.Raw(@Model.NoiDung)</p>
         <p style="text-align: center;">@Model.NgayTao</p>
     </div>
 

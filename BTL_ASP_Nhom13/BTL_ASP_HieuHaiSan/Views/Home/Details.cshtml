@@ -101,10 +101,20 @@
                 </div>
                 <form action="#" method="post" name="orderform" id="orderform">
                     <div class="quantity">
-                        <p><b>Số lượng: @Model.SoLuong</b></p>
-                        <br />
-                        <a href="@Url.Action("ThemGioHang", "GioHang", new { @MaSP = Model.ID_SanPham, @strURL = Request.Url.ToString()})" onclick="alert('Sản phẩm đã được thêm vào giỏ!')" style="cursor:pointer; bottom: -50px; padding: 0 30px;">Mua hàng</a>
-                        <div class="clr"></div>
+                        @if (Model.SoLuong == 0)
+                        {
+                            <p style="color:red"><b>Hết hàng</b></p>
+                            <br />
+                        }
+                        else
+                        {
+                            <p><b>Số lượng: @Model.SoLuong</b></p>
+                            <br />
+                            <a href="@Url.Action("ThemGioHang", "GioHang", new { @MaSP = Model.ID_SanPham, @strURL = Request.Url.ToString()})" onclick="alert('Sản phẩm đã được thêm vào giỏ!')" style="cursor:pointer; bottom: -50px; padding: 0 30px;">Mua hàng</a>
+                            <div class="clr"></div>
+                        }
+
+
                     </div>
                 </form>
                 <div class="clr"></div>
@@ -138,20 +148,20 @@
                     <div class="product_list">
                         @foreach (var sp in sanPhamDAO.get8ByCateId(Model.ID_DanhMuc))
                         {
-                        <ul>
-                            @if (sp.GiaBan != sp.GiaGoc)
-                            {
-                                var pt = (@sp.GiaGoc - @sp.GiaBan) / @sp.GiaGoc * 100;
-                                pt = Math.Round(pt, 0);
-                                <div class="discount-tag">-@pt%</div>
+                            <ul>
+                                @if (sp.GiaBan != sp.GiaGoc)
+                                {
+                                    var pt = (@sp.GiaGoc - @sp.GiaBan) / @sp.GiaGoc * 100;
+                                    pt = Math.Round(pt, 0);
+                                    <div class="discount-tag">-@pt%</div>
 
-                            }
-                            <a href="@Url.Action("Details", "Home", new {id = sp.ID_SanPham})">
-                            <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh" class="lazy" /></li>
-                            <h2>@sp.TenSanPham</h2>
-                            <h3>Giá: @String.Format("{0:0,0}", sp.GiaBan) đ </h3>
-                            </a>
-                        </ul>
+                                }
+                                <a href="@Url.Action("Details", "Home", new {id = sp.ID_SanPham})">
+                                    <li><img alt="@sp.TenSanPham" src="~/Assets/Client/datafiles/setone/@sp.HinhAnh" class="lazy" /></li>
+                                    <h2>@sp.TenSanPham</h2>
+                                    <h3>Giá: @String.Format("{0:0,0}", sp.GiaBan) đ </h3>
+                                </a>
+                            </ul>
                         }
                         <div class="clr"></div>
                     </div>

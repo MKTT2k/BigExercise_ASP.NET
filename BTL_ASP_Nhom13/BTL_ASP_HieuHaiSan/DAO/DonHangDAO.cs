@@ -17,7 +17,7 @@ namespace BTL_ASP_HieuHaiSan.DAO
                                 select s3).ToList();
             return sp;
         }
-        public ChiTietDonHang chiTietDonHang(int ?id_dh, int id_sp)
+        public ChiTietDonHang chiTietDonHang(int id_dh, int id_sp)
         {
             ChiTietDonHang ct = (from s in db.ChiTietDonHangs where s.ID_DonHang == id_dh && s.ID_SanPham == id_sp select s).FirstOrDefault();
             return ct;

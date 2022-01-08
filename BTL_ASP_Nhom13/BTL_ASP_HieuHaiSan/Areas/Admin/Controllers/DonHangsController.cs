@@ -71,11 +71,11 @@ namespace BTL_ASP_HieuHaiSan.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             DonHang donHang = db.DonHangs.Find(id);
-            ViewBag.listSP = dh.findById(id);
-            foreach (var item in ViewBag.listSP)
-            {
-                ViewBag.sl = dh.chiTietDonHang(id, item.ID_SanPham).SoLuongMua;
-            }
+            ViewBag.listSP = dh.findById(id).ToList();
+            //foreach (var item in ViewBag.listSP)
+            //{
+            //    ViewBag.sl = dh.chiTietDonHang(id, item.ID_SanPham).SoLuongMua;
+            //}
             if (donHang == null)
             {
                 return HttpNotFound();

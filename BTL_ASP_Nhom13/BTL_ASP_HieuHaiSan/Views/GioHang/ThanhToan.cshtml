@@ -1,8 +1,10 @@
 ﻿@using BTL_ASP_HieuHaiSan.Models;
 @using BTL_ASP_HieuHaiSan.Common;
+@using BTL_ASP_HieuHaiSan.DAO;
 @{
     ViewBag.Title = "ThanhToan";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
+    TaiKhoanDAO TKDAO = new TaiKhoanDAO();
 }
 
 @if (Model == null || Model.Count == 0)
@@ -65,18 +67,18 @@ else
                     <div class="formBox" name="FormNameContact" id="OrderForm">
                         <div class="left">
                             <li class="row_input name">
-                                <i class="fas fa-user"></i><input id="txt_cfullname" name="txt_cfullname" type="text" placeholder="Họ tên" />
+                                <i class="fas fa-user"></i><input id="txt_cfullname" name="txt_cfullname" type="text" placeholder="Họ tên" value="@session.HoTen" />
 
                             <li class="row_input phone">
-                                <input onClick="this.select()" id="txt_nphone" name="txt_nphone" class="input {validate:{required:true,number:true, rangelength:[6,12]}}" type="text" placeholder="Điện thoại" />
+                                <input onClick="this.select()" id="txt_nphone" name="txt_nphone" class="input {validate:{required:true,number:true, rangelength:[6,12]}}" type="text" placeholder="Điện thoại" value="@TKDAO.TaiKhoan(session.ID_TaiKhoan).SDT" />
                             </li>
 
                             <li class="row_input mail">
-                                <input id="txt_cemail" name="txt_cemail" type="text" placeholder="Email" />
+                                <input id="txt_cemail" name="txt_cemail" type="text" placeholder="Email" value="@TKDAO.TaiKhoan(session.ID_TaiKhoan).Email" />
                             </li>
 
                             <li class="row_input local">
-                                <input id="txt_caddress" name="txt_caddress" type="text" placeholder="Địa chỉ" />
+                                <input id="txt_caddress" name="txt_caddress" type="text" placeholder="Địa chỉ" value="@TKDAO.TaiKhoan(session.ID_TaiKhoan).DiaChi" />
                             </li>
                         </div>
 
